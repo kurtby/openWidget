@@ -1,0 +1,2 @@
+#git "git@gitlab.corp.mail.ru:ios-shared/mr-mail-sdk.git"
+github "mailru/mail-auth-sdk-ios"

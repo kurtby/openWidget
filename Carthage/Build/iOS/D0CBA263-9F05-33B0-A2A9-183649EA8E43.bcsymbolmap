@@ -1,0 +1,705 @@
+BCSymbolMap Version: 2.0
+Apple clang version 12.0.0 (clang-1200.0.32.21)
+/Applications/Xcode-12.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.1.sdk
+iPhoneOS14.1.sdk
+/Users/a_karimov/Library/Caches/org.carthage.CarthageKit/DerivedData/12.1_12A7403/mail-auth-sdk-ios/1.4.3/Build/Intermediates.noindex/ArchiveIntermediates/mr-mail-sdk/IntermediateBuildFilesPath/mr-mail-sdk.build/Release-iphoneos/mr-mail-sdk.build/DerivedSources/MRMailSDK_vers.c
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios
+-[NSMutableURLRequest(MRSDK) mrsdk_setHTTPBodyQueryItems:]
+_MRSDKAFPercentEscapedStringFromString
+-[NSMutableURLRequest(MRSDK) mrsdk_addBasicAccessAuthenticationHeaderFieldWithUsername:password:]
+_OBJC_CLASSLIST_REFERENCES_$_
+_OBJC_SELECTOR_REFERENCES_
+_OBJC_SELECTOR_REFERENCES_.2
+_OBJC_SELECTOR_REFERENCES_.4
+_OBJC_SELECTOR_REFERENCES_.6
+_OBJC_CLASSLIST_REFERENCES_$_.7
+_OBJC_SELECTOR_REFERENCES_.9
+_OBJC_SELECTOR_REFERENCES_.11
+_OBJC_SELECTOR_REFERENCES_.13
+_OBJC_SELECTOR_REFERENCES_.17
+_OBJC_SELECTOR_REFERENCES_.19
+_OBJC_SELECTOR_REFERENCES_.21
+_OBJC_SELECTOR_REFERENCES_.25
+_OBJC_SELECTOR_REFERENCES_.31
+__OBJC_$_CATEGORY_INSTANCE_METHODS_NSMutableURLRequest_$_MRSDK
+__OBJC_$_CATEGORY_NSMutableURLRequest_$_MRSDK
+_OBJC_CLASSLIST_REFERENCES_$_.39
+_OBJC_SELECTOR_REFERENCES_.41
+_OBJC_SELECTOR_REFERENCES_.43
+_OBJC_SELECTOR_REFERENCES_.45
+_OBJC_SELECTOR_REFERENCES_.47
+_OBJC_SELECTOR_REFERENCES_.51
+_OBJC_SELECTOR_REFERENCES_.53
+_OBJC_SELECTOR_REFERENCES_.55
+_OBJC_SELECTOR_REFERENCES_.57
+_OBJC_SELECTOR_REFERENCES_.59
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/utils/NSMutableURLRequest+MRSDK.m
+mr-mail-sdk/sources/utils/NSMutableURLRequest+MRSDK.m
+MRSDKAFPercentEscapedStringFromString
++[NSData(MRSDK) mrsdk_randomlyFilledDataWithLength:]
+-[NSData(MRSDK) mrsdk_SHA256Hash]
+-[NSData(MRSDK) mrsdk_base64URLNoPaddingEncoded]
+_OBJC_SELECTOR_REFERENCES_.8
+_OBJC_SELECTOR_REFERENCES_.10
+_OBJC_SELECTOR_REFERENCES_.14
+_OBJC_SELECTOR_REFERENCES_.24
+__OBJC_$_CATEGORY_INSTANCE_METHODS_NSData_$_MRSDK
+__OBJC_$_CATEGORY_CLASS_METHODS_NSData_$_MRSDK
+__OBJC_$_PROP_LIST_NSData_$_MRSDK
+__OBJC_$_CATEGORY_NSData_$_MRSDK
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/utils/NSData+MRSDK.m
+mr-mail-sdk/sources/utils/NSData+MRSDK.m
++[MRMailSDK sharedInstance]
+___27+[MRMailSDK sharedInstance]_block_invoke
+___copy_helper_block_e4_
+___destroy_helper_block_e4_
+-[MRMailSDK init_]
+-[MRMailSDK initializeWithClientID:redirectURI:]
+-[MRMailSDK authorize]
+___22-[MRMailSDK authorize]_block_invoke
+___copy_helper_block_e4_20s
+___destroy_helper_block_e4_20s
+-[MRMailSDK authorizeInternally]
+-[MRMailSDK cancelAuthorization]
+-[MRMailSDK forceLogout]
+___24-[MRMailSDK forceLogout]_block_invoke
+___24-[MRMailSDK forceLogout]_block_invoke.88
+___24-[MRMailSDK forceLogout]_block_invoke_2
+___24-[MRMailSDK forceLogout]_block_invoke_3
+-[MRMailSDK handleURL:sourceApplication:annotation:]
+-[MRMailSDK setInternalAuthMode:]
+-[MRMailSDK isProofKeyForCodeExchangeEnabled]
+-[MRMailSDK setProofKeyForCodeExchangeEnabled:]
+-[MRMailSDK authHandlerShouldPresentViewController:]
+-[MRMailSDK authHandlerDidFinishWithCode:]
+-[MRMailSDK authHandlerDidFailWithError:]
+-[MRMailSDK authHandlerWillDismissViewController:]
+-[MRMailSDK authHandlerDidDismissViewController:]
+-[MRMailSDK isInitialized]
+-[MRMailSDK authorizeInteractively]
+-[MRMailSDK isExternalAuthAvailable]
+-[MRMailSDK abortStartingAuthorizationIfNeeded]
+-[MRMailSDK authorizationParameters]
+-[MRMailSDK processReceivedMailAppResults:]
+___Block_byref_object_copy_
+___Block_byref_object_dispose_
+___43-[MRMailSDK processReceivedMailAppResults:]_block_invoke
+___copy_helper_block_e4_20r24r28r
+___destroy_helper_block_e4_20r24r28r
+-[MRMailSDK authorizeNonInteractivelyWithCompletionHandler:]
+-[MRMailSDK performInternalAuthorization]
+-[MRMailSDK authHandler]
+-[MRMailSDK handleAuthorizationCompletionWithCode:]
+-[MRMailSDK requestTokenWithAuthorizationCode:]
+___47-[MRMailSDK requestTokenWithAuthorizationCode:]_block_invoke
+-[MRMailSDK handleTokenResponseData:]
+-[MRMailSDK tokenRequestWithAuthorizationCode:]
+-[MRMailSDK generateCodeVerifier]
+-[MRMailSDK codeChallengeWithCodeVerifier:]
+-[MRMailSDK OAuth2AuthorizationURL]
+-[MRMailSDK OAuth2TokenURL]
+-[MRMailSDK OAuth2BaseURL]
+-[MRMailSDK openInMailURL]
+-[MRMailSDK completeWithAuthorizationResult:]
+-[MRMailSDK completeWithError:]
+-[MRMailSDK cleanUp]
+-[MRMailSDK authorizationIsInProgress]
+-[MRMailSDK setAuthorizationIsInProgress:]
+-[MRMailSDK resultType]
+-[MRMailSDK setResultType:]
+-[MRMailSDK clientID]
+-[MRMailSDK setClientID:]
+-[MRMailSDK clientSecret]
+-[MRMailSDK setClientSecret:]
+-[MRMailSDK redirectURI]
+-[MRMailSDK setRedirectURI:]
+-[MRMailSDK returnScheme]
+-[MRMailSDK setReturnScheme:]
+-[MRMailSDK scopes]
+-[MRMailSDK setScopes:]
+-[MRMailSDK state]
+-[MRMailSDK setState:]
+-[MRMailSDK usesMailApplication]
+-[MRMailSDK setUsesMailApplication:]
+-[MRMailSDK internalAuthMode]
+-[MRMailSDK loginHint]
+-[MRMailSDK setLoginHint:]
+-[MRMailSDK delegate]
+-[MRMailSDK setDelegate:]
+-[MRMailSDK uiDelegate]
+-[MRMailSDK setUiDelegate:]
+-[MRMailSDK setAuthHandler:]
+-[MRMailSDK codeVerifier]
+-[MRMailSDK setCodeVerifier:]
+-[MRMailSDK urlSession]
+-[MRMailSDK setUrlSession:]
+-[MRMailSDK isInternalProofKeyForCodeExchangeEnabled]
+-[MRMailSDK setInternalProofKeyForCodeExchangeEnabled:]
+-[MRMailSDK useTestHosts]
+-[MRMailSDK setUseTestHosts:]
+-[MRMailSDK .cxx_destruct]
+___clang_at_available_requires_core_foundation_framework
+_sharedInstance.sharedSdkInstance
+_sharedInstance.once
+___block_descriptor_24_e4__e5_v4?0l
+_OBJC_SELECTOR_REFERENCES_.23
+_OBJC_SELECTOR_REFERENCES_.27
+_OBJC_SELECTOR_REFERENCES_.29
+_OBJC_SELECTOR_REFERENCES_.33
+_OBJC_SELECTOR_REFERENCES_.35
+_OBJC_SELECTOR_REFERENCES_.37
+_OBJC_SELECTOR_REFERENCES_.39
+___block_descriptor_24_e4_20s_e17_v8?0"NSString"4l
+_OBJC_SELECTOR_REFERENCES_.48
+_OBJC_SELECTOR_REFERENCES_.50
+_OBJC_SELECTOR_REFERENCES_.52
+_OBJC_SELECTOR_REFERENCES_.54
+_OBJC_SELECTOR_REFERENCES_.56
+_OBJC_SELECTOR_REFERENCES_.58
+_OBJC_SELECTOR_REFERENCES_.60
+_OBJC_SELECTOR_REFERENCES_.62
+_OBJC_SELECTOR_REFERENCES_.64
+_OBJC_SELECTOR_REFERENCES_.66
+_OBJC_SELECTOR_REFERENCES_.68
+_OBJC_SELECTOR_REFERENCES_.70
+_OBJC_CLASSLIST_REFERENCES_$_.71
+_OBJC_SELECTOR_REFERENCES_.73
+_OBJC_SELECTOR_REFERENCES_.75
+_OBJC_SELECTOR_REFERENCES_.77
+_OBJC_SELECTOR_REFERENCES_.79
+___block_descriptor_24_e4_20s_e28_v16?0"NSHTTPCookie"4I8^c12l
+_OBJC_SELECTOR_REFERENCES_.82
+_OBJC_CLASSLIST_REFERENCES_$_.83
+_OBJC_SELECTOR_REFERENCES_.85
+_OBJC_SELECTOR_REFERENCES_.87
+_OBJC_SELECTOR_REFERENCES_.90
+_OBJC_SELECTOR_REFERENCES_.92
+_OBJC_CLASSLIST_REFERENCES_$_.93
+_OBJC_SELECTOR_REFERENCES_.95
+___block_descriptor_20_e5_v4?0l
+___block_literal_global
+_OBJC_SELECTOR_REFERENCES_.97
+___block_descriptor_24_e4_20s_e35_v16?0"WKWebsiteDataRecord"4I8^c12l
+___block_descriptor_24_e4_20s_e16_v8?0"NSArray"4l
+_OBJC_SELECTOR_REFERENCES_.101
+_OBJC_SELECTOR_REFERENCES_.103
+_OBJC_SELECTOR_REFERENCES_.105
+_OBJC_SELECTOR_REFERENCES_.107
+_OBJC_SELECTOR_REFERENCES_.109
+_OBJC_CLASSLIST_REFERENCES_$_.110
+_OBJC_SELECTOR_REFERENCES_.112
+_OBJC_SELECTOR_REFERENCES_.114
+_OBJC_SELECTOR_REFERENCES_.116
+_OBJC_SELECTOR_REFERENCES_.118
+_OBJC_SELECTOR_REFERENCES_.120
+_OBJC_SELECTOR_REFERENCES_.122
+_OBJC_SELECTOR_REFERENCES_.124
+_OBJC_SELECTOR_REFERENCES_.126
+_OBJC_SELECTOR_REFERENCES_.128
+_OBJC_SELECTOR_REFERENCES_.130
+_OBJC_CLASSLIST_REFERENCES_$_.131
+_OBJC_SELECTOR_REFERENCES_.133
+_OBJC_SELECTOR_REFERENCES_.135
+_OBJC_SELECTOR_REFERENCES_.137
+_OBJC_SELECTOR_REFERENCES_.139
+_OBJC_SELECTOR_REFERENCES_.141
+_OBJC_SELECTOR_REFERENCES_.143
+_OBJC_SELECTOR_REFERENCES_.145
+_OBJC_SELECTOR_REFERENCES_.147
+_OBJC_SELECTOR_REFERENCES_.149
+_OBJC_SELECTOR_REFERENCES_.151
+_OBJC_SELECTOR_REFERENCES_.153
+_OBJC_SELECTOR_REFERENCES_.155
+_OBJC_CLASSLIST_REFERENCES_$_.156
+_OBJC_SELECTOR_REFERENCES_.158
+_OBJC_SELECTOR_REFERENCES_.160
+_OBJC_SELECTOR_REFERENCES_.162
+_OBJC_SELECTOR_REFERENCES_.164
+_OBJC_SELECTOR_REFERENCES_.166
+_OBJC_SELECTOR_REFERENCES_.168
+_OBJC_SELECTOR_REFERENCES_.170
+_OBJC_SELECTOR_REFERENCES_.172
+_OBJC_CLASSLIST_REFERENCES_$_.175
+_OBJC_SELECTOR_REFERENCES_.177
+_OBJC_SELECTOR_REFERENCES_.179
+_OBJC_CLASSLIST_REFERENCES_$_.180
+_OBJC_SELECTOR_REFERENCES_.182
+_OBJC_SELECTOR_REFERENCES_.184
+_OBJC_SELECTOR_REFERENCES_.186
+_OBJC_SELECTOR_REFERENCES_.188
+_OBJC_SELECTOR_REFERENCES_.190
+_OBJC_SELECTOR_REFERENCES_.194
+_OBJC_SELECTOR_REFERENCES_.196
+_OBJC_SELECTOR_REFERENCES_.198
+_OBJC_SELECTOR_REFERENCES_.200
+_OBJC_SELECTOR_REFERENCES_.202
+_OBJC_SELECTOR_REFERENCES_.204
+_OBJC_SELECTOR_REFERENCES_.206
+_OBJC_SELECTOR_REFERENCES_.208
+_OBJC_SELECTOR_REFERENCES_.210
+_OBJC_SELECTOR_REFERENCES_.212
+_OBJC_SELECTOR_REFERENCES_.214
+_OBJC_SELECTOR_REFERENCES_.218
+___block_descriptor_32_e4_20r24r28r_e30_v16?0"NSURLQueryItem"4I8^c12l
+_OBJC_SELECTOR_REFERENCES_.225
+_OBJC_SELECTOR_REFERENCES_.227
+_OBJC_SELECTOR_REFERENCES_.229
+_OBJC_SELECTOR_REFERENCES_.231
+_OBJC_SELECTOR_REFERENCES_.233
+_OBJC_CLASSLIST_REFERENCES_$_.234
+_OBJC_SELECTOR_REFERENCES_.238
+_OBJC_SELECTOR_REFERENCES_.240
+_OBJC_SELECTOR_REFERENCES_.242
+_OBJC_SELECTOR_REFERENCES_.244
+_OBJC_SELECTOR_REFERENCES_.246
+_OBJC_CLASSLIST_REFERENCES_$_.247
+_OBJC_SELECTOR_REFERENCES_.249
+_OBJC_SELECTOR_REFERENCES_.251
+_OBJC_CLASSLIST_REFERENCES_$_.252
+_OBJC_SELECTOR_REFERENCES_.254
+_OBJC_CLASSLIST_REFERENCES_$_.255
+_OBJC_SELECTOR_REFERENCES_.257
+_OBJC_CLASSLIST_REFERENCES_$_.258
+_OBJC_SELECTOR_REFERENCES_.260
+_OBJC_CLASSLIST_REFERENCES_$_.261
+_OBJC_SELECTOR_REFERENCES_.263
+_OBJC_SELECTOR_REFERENCES_.265
+_OBJC_SELECTOR_REFERENCES_.267
+_OBJC_SELECTOR_REFERENCES_.269
+_OBJC_CLASSLIST_REFERENCES_$_.270
+_OBJC_CLASSLIST_REFERENCES_$_.271
+_OBJC_SELECTOR_REFERENCES_.273
+_OBJC_CLASSLIST_REFERENCES_$_.274
+_OBJC_SELECTOR_REFERENCES_.276
+_OBJC_SELECTOR_REFERENCES_.278
+_OBJC_SELECTOR_REFERENCES_.280
+_OBJC_SELECTOR_REFERENCES_.282
+_OBJC_SELECTOR_REFERENCES_.284
+___block_descriptor_24_e4_20s_e45_v16?0"NSData"4"NSURLResponse"8"NSError"12l
+_OBJC_SELECTOR_REFERENCES_.287
+_OBJC_SELECTOR_REFERENCES_.289
+_OBJC_CLASSLIST_REFERENCES_$_.290
+_OBJC_SELECTOR_REFERENCES_.292
+_OBJC_CLASSLIST_REFERENCES_$_.293
+_OBJC_SELECTOR_REFERENCES_.295
+_OBJC_SELECTOR_REFERENCES_.297
+_OBJC_SELECTOR_REFERENCES_.301
+_OBJC_SELECTOR_REFERENCES_.307
+_OBJC_SELECTOR_REFERENCES_.309
+_OBJC_CLASSLIST_REFERENCES_$_.310
+_OBJC_SELECTOR_REFERENCES_.318
+_OBJC_SELECTOR_REFERENCES_.322
+_OBJC_SELECTOR_REFERENCES_.324
+_OBJC_CLASSLIST_REFERENCES_$_.325
+_OBJC_SELECTOR_REFERENCES_.327
+_OBJC_CLASSLIST_REFERENCES_$_.328
+_OBJC_SELECTOR_REFERENCES_.330
+_OBJC_SELECTOR_REFERENCES_.332
+_OBJC_SELECTOR_REFERENCES_.334
+_OBJC_SELECTOR_REFERENCES_.336
+_OBJC_CLASSLIST_REFERENCES_$_.337
+_OBJC_SELECTOR_REFERENCES_.339
+_OBJC_SELECTOR_REFERENCES_.341
+_OBJC_SELECTOR_REFERENCES_.343
+_OBJC_SELECTOR_REFERENCES_.345
+_OBJC_SELECTOR_REFERENCES_.347
+_OBJC_SELECTOR_REFERENCES_.349
+_OBJC_SELECTOR_REFERENCES_.353
+_OBJC_SELECTOR_REFERENCES_.355
+_OBJC_SELECTOR_REFERENCES_.357
+_OBJC_SELECTOR_REFERENCES_.359
+_OBJC_SELECTOR_REFERENCES_.361
+__OBJC_$_CLASS_METHODS_MRMailSDK
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+__OBJC_$_PROP_LIST_NSObject
+__OBJC_$_PROTOCOL_METHOD_TYPES_NSObject
+__OBJC_PROTOCOL_$_NSObject
+__OBJC_LABEL_PROTOCOL_$_NSObject
+__OBJC_$_PROTOCOL_REFS_MRInternalAuthHandlerDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_MRInternalAuthHandlerDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_MRInternalAuthHandlerDelegate
+__OBJC_PROTOCOL_$_MRInternalAuthHandlerDelegate
+__OBJC_LABEL_PROTOCOL_$_MRInternalAuthHandlerDelegate
+__OBJC_CLASS_PROTOCOLS_$_MRMailSDK
+__OBJC_METACLASS_RO_$_MRMailSDK
+__OBJC_$_INSTANCE_METHODS_MRMailSDK
+_OBJC_IVAR_$_MRMailSDK._authorizationIsInProgress
+_OBJC_IVAR_$_MRMailSDK._usesMailApplication
+_OBJC_IVAR_$_MRMailSDK._useTestHosts
+_OBJC_IVAR_$_MRMailSDK._resultType
+_OBJC_IVAR_$_MRMailSDK._clientID
+_OBJC_IVAR_$_MRMailSDK._clientSecret
+_OBJC_IVAR_$_MRMailSDK._redirectURI
+_OBJC_IVAR_$_MRMailSDK._returnScheme
+_OBJC_IVAR_$_MRMailSDK._scopes
+_OBJC_IVAR_$_MRMailSDK._state
+_OBJC_IVAR_$_MRMailSDK._internalAuthMode
+_OBJC_IVAR_$_MRMailSDK._loginHint
+_OBJC_IVAR_$_MRMailSDK._delegate
+_OBJC_IVAR_$_MRMailSDK._uiDelegate
+_OBJC_IVAR_$_MRMailSDK._authHandler
+_OBJC_IVAR_$_MRMailSDK._codeVerifier
+_OBJC_IVAR_$_MRMailSDK._urlSession
+_OBJC_IVAR_$_MRMailSDK._internalProofKeyForCodeExchangeEnabled
+__OBJC_$_INSTANCE_VARIABLES_MRMailSDK
+__OBJC_$_PROP_LIST_MRMailSDK
+__OBJC_CLASS_RO_$_MRMailSDK
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/MRMailSDK.m
+mr-mail-sdk/sources/MRMailSDK.m
+mr-mail-sdk/sources/MRMailSDK+Private.h
+mr-mail-sdk/sources/MRMailSDK.h
+__47-[MRMailSDK requestTokenWithAuthorizationCode:]_block_invoke
+__destroy_helper_block_e4_20r24r28r
+__copy_helper_block_e4_20r24r28r
+__43-[MRMailSDK processReceivedMailAppResults:]_block_invoke
+__Block_byref_object_dispose_
+__Block_byref_object_copy_
+__24-[MRMailSDK forceLogout]_block_invoke_3
+__24-[MRMailSDK forceLogout]_block_invoke_2
+__24-[MRMailSDK forceLogout]_block_invoke.88
+__24-[MRMailSDK forceLogout]_block_invoke
+__destroy_helper_block_e4_20s
+__copy_helper_block_e4_20s
+__22-[MRMailSDK authorize]_block_invoke
+__destroy_helper_block_e4_
+__copy_helper_block_e4_
+__27+[MRMailSDK sharedInstance]_block_invoke
+/Applications/Xcode-12.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.1.sdk/usr/include/dispatch/once.h
++[UIApplication(MRSDK) mrsdk_sharedApplication]
++[UIApplication(MRSDK) mrsdk_isAppExtension]
+__OBJC_$_CATEGORY_CLASS_METHODS_UIApplication_$_MRSDK
+__OBJC_$_CATEGORY_UIApplication_$_MRSDK
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/utils/UIApplication+MRSDK.m
+mr-mail-sdk/sources/utils/UIApplication+MRSDK.m
+-[MRMailAuthParameters clientId]
+-[MRMailAuthParameters setClientId:]
+-[MRMailAuthParameters state]
+-[MRMailAuthParameters setState:]
+-[MRMailAuthParameters scopes]
+-[MRMailAuthParameters setScopes:]
+-[MRMailAuthParameters redirectUri]
+-[MRMailAuthParameters setRedirectUri:]
+-[MRMailAuthParameters loginHint]
+-[MRMailAuthParameters setLoginHint:]
+-[MRMailAuthParameters codeChallenge]
+-[MRMailAuthParameters setCodeChallenge:]
+-[MRMailAuthParameters challengeMethod]
+-[MRMailAuthParameters setChallengeMethod:]
+-[MRMailAuthParameters .cxx_destruct]
+__OBJC_METACLASS_RO_$_MRMailAuthParameters
+__OBJC_$_INSTANCE_METHODS_MRMailAuthParameters
+_OBJC_IVAR_$_MRMailAuthParameters._clientId
+_OBJC_IVAR_$_MRMailAuthParameters._state
+_OBJC_IVAR_$_MRMailAuthParameters._scopes
+_OBJC_IVAR_$_MRMailAuthParameters._redirectUri
+_OBJC_IVAR_$_MRMailAuthParameters._loginHint
+_OBJC_IVAR_$_MRMailAuthParameters._codeChallenge
+_OBJC_IVAR_$_MRMailAuthParameters._challengeMethod
+__OBJC_$_INSTANCE_VARIABLES_MRMailAuthParameters
+__OBJC_$_PROP_LIST_MRMailAuthParameters
+__OBJC_CLASS_RO_$_MRMailAuthParameters
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/core/MRMailAuthParameters.m
+mr-mail-sdk/sources/core/MRMailAuthParameters.m
+mr-mail-sdk/sources/core/MRMailAuthParameters+Protected.h
+mr-mail-sdk/sources/core/MRMailAuthParameters.h
+-[MRMailWebViewController initWithURL:]
+-[MRMailWebViewController viewDidLoad]
+-[MRMailWebViewController viewWillAppear:]
+-[MRMailWebViewController didPressDismissButton:]
+-[MRMailWebViewController webView:decidePolicyForNavigationAction:decisionHandler:]
+-[MRMailWebViewController webView:didFailProvisionalNavigation:withError:]
+-[MRMailWebViewController webView:didFailNavigation:withError:]
+-[MRMailWebViewController configureWebView]
+-[MRMailWebViewController configureNavigationItems]
+-[MRMailWebViewController delegate]
+-[MRMailWebViewController setDelegate:]
+-[MRMailWebViewController url]
+-[MRMailWebViewController setUrl:]
+-[MRMailWebViewController webView]
+-[MRMailWebViewController setWebView:]
+-[MRMailWebViewController .cxx_destruct]
+_OBJC_SELECTOR_REFERENCES_.12
+_OBJC_SELECTOR_REFERENCES_.16
+_OBJC_SELECTOR_REFERENCES_.18
+_OBJC_SELECTOR_REFERENCES_.20
+_OBJC_SELECTOR_REFERENCES_.22
+_OBJC_IVAR_$_MRMailWebViewController._delegate
+_OBJC_SELECTOR_REFERENCES_.26
+_OBJC_SELECTOR_REFERENCES_.28
+_OBJC_SELECTOR_REFERENCES_.30
+_OBJC_CLASSLIST_REFERENCES_$_.31
+_OBJC_CLASSLIST_REFERENCES_$_.42
+_OBJC_SELECTOR_REFERENCES_.44
+_OBJC_CLASSLIST_REFERENCES_$_.45
+_OBJC_SELECTOR_REFERENCES_.49
+_OBJC_CLASSLIST_REFERENCES_$_.58
+_OBJC_IVAR_$_MRMailWebViewController._url
+_OBJC_IVAR_$_MRMailWebViewController._webView
+__OBJC_$_PROTOCOL_REFS_WKNavigationDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_WKNavigationDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_WKNavigationDelegate
+__OBJC_PROTOCOL_$_WKNavigationDelegate
+__OBJC_LABEL_PROTOCOL_$_WKNavigationDelegate
+__OBJC_CLASS_PROTOCOLS_$_MRMailWebViewController
+__OBJC_METACLASS_RO_$_MRMailWebViewController
+__OBJC_$_INSTANCE_METHODS_MRMailWebViewController
+__OBJC_$_INSTANCE_VARIABLES_MRMailWebViewController
+__OBJC_$_PROP_LIST_MRMailWebViewController
+__OBJC_CLASS_RO_$_MRMailWebViewController
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/ui/MRMailWebViewController.m
+mr-mail-sdk/sources/ui/MRMailWebViewController.m
+mr-mail-sdk/sources/ui/MRMailWebViewController.h
++[NSBundle(MRSDK) mrsdk_UIResourcesBundle]
+_OBJC_CLASSLIST_REFERENCES_$_.1
+_OBJC_SELECTOR_REFERENCES_.3
+_OBJC_SELECTOR_REFERENCES_.7
+__OBJC_$_CATEGORY_CLASS_METHODS_NSBundle_$_MRSDK
+__OBJC_$_CLASS_PROP_LIST_NSBundle_$_MRSDK
+__OBJC_$_CATEGORY_NSBundle_$_MRSDK
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/utils/NSBundle+MRSDK.m
+mr-mail-sdk/sources/utils/NSBundle+MRSDK.m
+-[MRSDKAuthorizationResult initWithAuthorizationCode:codeVerifier:]
+-[MRSDKAuthorizationResult initWithRefreshToken:accessToken:accessTokenExpirationDate:]
+-[MRSDKAuthorizationResult type]
+-[MRSDKAuthorizationResult authorizationCode]
+-[MRSDKAuthorizationResult codeVerifier]
+-[MRSDKAuthorizationResult refreshToken]
+-[MRSDKAuthorizationResult accessToken]
+-[MRSDKAuthorizationResult accessTokenExpirationDate]
+-[MRSDKAuthorizationResult .cxx_destruct]
+__OBJC_METACLASS_RO_$_MRSDKAuthorizationResult
+__OBJC_$_INSTANCE_METHODS_MRSDKAuthorizationResult
+_OBJC_IVAR_$_MRSDKAuthorizationResult._type
+_OBJC_IVAR_$_MRSDKAuthorizationResult._authorizationCode
+_OBJC_IVAR_$_MRSDKAuthorizationResult._codeVerifier
+_OBJC_IVAR_$_MRSDKAuthorizationResult._refreshToken
+_OBJC_IVAR_$_MRSDKAuthorizationResult._accessToken
+_OBJC_IVAR_$_MRSDKAuthorizationResult._accessTokenExpirationDate
+__OBJC_$_INSTANCE_VARIABLES_MRSDKAuthorizationResult
+__OBJC_$_PROP_LIST_MRSDKAuthorizationResult
+__OBJC_CLASS_RO_$_MRSDKAuthorizationResult
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/MRSDKAuthorizationResult.m
+mr-mail-sdk/sources/MRSDKAuthorizationResult.m
+mr-mail-sdk/sources/MRSDKAuthorizationResult.h
+-[MRSafariSessionAuthHandler initWithRedirectURI:redirectURLParser:]
+-[MRSafariSessionAuthHandler performAuthorizationWithURL:]
+___58-[MRSafariSessionAuthHandler performAuthorizationWithURL:]_block_invoke
+-[MRSafariSessionAuthHandler cancel]
+-[MRSafariSessionAuthHandler handleURL:sourceApplication:]
+-[MRSafariSessionAuthHandler handleCallbackURL:error:]
+-[MRSafariSessionAuthHandler delegate]
+-[MRSafariSessionAuthHandler setDelegate:]
+-[MRSafariSessionAuthHandler redirectURI]
+-[MRSafariSessionAuthHandler redirectURLParser]
+-[MRSafariSessionAuthHandler authenticationSession]
+-[MRSafariSessionAuthHandler setAuthenticationSession:]
+-[MRSafariSessionAuthHandler .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.9
+___block_descriptor_24_e4_20s_e26_v12?0"NSURL"4"NSError"8l
+_OBJC_SELECTOR_REFERENCES_.15
+_OBJC_CLASSLIST_REFERENCES_$_.30
+_OBJC_SELECTOR_REFERENCES_.32
+_OBJC_SELECTOR_REFERENCES_.34
+_OBJC_SELECTOR_REFERENCES_.36
+_OBJC_SELECTOR_REFERENCES_.38
+_OBJC_SELECTOR_REFERENCES_.40
+__OBJC_$_PROTOCOL_REFS_MRInternalAuthHandler
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_MRInternalAuthHandler
+__OBJC_$_PROP_LIST_MRInternalAuthHandler
+__OBJC_$_PROTOCOL_METHOD_TYPES_MRInternalAuthHandler
+__OBJC_PROTOCOL_$_MRInternalAuthHandler
+__OBJC_LABEL_PROTOCOL_$_MRInternalAuthHandler
+__OBJC_CLASS_PROTOCOLS_$_MRSafariSessionAuthHandler
+__OBJC_METACLASS_RO_$_MRSafariSessionAuthHandler
+__OBJC_$_INSTANCE_METHODS_MRSafariSessionAuthHandler
+_OBJC_IVAR_$_MRSafariSessionAuthHandler._delegate
+_OBJC_IVAR_$_MRSafariSessionAuthHandler._redirectURI
+_OBJC_IVAR_$_MRSafariSessionAuthHandler._redirectURLParser
+_OBJC_IVAR_$_MRSafariSessionAuthHandler._authenticationSession
+__OBJC_$_INSTANCE_VARIABLES_MRSafariSessionAuthHandler
+__OBJC_$_PROP_LIST_MRSafariSessionAuthHandler
+__OBJC_CLASS_RO_$_MRSafariSessionAuthHandler
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/ui/MRSafariSessionAuthHandler.m
+mr-mail-sdk/sources/ui/MRSafariSessionAuthHandler.m
+__58-[MRSafariSessionAuthHandler performAuthorizationWithURL:]_block_invoke
+-[MRMailAuthRedirectURLParser initWithRedirectURI:]
+-[MRMailAuthRedirectURLParser parseURL:code:error:]
+-[MRMailAuthRedirectURLParser redirectURI]
+-[MRMailAuthRedirectURLParser .cxx_destruct]
+__OBJC_METACLASS_RO_$_MRMailAuthRedirectURLParser
+__OBJC_$_INSTANCE_METHODS_MRMailAuthRedirectURLParser
+_OBJC_IVAR_$_MRMailAuthRedirectURLParser._redirectURI
+__OBJC_$_INSTANCE_VARIABLES_MRMailAuthRedirectURLParser
+__OBJC_$_PROP_LIST_MRMailAuthRedirectURLParser
+__OBJC_CLASS_RO_$_MRMailAuthRedirectURLParser
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/core/MRMailAuthRedirectURLParser.m
+mr-mail-sdk/sources/core/MRMailAuthRedirectURLParser.m
+-[MRMailAuthParameters(QueryItems) mrsdk_queryItems]
+___52-[MRMailAuthParameters(QueryItems) mrsdk_queryItems]_block_invoke
+___block_descriptor_24_e4_20s_e30_v12?0"NSString"4"NSString"8l
+__OBJC_$_CATEGORY_INSTANCE_METHODS_MRMailAuthParameters_$_QueryItems
+__OBJC_$_CATEGORY_MRMailAuthParameters_$_QueryItems
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/core/MRMailAuthParameters+QueryItems.m
+__52-[MRMailAuthParameters(QueryItems) mrsdk_queryItems]_block_invoke
+mr-mail-sdk/sources/core/MRMailAuthParameters+QueryItems.m
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/MRMailSDKConstants.m
++[NSError(MRSDK) mrsdk_uninitializedError]
++[NSError(MRSDK) mrsdk_incorrectClientIdError]
++[NSError(MRSDK) mrsdk_authorizationAlreadyInProgressError]
++[NSError(MRSDK) mrsdk_OAuthError]
++[NSError(MRSDK) mrsdk_networkError]
++[NSError(MRSDK) mrsdk_canceledByUserError]
++[NSError(MRSDK) mrsdk_unauthorizedApplicationError]
++[NSError(MRSDK) mrsdk_externalOAuthDisabledError]
++[NSError(MRSDK) mrsdk_errorFromCode:withDescription:]
++[NSError(MRSDK) mrsdk_errorWithCode:userInfo:]
+_OBJC_CLASSLIST_REFERENCES_$_.17
+_OBJC_CLASSLIST_REFERENCES_$_.24
+__OBJC_$_CATEGORY_CLASS_METHODS_NSError_$_MRSDK
+__OBJC_$_CATEGORY_NSError_$_MRSDK
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/utils/NSError+MRSDK.m
+mr-mail-sdk/sources/utils/NSError+MRSDK.m
+-[MRWebViewAuthHandler initWithRedirectURLParser:]
+-[MRWebViewAuthHandler performAuthorizationWithURL:]
+-[MRWebViewAuthHandler cancel]
+-[MRWebViewAuthHandler handleURL:sourceApplication:]
+-[MRWebViewAuthHandler webViewControllerShouldStartLoadingRequest:]
+-[MRWebViewAuthHandler webViewControllerDidFailLoadingWithError:]
+-[MRWebViewAuthHandler webViewControllerDidPressCancelButton]
+-[MRWebViewAuthHandler dismissAuthController]
+___45-[MRWebViewAuthHandler dismissAuthController]_block_invoke
+___copy_helper_block_e4_20s24s
+___destroy_helper_block_e4_20s24s
+-[MRWebViewAuthHandler delegate]
+-[MRWebViewAuthHandler setDelegate:]
+-[MRWebViewAuthHandler redirectURLParser]
+-[MRWebViewAuthHandler webViewController]
+-[MRWebViewAuthHandler setWebViewController:]
+-[MRWebViewAuthHandler .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.5
+_OBJC_CLASSLIST_REFERENCES_$_.32
+_OBJC_SELECTOR_REFERENCES_.42
+_OBJC_SELECTOR_REFERENCES_.46
+___block_descriptor_28_e4_20s24s_e5_v4?0l
+__OBJC_$_PROTOCOL_REFS_MRMailWebViewControllerDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_MRMailWebViewControllerDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_MRMailWebViewControllerDelegate
+__OBJC_PROTOCOL_$_MRMailWebViewControllerDelegate
+__OBJC_LABEL_PROTOCOL_$_MRMailWebViewControllerDelegate
+__OBJC_CLASS_PROTOCOLS_$_MRWebViewAuthHandler
+__OBJC_METACLASS_RO_$_MRWebViewAuthHandler
+__OBJC_$_INSTANCE_METHODS_MRWebViewAuthHandler
+_OBJC_IVAR_$_MRWebViewAuthHandler._delegate
+_OBJC_IVAR_$_MRWebViewAuthHandler._redirectURLParser
+_OBJC_IVAR_$_MRWebViewAuthHandler._webViewController
+__OBJC_$_INSTANCE_VARIABLES_MRWebViewAuthHandler
+__OBJC_$_PROP_LIST_MRWebViewAuthHandler
+__OBJC_CLASS_RO_$_MRWebViewAuthHandler
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/ui/MRWebViewAuthHandler.m
+mr-mail-sdk/sources/ui/MRWebViewAuthHandler.m
+__destroy_helper_block_e4_20s24s
+__copy_helper_block_e4_20s24s
+__45-[MRWebViewAuthHandler dismissAuthController]_block_invoke
+-[NSURL(MRSDK) mrsdk_GETParameters]
+___35-[NSURL(MRSDK) mrsdk_GETParameters]_block_invoke
+-[NSURL(MRSDK) mrsdk_urlWithoutQuery]
+___block_descriptor_24_e4_20s_e30_v16?0"NSURLQueryItem"4I8^c12l
+__OBJC_$_CATEGORY_INSTANCE_METHODS_NSURL_$_MRSDK
+__OBJC_$_CATEGORY_NSURL_$_MRSDK
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/utils/NSURL+MRSDK.m
+mr-mail-sdk/sources/utils/NSURL+MRSDK.m
+__35-[NSURL(MRSDK) mrsdk_GETParameters]_block_invoke
+-[MRMailSignInButton initWithFrame:]
+-[MRMailSignInButton initWithCoder:]
+-[MRMailSignInButton commonInit]
+-[MRMailSignInButton setSelected:]
+-[MRMailSignInButton setHighlighted:]
+-[MRMailSignInButton configureSelectedState]
+-[MRMailSignInButton signInAction]
+-[MRMailSignInButton accessibilityLabel]
+-[MRMailSignInButton accessibilityTraits]
+-[MRMailSignInButton accessibilityHint]
+-[MRMailSignInButton backgroundImageView]
+-[MRMailSignInButton setBackgroundImageView:]
+-[MRMailSignInButton selectedBackgroundImageView]
+-[MRMailSignInButton setSelectedBackgroundImageView:]
+-[MRMailSignInButton logoImageView]
+-[MRMailSignInButton setLogoImageView:]
+-[MRMailSignInButton actionLabel]
+-[MRMailSignInButton setActionLabel:]
+-[MRMailSignInButton .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.10
+_OBJC_IVAR_$_MRMailSignInButton._backgroundImageView
+_OBJC_IVAR_$_MRMailSignInButton._logoImageView
+_OBJC_CLASSLIST_REFERENCES_$_.23
+_OBJC_CLASSLIST_REFERENCES_$_.29
+_OBJC_IVAR_$_MRMailSignInButton._actionLabel
+_OBJC_CLASSLIST_REFERENCES_$_.48
+_OBJC_CLASSLIST_REFERENCES_$_.69
+_OBJC_SELECTOR_REFERENCES_.71
+_OBJC_SELECTOR_REFERENCES_.81
+_OBJC_SELECTOR_REFERENCES_.83
+_OBJC_SELECTOR_REFERENCES_.89
+_OBJC_SELECTOR_REFERENCES_.91
+_OBJC_CLASSLIST_REFERENCES_$_.92
+_OBJC_SELECTOR_REFERENCES_.94
+_OBJC_SELECTOR_REFERENCES_.96
+_OBJC_SELECTOR_REFERENCES_.98
+_OBJC_SELECTOR_REFERENCES_.100
+_OBJC_IVAR_$_MRMailSignInButton._selectedBackgroundImageView
+__OBJC_METACLASS_RO_$_MRMailSignInButton
+__OBJC_$_INSTANCE_METHODS_MRMailSignInButton
+__OBJC_$_INSTANCE_VARIABLES_MRMailSignInButton
+__OBJC_$_PROP_LIST_MRMailSignInButton
+__OBJC_CLASS_RO_$_MRMailSignInButton
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/ui/MRMailSignInButton.m
+mr-mail-sdk/sources/ui/MRMailSignInButton.m
+-[MRSafariAuthHandler initWithRedirectURLParser:]
+-[MRSafariAuthHandler performAuthorizationWithURL:]
+-[MRSafariAuthHandler cancel]
+-[MRSafariAuthHandler handleURL:sourceApplication:]
+-[MRSafariAuthHandler safariViewControllerDidFinish:]
+-[MRSafariAuthHandler safariViewController:didCompleteInitialLoad:]
+-[MRSafariAuthHandler dismissViewController]
+___44-[MRSafariAuthHandler dismissViewController]_block_invoke
+-[MRSafariAuthHandler delegate]
+-[MRSafariAuthHandler setDelegate:]
+-[MRSafariAuthHandler redirectURLParser]
+-[MRSafariAuthHandler safariViewController]
+-[MRSafariAuthHandler setSafariViewController:]
+-[MRSafariAuthHandler url]
+-[MRSafariAuthHandler setUrl:]
+-[MRSafariAuthHandler .cxx_destruct]
+__OBJC_$_PROTOCOL_REFS_SFSafariViewControllerDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_SFSafariViewControllerDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_SFSafariViewControllerDelegate
+__OBJC_PROTOCOL_$_SFSafariViewControllerDelegate
+__OBJC_LABEL_PROTOCOL_$_SFSafariViewControllerDelegate
+__OBJC_CLASS_PROTOCOLS_$_MRSafariAuthHandler
+__OBJC_METACLASS_RO_$_MRSafariAuthHandler
+__OBJC_$_INSTANCE_METHODS_MRSafariAuthHandler
+_OBJC_IVAR_$_MRSafariAuthHandler._delegate
+_OBJC_IVAR_$_MRSafariAuthHandler._redirectURLParser
+_OBJC_IVAR_$_MRSafariAuthHandler._safariViewController
+_OBJC_IVAR_$_MRSafariAuthHandler._url
+__OBJC_$_INSTANCE_VARIABLES_MRSafariAuthHandler
+__OBJC_$_PROP_LIST_MRSafariAuthHandler
+__OBJC_CLASS_RO_$_MRSafariAuthHandler
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/ui/MRSafariAuthHandler.m
+mr-mail-sdk/sources/ui/MRSafariAuthHandler.m
+__44-[MRSafariAuthHandler dismissViewController]_block_invoke
+-[MRSDKOAuthTokenResponseParser getAuthorizationResult:apiError:fromTokenResponseData:]
+-[MRSDKOAuthTokenResponseParser errorFromResponse:]
+-[MRSDKOAuthTokenResponseParser authorizationResultFromResponse:]
+-[MRSDKOAuthTokenResponseParser objectWithClass:key:fromResponse:]
+_OBJC_SELECTOR_REFERENCES_.5
+_OBJC_CLASSLIST_REFERENCES_$_.13
+_OBJC_CLASSLIST_REFERENCES_$_.22
+_OBJC_CLASSLIST_REFERENCES_$_.33
+_OBJC_CLASSLIST_REFERENCES_$_.38
+__OBJC_METACLASS_RO_$_MRSDKOAuthTokenResponseParser
+__OBJC_$_INSTANCE_METHODS_MRSDKOAuthTokenResponseParser
+__OBJC_CLASS_RO_$_MRSDKOAuthTokenResponseParser
+/Users/a_karimov/Projects/Test/MRCalendarWidget/Carthage/Checkouts/mail-auth-sdk-ios/mr-mail-sdk/sources/core/MRSDKOAuthTokenResponseParser.m
+mr-mail-sdk/sources/core/MRSDKOAuthTokenResponseParser.m
