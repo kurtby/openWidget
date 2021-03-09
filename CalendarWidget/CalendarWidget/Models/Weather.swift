@@ -46,29 +46,44 @@ extension Weather {
         guard let iconNumberString = number.components(separatedBy: ".").first,
             let iconNumber = Int(iconNumberString) else { return "" }
         
+        let hour = Calendar.current.component(.hour, from: Date())
+        
+        let isDay = hour >= 6 && hour <= 18
+        
         switch iconNumber {
+        // Sunnny
         case 1,2,59,60:
-            return "weather_icon_sunny"
+            return isDay ? "74" : "76"
+        // Cloudy
         case 3,4,51,55,58:
-            return "weather_icon_cloudy"
+            return isDay ? "50" : "52"
+        // Rain
         case 11,12,19,20,52:
-            return "weather_icon_rain"
+            return isDay ? "54" : "56"
+        // Thunderstorm
         case 46:
-            return "weather_icon_sunny_thunderstorm"
+            return isDay ? "86" : "88"
+        // Sunny Cloudy
         case 5,6,7,8,56,57:
-            return "weather_icon_cloudy"
+            return isDay ? "46" : "48"
+        // Sunny Cloudy Rain
         case 47,48,49,50:
-            return "weather_icon_sunny_cloudy_rain"
+            return isDay ? "66" : "68"
+        // Rain Snow
         case 10,15,16,25,26,29,30,31,32,37,38,42,54:
-            return "weather_icon_rain_snow"
+            return isDay ? "58" : "60"
+        // Sunny Snow
         case 23,24,43,44:
-            return "weather_icon_sunny_snow"
+            return isDay ? "70" : "72"
+        // Cloudy Rain Snow
         case 17,18,27,28,33,34:
-            return "weather_icon_sunny_cloudy_rain_snow"
+            return isDay ? "78" : "80"
         case 13,14:
-            return "weather_icon_sunny_cloudy_rain_snow"
+        // Sunny Cloudy Rain
+            return isDay ? "66" : "68"
         case 21,22,35,36,41,45,53:
-            return "weather_icon_snow"
+        // Snow
+            return isDay ? "62" : "64"
         default:
             return ""
         }
