@@ -59,6 +59,7 @@ struct EventView: View {
                     Text(event.title.isEmpty ? "Без названия" : event.title)
                         .font(.system(size: 15, weight: .semibold, design: .default))
                         .foregroundColor(Color.buttonTextTitle)
+                        .lineLimit(1)
                     Spacer()
                     if event.attendeesCount > 1 {
                         if event.eventStatus == .needAction {
@@ -106,6 +107,13 @@ struct UsersView: View {
     var color: String
     var status: Event.Status
     
+    var stringCount: String {
+        if count > 999 {
+            return "\(999)+"
+        }
+        return "\(count)"
+    }
+    
     var body: some View {
         HStack(alignment: .center, spacing: -7.0) {
             if let urlString = user?.imageURL , let url = URL(string: urlString) {
@@ -118,15 +126,18 @@ struct UsersView: View {
             
             if users.count > 0 {
                 ZStack {
-                    Text("\(count)")
+                    Text(stringCount)
                         .font(.system(size: 11, weight: .semibold, design: .default))
                         .foregroundColor(Color.Event.Time.title)
+                        .padding(.leading, count > 99 ? 4 : 2)
+                        .padding(.trailing, count > 99 ? 4 : 2)
+                        .frame(minWidth: 20)
+                        .frame(height: 20)
                         .multilineTextAlignment(.center)
+                        .background(status == .needAction ? Color(hex: "#EBECEF") : Color(hex: color))
+                        .clipShape(Capsule())
+                        .overlay(Capsule().stroke(Color.Event.eventUserBorder, lineWidth: 2))
                 }
-                .frame(width: 20, height: 20)
-                .background(status == .needAction ? Color(hex: "#EBECEF") : Color(hex: color))
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.Event.eventUserBorder, lineWidth: 2))
             }
         }
     }
