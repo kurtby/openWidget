@@ -8,7 +8,7 @@
 import Foundation
 
 enum APIEndpoint {
-    case calendar
+    case calendars
     case events(_ params: EventParams)
     case weather
     case accessToken
@@ -42,8 +42,21 @@ extension APIEndpoint: APIRequestBuilder {
             
     var urlRequest: URLRequest {
         switch self {
-        case .calendar:
-            let request = URLRequest(url: baseURL)
+        case .calendars:
+            var request = URLRequest(url: baseURL)
+            request.httpMethod = "POST"
+            
+            self.additionalHeaders(headers, request: &request)
+            
+            let parameters = [
+                "operationName":"FetchCalendarsWidget",
+                "query":"query FetchCalendarsWidget {calendars {uid, title, type, color } }"
+            ]
+            
+            if let body = try? JSONSerialization.data(withJSONObject: parameters) {
+                request.httpBody = body
+            }
+            
             return request
         case .weather:
             let request = URLRequest(url: baseURL)

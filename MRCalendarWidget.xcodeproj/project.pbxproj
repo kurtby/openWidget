@@ -29,6 +29,17 @@
 		A3555D8A25DD12E100649177 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3555D8725DD12DE00649177 /* EventsView.swift */; };
 		A39D1BBE25DFE1F000C28833 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
 		A39D1BC025DFE1F500C28833 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
+		A3C7F7D025F695E300BC6CB2 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C7F7CF25F695E300BC6CB2 /* Calendar.swift */; };
+		A3C7F7D125F695E300BC6CB2 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C7F7CF25F695E300BC6CB2 /* Calendar.swift */; };
+		A3C7F7D425F6977E00BC6CB2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324AC0625E39ADD00144635 /* Network.swift */; };
+		A3C7F7D725F697D000BC6CB2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33496FC25E3BB6600668641 /* Weather.swift */; };
+		A3C7F7DA25F697D400BC6CB2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F27B25DEFD3700843381 /* Event.swift */; };
+		A3C7F7DD25F697E200BC6CB2 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
+		A3C7F7E025F697F600BC6CB2 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F27025DEF8FC00843381 /* APIError.swift */; };
+		A3C7F7E125F697F600BC6CB2 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F26725DEF7E800843381 /* APIEndpoint.swift */; };
+		A3C7F7E225F697F600BC6CB2 /* APIRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F26D25DEF8BB00843381 /* APIRequestBuilder.swift */; };
+		A3C7F7E925F698BA00BC6CB2 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F29C25DF9D9400843381 /* DateExtension.swift */; };
+		A3C7F7EC25F698C900BC6CB2 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F29F25DF9DC500843381 /* DateFormatterExtension.swift */; };
 		A3D2F28425DEFEA600843381 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F27B25DEFD3700843381 /* Event.swift */; };
 		A3D2F28825DEFEAE00843381 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F26725DEF7E800843381 /* APIEndpoint.swift */; };
 		A3D2F28925DEFEAE00843381 /* APIRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F26D25DEF8BB00843381 /* APIRequestBuilder.swift */; };
@@ -117,6 +128,8 @@
 		A364DD6F25DFFDBA00932DEB /* CalendarWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CalendarWidgetExtension.entitlements; sourceTree = "<group>"; };
 		A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		A39DAE4525DE9CAC0098F51F /* MRCalendarWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MRCalendarWidget.entitlements; sourceTree = "<group>"; };
+		A3C7F7CF25F695E300BC6CB2 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		A3C7F7FB25F6AB6100BC6CB2 /* CalendarWidgetIntentHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CalendarWidgetIntentHandler.entitlements; sourceTree = "<group>"; };
 		A3D2F26725DEF7E800843381 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		A3D2F26D25DEF8BB00843381 /* APIRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestBuilder.swift; sourceTree = "<group>"; };
 		A3D2F27025DEF8FC00843381 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -176,6 +189,7 @@
 		A32CF8C625F0ED36008CFACC /* CalendarWidgetIntentHandler */ = {
 			isa = PBXGroup;
 			children = (
+				A3C7F7FB25F6AB6100BC6CB2 /* CalendarWidgetIntentHandler.entitlements */,
 				A32CF8C725F0ED36008CFACC /* IntentHandler.swift */,
 				A32CF8C925F0ED36008CFACC /* Info.plist */,
 			);
@@ -220,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				A3D2F27B25DEFD3700843381 /* Event.swift */,
+				A3C7F7CF25F695E300BC6CB2 /* Calendar.swift */,
 				A33496FC25E3BB6600668641 /* Weather.swift */,
 				A340C6B725E6BA5B00138D21 /* EventModelData.swift */,
 			);
@@ -446,7 +461,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A32CF8D425F0F14B008CFACC /* CalendarWidget.intentdefinition in Sources */,
+				A3C7F7E125F697F600BC6CB2 /* APIEndpoint.swift in Sources */,
+				A3C7F7EC25F698C900BC6CB2 /* DateFormatterExtension.swift in Sources */,
+				A3C7F7D125F695E300BC6CB2 /* Calendar.swift in Sources */,
+				A3C7F7D425F6977E00BC6CB2 /* Network.swift in Sources */,
 				A32CF8C825F0ED36008CFACC /* IntentHandler.swift in Sources */,
+				A3C7F7DA25F697D400BC6CB2 /* Event.swift in Sources */,
+				A3C7F7E925F698BA00BC6CB2 /* DateExtension.swift in Sources */,
+				A3C7F7E025F697F600BC6CB2 /* APIError.swift in Sources */,
+				A3C7F7DD25F697E200BC6CB2 /* UserDefaultsExtension.swift in Sources */,
+				A3C7F7E225F697F600BC6CB2 /* APIRequestBuilder.swift in Sources */,
+				A3C7F7D725F697D000BC6CB2 /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +488,7 @@
 				A39D1BC025DFE1F500C28833 /* UserDefaultsExtension.swift in Sources */,
 				A3D2F2B325DFB27900843381 /* CalendarWidgetView.swift in Sources */,
 				A3D2F2AA25DFACD800843381 /* WidgetsBundle.swift in Sources */,
+				A3C7F7D025F695E300BC6CB2 /* Calendar.swift in Sources */,
 				A342AAB425D13E0100C52083 /* CalendarWidget.swift in Sources */,
 				A342AACC25D1460300C52083 /* CalendarView.swift in Sources */,
 				A342AADE25D1982000C52083 /* WeatherView.swift in Sources */,
@@ -532,11 +558,12 @@
 		A32CF8CE25F0ED36008CFACC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CalendarWidgetIntentHandler/CalendarWidgetIntentHandler.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2K7YUBPRGA;
 				INFOPLIST_FILE = CalendarWidgetIntentHandler/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -553,11 +580,12 @@
 		A32CF8CF25F0ED36008CFACC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CalendarWidgetIntentHandler/CalendarWidgetIntentHandler.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2K7YUBPRGA;
 				INFOPLIST_FILE = CalendarWidgetIntentHandler/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

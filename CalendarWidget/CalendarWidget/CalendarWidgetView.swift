@@ -11,8 +11,10 @@ import SwiftUI
 struct CalendarWidgetEntryView: View {
     
     var entry: CalendarWidgetTimelineProvider.Entry
-
-    private let gradient = Gradient(colors: [Color.Calendar.gradientStart, Color.Calendar.gradientEnd])
+    
+    var model: EventModelData {
+        EventModelData(events: entry.events ?? [], calendars: entry.configuration.calendarType ?? [])
+    }
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -40,14 +42,14 @@ struct CalendarWidgetEntryView: View {
                 }
                 .frame(height: 128)
                 .if(colorScheme == .light) {
-                    $0.background(RadialGradient(gradient: gradient, center: .topTrailing, startRadius: 30, endRadius: 250))
+                    $0.background(RadialGradient(gradient: Gradient(colors: [Color.Calendar.gradientStart, Color.Calendar.gradientEnd]), center: .topTrailing, startRadius: 30, endRadius: 250))
                 } else: {
                     $0.background(Color.Calendar.viewDarkBackground)
                 }
                 .cornerRadius(19)
                 
-                if let events = entry.events , !events.isEmpty {
-                    EventsView(modelData: EventModelData(events: events))
+                if let events = model.nextEvents , !events.isEmpty {
+                    EventsView(modelData: model)
                 }
                 else {
                     Spacer()
@@ -57,11 +59,11 @@ struct CalendarWidgetEntryView: View {
             }
             .padding(4)
         
-            if let events = entry.events , !events.isEmpty {
+            if let events = model.nextEvents, !events.isEmpty {
                 ZStack(alignment: .bottom) {
                     LinearGradient(gradient: Gradient(colors: [Color.bottomGradient, Color.bottomGradient.opacity(0.75), Color.bottomGradient.opacity(0.1)]), startPoint: .bottom, endPoint: .top)
                     .frame(height: 60)
-                    BootomView(events: EventModelData(events: events).nextEvents)
+                    BootomView(events: events)
                 }
             }
         }

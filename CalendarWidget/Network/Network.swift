@@ -15,14 +15,15 @@ class Network {
     
     typealias WeatherBlock = (Weather?, Error?) -> Void
     typealias EventsBlock = (EventResponse?, Error?) -> Void
-    typealias TokenBlock = (ResponseToken?, Error?) -> Void
+    typealias CalendarBlock = (CalendarResponse?, Error?) -> Void
+    typealias TokenBlock = (TokenResponse?, Error?) -> Void
     
     struct ResponseData {
         var events: [Event]?
         var weather: Weather?
     }
     
-    struct ResponseToken: Decodable {
+    struct TokenResponse: Decodable {
         let accessToken: String
         let expiresIn: Int
     }
@@ -128,7 +129,7 @@ class Network {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
                 do {
-                    let result = try decoder.decode(ResponseToken.self, from: data)
+                    let result = try decoder.decode(TokenResponse.self, from: data)
                     complete(result, nil)
                 } catch(let error) {
                     complete(nil, error)
@@ -138,6 +139,26 @@ class Network {
             }
         }
     }
+    
+    public func loadCalendars(complete:  @escaping CalendarBlock) {
+        self.load(builder: APIEndpoint.calendars) { (result) in
+            switch result {
+            case .success(let data):
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                
+                do {
+                    let result = try decoder.decode(CalendarResponse.self, from: data)
+                    complete(result, nil)
+                } catch(let error) {
+                    complete(nil, error)
+                }
+            case .failure(let error):
+                complete(nil, error)
+            }
+        }
+    }
+    
 }
 
 extension Network {

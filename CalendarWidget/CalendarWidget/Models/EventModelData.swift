@@ -12,9 +12,11 @@ class EventModelData {
     public var isDateHeaderInstalled: Bool = false
     
     private var events: [Event]
+    private var calendars: [CalendarType]
     
-    init(events: [Event]) {
+    init(events: [Event], calendars: [CalendarType]) {
         self.events = events
+        self.calendars = calendars
     }
     
     public func isDateHeaderNeeded(for date: Date) -> Bool {
@@ -26,7 +28,19 @@ class EventModelData {
     }
     
     public var nextEvents: [Event] {
-        let nextEvents = events.sorted(by: {$0.from < $1.from}).prefix(5).map({$0})
+        var nextEvents = events
+        
+        // Check for calendars selected, if empty, show all calendars
+        let allowedCalendars = calendars.map({$0.identifier})
+        
+        print("allowedCalendars", allowedCalendars)
+        
+        if !allowedCalendars.isEmpty {
+            nextEvents = events.filter({allowedCalendars.contains($0.calendar.uid)})
+        }
+        
+        // Sort by date
+        nextEvents = nextEvents.sorted(by: {$0.from < $1.from}).prefix(5).map({$0})
         
         if !nextEvents.isEmpty {
             

@@ -11,16 +11,29 @@ class IntentHandler: INExtension, ConfigurationIntentHandling {
     
     func provideCalendarTypeOptionsCollection(for intent: ConfigurationIntent, with completion: @escaping (INObjectCollection<CalendarType>?, Error?) -> Void) {
         
-     //   CalendarType(identifier: <#T##String?#>, display: <#T##String#>)
-    //    let collection = INObjectCollection(items: eventCategories)
-      //  completion(collection, nil)
+        Network().loadCalendars { (result, error) in
+
+            guard let calendarsData = result?.data.calendars else {
+                completion(nil, nil)
+                return
+            }
+
+            let calendars = calendarsData.map { (calendar) -> CalendarType in
+                let eventCategory = CalendarType(identifier: calendar.uid, display: calendar.title)
+                eventCategory.type = calendar.type
+                return eventCategory
+            }
+            
+            let groupData = Dictionary(grouping: calendars) { $0.type }
+            
+            let itemsInSections: [INObjectSection] = groupData.map { .init(title: $0.key, items: $0.value)}
+            
+            let collection = INObjectCollection(sections: itemsInSections)
+            completion(collection, nil)
+        }
     }
     
-    
     override func handler(for intent: INIntent) -> Any {
-        // This is the default implementation.  If you want different objects to handle different intents,
-        // you can override this and return the handler you want for that particular intent.
-        
         return self
     }
     
