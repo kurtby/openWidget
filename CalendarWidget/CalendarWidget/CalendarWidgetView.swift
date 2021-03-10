@@ -78,6 +78,7 @@ struct NoEventsFoundView: View {
                 .foregroundColor(.emptyTextInfo)
                 .frame(width: 157)
                 .multilineTextAlignment(.center)
+                .accessibility(identifier: "NoEventsFoundStackViewTitleLabel")
             
             if let url = URL(string: Constants.DeepLink.Event.create.urlSceme) {
                 Link(destination: url) {
@@ -90,9 +91,11 @@ struct NoEventsFoundView: View {
                 .frame(width: 112, height: 44)
                 .background(Color.buttonBackground)
                 .cornerRadius(12)
+                .accessibility(identifier: "NoEventsFoundStackViewCreateButton")
             }
-        }
+        }.accessibility(identifier: "NoEventsFoundStackView")
     }
+    
 }
 
 struct BootomView: View {
@@ -108,21 +111,23 @@ struct BootomView: View {
             Text(eventCount)
                 .font(.system(size: 13, weight: .medium, design: .default))
                 .foregroundColor(Color.buttonTextTitle)
+                .accessibility(identifier: "CalendarBootomViewCountLabel")
             Spacer()
             if let url = URL(string: Constants.DeepLink.Event.create.urlSceme) {
                 Link(destination: url) {
                     HStack(spacing: 4) {
                         Text("Создать")
-                                .font(.system(size: 13, weight: .medium, design: .default))
-                                .foregroundColor(Color.buttonTextTitle)
+                            .font(.system(size: 13, weight: .medium, design: .default))
+                            .foregroundColor(Color.buttonTextTitle)
                         Image("button_icon_plus")
                     }
-                }
+                }.accessibility(identifier: "CalendarBootomViewCreateButton")
             }
         }
         .padding(.leading, 15)
         .padding(.trailing, 16)
         .padding(.bottom, 16)
+        .accessibility(identifier: "CalendarBootomStackView")
     }
 }
 

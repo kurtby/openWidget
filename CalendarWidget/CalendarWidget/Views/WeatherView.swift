@@ -18,6 +18,7 @@ struct WeatherView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 56, height: 56)
+                        .accessibility(identifier: "WeatherViewImage")
                 })
                 
                 Text(weather.temperature + "° " + weather.description.capitalizingFirstLetter())
@@ -26,6 +27,7 @@ struct WeatherView: View {
                     .foregroundColor(Color.buttonTextTitle)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: 120)
+                    .accessibility(identifier: "WeatherViewDescriptionLabel")
             }
             
             VStack {
@@ -37,6 +39,7 @@ struct WeatherView: View {
             .padding(.top, 12)
         }
         .padding(.trailing, 0)
+        .accessibility(identifier: "WeatherView")
         
     }
 }

@@ -54,9 +54,11 @@ struct CalendarView<DateView>: View where DateView: View {
             Text(monthTitle)
                 .font(.system(size: 11, weight: .medium, design: .default))
                 .foregroundColor(Color.Calendar.headerTitle)
+                .accessibility(identifier: "HeaderMonthViewTitleLabel")
             Spacer()
         }
         .padding(.leading, 21)
+        .accessibility(identifier: "HeaderMonthView")
     }
     
     private func weekDaysView() -> some View {

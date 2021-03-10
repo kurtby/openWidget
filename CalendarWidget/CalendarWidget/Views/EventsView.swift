@@ -60,6 +60,7 @@ struct EventView: View {
                         .font(.system(size: 15, weight: .semibold, design: .default))
                         .foregroundColor(Color.buttonTextTitle)
                         .lineLimit(1)
+                        .accessibility(identifier: "EventViewTitleLabel")
                     Spacer()
                     if event.attendeesCount > 1 {
                         if event.eventStatus == .needAction {
@@ -83,6 +84,7 @@ struct EventView: View {
                 Text(subTitle)
                     .font(.system(size: 14, weight: .regular, design: .default))
                     .foregroundColor(Color.Event.Time.titlePending)
+                    .accessibility(identifier: "EventViewSubTitleLabel")
                 
                 if event.eventStatus == Event.Status.needAction {
                     ButtonsPendingView(event: event)
@@ -96,6 +98,7 @@ struct EventView: View {
             }
         }
         .padding(.horizontal, 11)
+        .accessibility(identifier: "EventView")
     }
 }
 
@@ -122,6 +125,7 @@ struct UsersView: View {
                     .frame(width: 20, height: 20)
                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     .overlay(Circle().stroke(Color.Event.eventUserBorder, lineWidth: 1))
+                    .accessibility(identifier: "UsersViewUserImage")
             }
             
             if users.count > 0 {
@@ -129,17 +133,18 @@ struct UsersView: View {
                     Text(stringCount)
                         .font(.system(size: 11, weight: .semibold, design: .default))
                         .foregroundColor(Color.Event.Time.title)
-                        .padding(.leading, count > 99 ? 4 : 2)
-                        .padding(.trailing, count > 99 ? 4 : 2)
+                        .padding(.horizontal, count > 99 ? 4 : 2)
                         .frame(minWidth: 20)
                         .frame(height: 20)
                         .multilineTextAlignment(.center)
                         .background(status == .needAction ? Color(hex: "#EBECEF") : Color(hex: color))
                         .clipShape(Capsule())
                         .overlay(Capsule().stroke(Color.Event.eventUserBorder, lineWidth: 2))
+                        .accessibility(identifier: "UsersViewCountLabel")
                 }
             }
         }
+        .accessibility(identifier: "UsersView")
     }
 }
 
@@ -154,10 +159,12 @@ struct ButtonСallView: View {
                         .padding(.leading, 12)
                         .padding(.top, 12)
                         .padding(.bottom, 12)
+                        .accessibility(identifier: "ButtonСallViewIconImage")
                     Text("Присоединиться к звонку")
                         .font(.system(size: 13, weight: .medium, design: .default))
                         .foregroundColor(Color.buttonTextTitle)
                         .padding(.trailing, 18)
+                        .accessibility(identifier: "ButtonСallViewTitleLabel")
                 }
                 .frame(height: 36)
             }
@@ -165,6 +172,7 @@ struct ButtonСallView: View {
         .background(Color.Event.buttonBackground)
         .cornerRadius(11)
         .padding(.top, 8)
+        .accessibility(identifier: "ButtonСallView")
     }
 }
 
@@ -195,6 +203,7 @@ struct ButtonsPendingView: View {
                         Text(button.title)
                             .padding(.all, 10)
                             .font(.system(size: 13, weight: .medium, design: .default))
+                            .accessibility(identifier: "ButtonsPendingViewButton")
                     }
                 }
                 .background(Color.Event.buttonBackground)
@@ -203,6 +212,7 @@ struct ButtonsPendingView: View {
             }
         }
         .padding(.top, 8)
+        .accessibility(identifier: "ButtonsPendingView")
         
     }
 }
@@ -223,6 +233,7 @@ struct TimeView: View {
                 .foregroundColor(event.eventStatus == .needAction ?
                                     Color.Event.Time.titlePending :
                                     Color.Event.Time.title)
+                .accessibility(identifier: "TimeViewTimeLabel")
         }
         .frame(width: 40, height: 22)
         .if(event.eventStatus == .needAction || event.eventStatus == .maybe) {
@@ -240,7 +251,8 @@ struct TimeView: View {
                                         Color(hex: event.calendar.color))
             )
         }
-       
+        .accessibility(identifier: "TimeView")
+        
     }
 }
 
@@ -262,9 +274,11 @@ struct EventTextView: View {
                 .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .accessibility(identifier: "EventTextViewTitleLabel")
         }
         .padding(.leading, 11)
         .padding(.trailing, 11)
+        .accessibility(identifier: "EventTextView")
     }
 }
 
@@ -276,10 +290,13 @@ struct EventDateHeaderView: View {
             Text(DateFormatter.relativeDateFormatter(date) + ", ")
                 .font(.system(size: 13, weight: .medium, design: .default))
                 .foregroundColor(Color.buttonTextTitle)
+                .accessibility(identifier: "EventDateHeaderViewTextDateLabel")
             Text(DateFormatter.format(date, format: "d MMMM"))
                 .font(.system(size: 13, weight: .medium, design: .default))
                 .foregroundColor(Color.Event.Time.titlePending)
+                .accessibility(identifier: "EventDateHeaderViewDateLabel")
         }
         .padding(.leading, 11)
+        .accessibility(identifier: "EventDateHeaderView")
     }
 }
