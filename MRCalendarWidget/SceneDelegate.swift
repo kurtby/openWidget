@@ -12,7 +12,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
+    private var deepLinksToOpen: [URL] = []
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -22,7 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Handle open from unactive state
         if let url = connectionOptions.urlContexts.first?.url {
-            self.showAlert(with: url.absoluteString)
+            deepLinksToOpen.append(url)
+        }
+        
+        if let url = connectionOptions.userActivities.first?.webpageURL {
+            deepLinksToOpen.append(url)
         }
     }
 
@@ -36,7 +41,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+ 
+        self.handleDeepLink(deepLinksToOpen.first)
+        self.deepLinksToOpen.removeAll()
     }
+    
 
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
@@ -53,11 +62,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
+    
     // Handle DeepLink
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        
-        if let url = URLContexts.first?.url {
+        self.handleDeepLink(URLContexts.first?.url)
+    }
+    
+    func handleDeepLink(_ url: URL?) {
+        if let url = url {
             print(url)
             
             let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
@@ -82,7 +94,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         }
                     }
                 default:
-                    print("Unknow action")
+                    self.showAlert(with: "Unknow action")
                     break
                 }
             }
@@ -157,7 +169,9 @@ extension SceneDelegate {
                 
             switch result {
             case .success(let data):
-              
+                
+                self.showAlert(with: "На приглашение успешно отвечено: \(status)")
+                
                 let rawData = String(data: data, encoding: .utf8)
                 print("RESPONSE: ", rawData)
                 

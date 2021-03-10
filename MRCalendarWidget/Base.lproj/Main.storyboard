@@ -36,6 +36,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5w-4y-j9o">
+                                <rect key="frame" x="158" y="373" width="98" height="30"/>
+                                <state key="normal" title="Reload widget"/>
+                                <connections>
+                                    <action selector="reloadWidgeButtonDidPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P8G-4p-h5s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -43,8 +50,10 @@
                             <constraint firstItem="ucM-B4-3XF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DOb-Fd-1CZ"/>
                             <constraint firstItem="ucM-B4-3XF" firstAttribute="top" secondItem="Lxt-rn-qxi" secondAttribute="bottom" constant="112.5" id="R6Q-oR-TLT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lxt-rn-qxi" secondAttribute="trailing" constant="20" id="SPS-oo-Vdv"/>
+                            <constraint firstItem="z5w-4y-j9o" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ds0-Lw-svz"/>
                             <constraint firstItem="Lxt-rn-qxi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="emG-zE-XgR"/>
                             <constraint firstItem="iXI-Jt-iu4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="kRb-KP-2MI"/>
+                            <constraint firstItem="z5w-4y-j9o" firstAttribute="top" secondItem="iXI-Jt-iu4" secondAttribute="bottom" constant="73.5" id="lIq-8q-MeN"/>
                             <constraint firstItem="Lxt-rn-qxi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qIZ-oR-JxC"/>
                             <constraint firstItem="iXI-Jt-iu4" firstAttribute="top" secondItem="ucM-B4-3XF" secondAttribute="bottom" constant="8" symbolic="YES" id="vTt-2U-Hdy"/>
                             <constraint firstItem="Lxt-rn-qxi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="zSL-Xk-9eJ"/>

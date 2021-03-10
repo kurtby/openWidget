@@ -49,7 +49,10 @@ class ViewController: UIViewController  {
         
         calendarLabel.text = ""
         
-       
+    }
+    
+    @IBAction private func reloadWidgeButtonDidPressed(_ sender: UIButton) {
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     @IBAction private func requestCalendarsButtonPressed(_ sender: UIButton) {
