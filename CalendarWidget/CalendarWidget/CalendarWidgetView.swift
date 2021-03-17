@@ -20,7 +20,7 @@ struct CalendarWidgetEntryView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            VStack {
+            VStack(spacing: 0) {
                 HStack {
                     CalendarView { date in
                         Text(date.shortDateString)
@@ -32,15 +32,17 @@ struct CalendarWidgetEntryView: View {
                             .shadow(color: colorScheme == .light ? Color.Calendar.viewCurrentDayShadow : .clear, radius: 28, x: 0, y: 5)
                             .shadow(color: colorScheme == .light ? Color.Calendar.viewCurrentDayShadow : .clear, radius: 10, x: 0, y: 4)
                     }
-                    .frame(maxWidth: 152)
+                    .frame(maxWidth: 160)
+                    .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
             
                     Spacer()
                    
                     if let w = entry.weather {
                         WeatherView(weather: w)
+                            .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
                     }
                 }
-                .frame(height: 128)
+                .frame(height: 134)
                 .if(colorScheme == .light) {
                     $0.background(RadialGradient(gradient: Gradient(colors: [Color.Calendar.gradientStart, Color.Calendar.gradientEnd]), center: .topTrailing, startRadius: 30, endRadius: 250))
                 } else: {
@@ -57,11 +59,12 @@ struct CalendarWidgetEntryView: View {
                     Spacer()
                 }
             }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
             .padding(4)
-        
+           
             if let events = model.nextEvents, !events.isEmpty {
-                ZStack(alignment: .bottom) {
-                    LinearGradient(gradient: Gradient(colors: [Color.bottomGradient, Color.bottomGradient.opacity(0.75), Color.bottomGradient.opacity(0.1)]), startPoint: .bottom, endPoint: .top)
+                Group {
+                    LinearGradient(gradient: Gradient(colors: [Color.bottomGradient, Color.bottomGradient.opacity(1), Color.bottomGradient.opacity(0.1)]), startPoint: .bottom, endPoint: .top)
                     .frame(height: 60)
                     BootomView(events: events)
                 }
@@ -99,19 +102,47 @@ struct NoEventsFoundView: View {
 }
 
 struct BootomView: View {
+    
     let events: [Event]
     
-    var eventCount: String {
+    struct BottomCounter {
+        var count: Int = 0
+        var type: String = ""
+            
+        var title: String {
+            return "\(count) \(type)"
+        }
+        
+        var isEmpty: Bool {
+            return count == 0
+        }
+    }
+    
+    var counter: BottomCounter {
+        var counter = BottomCounter()
         let needActionCount = events.filter({$0.eventStatus == .needAction}).count
-        return needActionCount > 0 ? "\(needActionCount) приглашение" : "\(events.count) события"
+        let personalCount = events.filter({$0.calendar.calendarType == .personal}).count
+        
+        if needActionCount > 0 {
+            counter.type = "приглашение"
+            counter.count = needActionCount
+        }
+        else if personalCount > 0 {
+            counter.type = "события"
+            counter.count = personalCount
+        }
+         
+        return counter
     }
     
     var body: some View {
         HStack {
-            Text(eventCount)
-                .font(.system(size: 13, weight: .medium, design: .default))
-                .foregroundColor(Color.buttonTextTitle)
-                .accessibility(identifier: "CalendarBootomViewCountLabel")
+            if !counter.isEmpty {
+                Text(counter.title)
+                    .font(.system(size: 13, weight: .medium, design: .default))
+                    .foregroundColor(Color.buttonTextTitle)
+                    .accessibility(identifier: "CalendarBootomViewCountLabel")
+            }
             Spacer()
             if let url = URL(string: Constants.DeepLink.Event.create.urlSceme) {
                 Link(destination: url) {

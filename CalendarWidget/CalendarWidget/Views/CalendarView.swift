@@ -19,12 +19,13 @@ struct CalendarView<DateView>: View where DateView: View {
     
     @ViewBuilder
     var body: some View {
-        VStack(alignment: .center, spacing: 7) {
-            headerMonthView() 
+        VStack(alignment: .leading, spacing: 0) {
+            headerMonthView()
             weekDaysView()
             daysGridView()
         }
-        .padding(.vertical, 13)
+        .padding(.top, 12)
+        .padding(.leading, 10)
     }
     
     // MARK: Private
@@ -57,7 +58,9 @@ struct CalendarView<DateView>: View where DateView: View {
                 .accessibility(identifier: "HeaderMonthViewTitleLabel")
             Spacer()
         }
-        .padding(.leading, 21)
+        .padding(.leading, 4)
+        .padding(.bottom, 8)
+        
         .accessibility(identifier: "HeaderMonthView")
     }
     
@@ -71,16 +74,17 @@ struct CalendarView<DateView>: View where DateView: View {
                     .frame(width: 16, height: 16, alignment: .center)
             }
         }
-        .padding(.leading, 16)
+        .padding(.leading, 2)
+        .padding(.top, 2)
     }
     
     private func daysGridView() -> some View {
-        LazyVGrid(columns: Array(repeating: GridItem(.fixed(20), spacing: 0, alignment: .center), count: 7), spacing: 2) {
+        LazyVGrid(columns: Array(repeating: GridItem(.fixed(20), spacing: 0, alignment: .center), count: 7), alignment: .leading, spacing: 0) {
             ForEach(calendar.days(), id: \.self) { date in
                 content(date).id(date)
             }
         }
-        .padding(.leading, 16)
+        .padding(.bottom, 4)
     }
     
     private func weekDaysSorted() -> [String] {

@@ -20,6 +20,7 @@ struct EventsView: View {
             }
             Spacer(minLength: 0)
         }
+        .padding(.top, 15)
     }
     
     private func view(for event: Event) -> some View {
