@@ -46,6 +46,7 @@ extension Constants.DeepLink {
 
     enum Event {
         case event(EventResponse, eventID: String, calendarID: String)
+        case openEvent(eventID: String, calendarID: String)
         case create
         case url(_ url: String)
          
@@ -53,6 +54,8 @@ extension Constants.DeepLink {
             switch self {
             case .event(let response, let eventID, let calendarID):
                 return prefix + "?action=event&type=response&status=\(response.rawValue)&eventID=\(eventID)&calendarID=\(calendarID)"
+            case .openEvent(let eventID, let calendarID):
+                return prefix + "?action=event&type=open&eventID=\(eventID)&calendarID=\(calendarID)"
             case .create:
                return prefix + "?action=event&type=create"
             case .url(let url):

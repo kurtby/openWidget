@@ -29,10 +29,24 @@ struct EventsView: View {
                 EventDateHeaderView(date: event.from)
             }
             if event.calendar.calendarType == .personal {
-                 EventView(event: event)
+                if let url = URL(string: Constants.DeepLink.Event.openEvent(eventID: event.uid, calendarID: event.calendar.uid).urlSceme) {
+                    Link(destination: url) {
+                        EventView(event: event)
+                    }
+                }
+                else {
+                    EventView(event: event)
+                }
             }
             else if event.calendar.calendarType == .holidays {
-                EventTextView(title: event.title, color: event.calendar.color, isBirthday: event.calendar.isBirthday)
+                if let url = URL(string: Constants.DeepLink.Event.openEvent(eventID: event.uid, calendarID: event.calendar.uid).urlSceme) {
+                    Link(destination: url) {
+                        EventTextView(title: event.title, color: event.calendar.color, isBirthday: event.calendar.isBirthday)
+                    }
+                }
+                else {
+                    EventTextView(title: event.title, color: event.calendar.color, isBirthday: event.calendar.isBirthday)
+                }
             }
         }
     }

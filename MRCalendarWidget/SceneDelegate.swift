@@ -92,6 +92,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                 self.react(eventID: eventID, calendarID: calendarID, status: status)
                             }
                         }
+                        else if type == "open" {
+                            if let eventID = queryParams?["eventID"] as? String , let calendarID = queryParams?["calendarID"] as? String {
+                                
+                                self.showAlert(with: "OPEN EVENT id: \(eventID), calendar: \(calendarID)")
+                            }
+                        }
                     }
                 default:
                     self.showAlert(with: "Unknow action")
