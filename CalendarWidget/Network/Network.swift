@@ -16,6 +16,7 @@ class Network {
     typealias WeatherBlock = (Weather?, Error?) -> Void
     typealias EventsBlock = (EventResponse?, Error?) -> Void
     typealias CalendarBlock = (CalendarResponse?, Error?) -> Void
+    typealias InboxBlock = (Bool, Error?) -> Void
     typealias TokenBlock = (TokenResponse?, Error?) -> Void
     
     struct ResponseData {
@@ -140,7 +141,7 @@ class Network {
         }
     }
     
-    public func loadCalendars(complete:  @escaping CalendarBlock) {
+    public func loadCalendars(complete: @escaping CalendarBlock) {
         self.load(builder: APIEndpoint.calendars) { (result) in
             switch result {
             case .success(let data):
@@ -155,6 +156,26 @@ class Network {
                 }
             case .failure(let error):
                 complete(nil, error)
+            }
+        }
+    }
+    
+    public func loadInbox(complete: @escaping InboxBlock) {
+        self.load(builder: APIEndpoint.inbox) { (result) in
+            switch result {
+            case .success(let data):
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                
+                do {
+                    let result = try decoder.decode(InboxResponse.self, from: data)
+                    complete(result.data.inbox.events.hasEvents, nil)
+                } catch(let error) {
+                    complete(false, error)
+                }
+                
+            case .failure(let error):
+                 complete(false, error)
             }
         }
     }

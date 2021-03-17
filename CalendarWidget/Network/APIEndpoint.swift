@@ -11,6 +11,7 @@ enum APIEndpoint {
     case calendars
     case events(_ params: EventParams)
     case weather
+    case inbox
     case accessToken
 }
 
@@ -81,6 +82,22 @@ extension APIEndpoint: APIRequestBuilder {
             
             print("PARAMS", parameters, headers)
             
+            
+            return request
+        case .inbox:
+            var request = URLRequest(url: baseURL)
+            request.httpMethod = "POST"
+            
+            self.additionalHeaders(headers, request: &request)
+            
+            let parameters = [
+                "operationName" : "InboxWidget",
+                "query" : "query InboxWidget {inbox{events {hasEvents}}}"
+            ]
+            
+            if let body = try? JSONSerialization.data(withJSONObject: parameters) {
+                request.httpBody = body
+            }
             
             return request
         case .accessToken:
