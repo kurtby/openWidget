@@ -9,10 +9,10 @@ import Foundation
 
 class EventModelData {
     
-    public var isDateHeaderInstalled: Bool = false
-    
     private var events: [Event]
     private var calendars: [CalendarType]
+    
+    private var headersDate: [Date] = []
     
     init(events: [Event], calendars: [CalendarType]) {
         self.events = events
@@ -20,8 +20,10 @@ class EventModelData {
     }
     
     public func isDateHeaderNeeded(for date: Date) -> Bool {
-        if !Calendar.current.isDateInToday(date) && !self.isDateHeaderInstalled {
-            self.isDateHeaderInstalled = true
+        let isContainDate: Bool = headersDate.contains(where: { Calendar.current.isDate($0, inSameDayAs: date) })
+        
+        if !Calendar.current.isDateInToday(date) && !isContainDate && date > Date() {
+            headersDate.append(date)
             return true
         }
         return false
@@ -42,38 +44,7 @@ class EventModelData {
         // Sort by date
         nextEvents = nextEvents.sorted(by: {$0.from < $1.from}).prefix(5).map({$0})
         
-        if !nextEvents.isEmpty {
-            
-            // Get personal events
-            var personalFiltered = nextEvents.filter({ $0.calendar.calendarType == .personal }).sorted { $0.from < $1.from }
-            
-            // Get holidays events
-            let holidaysFiltered = nextEvents.filter({ $0.calendar.calendarType == .holidays }).sorted { $0.from < $1.from }
-
-            if personalFiltered.isEmpty {
-                return holidaysFiltered.prefix(3).map({$0})
-            }
-            else {
-                if personalFiltered.count == 1 {
-                    personalFiltered.append(contentsOf: holidaysFiltered.prefix(2))
-                    return personalFiltered
-                }
-                else if personalFiltered.count == 2 {
-                    // Check if all events is accepted
-                    if personalFiltered.allSatisfy({ $0.eventStatus == .accepted || $0.eventStatus == .maybe}) {
-                        personalFiltered.append(contentsOf: holidaysFiltered.prefix(1))
-                        return personalFiltered
-                    }
-                    else {
-                        return personalFiltered
-                    }
-                }
-                
-                return personalFiltered.prefix(3).map({$0})
-            }
-        }
-        
-        return []
+        return nextEvents
     }
     
 }
