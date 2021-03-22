@@ -20,7 +20,7 @@ struct CalendarWidgetTimelineProvider: IntentTimelineProvider {
         
         Network().loadWeather { (weather, error) in
             var entry = CalendarWidgetEntry(date: Date(), configuration: configuration)
-            entry.weather = weather
+            entry.data.weather = weather
             completion(entry)
         }
     }
@@ -46,14 +46,12 @@ struct CalendarWidgetTimelineProvider: IntentTimelineProvider {
                 print("First event end:\(eventEndDate)", "NEXT UPDATE", nextUpdateDate)
                 
                 var entry = CalendarWidgetEntry(date: nextUpdateDate, configuration: configuration)
-                entry.weather = data.weather
-                entry.events = data.events
+                entry.data = data
                 entries.append(entry)
             }
             else {
                 var entry = CalendarWidgetEntry(date: nextHourFromNow, configuration: configuration)
-                entry.weather = data.weather
-                entry.events = data.events
+                entry.data = data
                 entries.append(entry)
             }
             #warning("check for no connection?")

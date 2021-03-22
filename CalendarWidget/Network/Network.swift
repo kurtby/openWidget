@@ -22,6 +22,8 @@ class Network {
     struct ResponseData {
         var events: [Event]?
         var weather: Weather?
+        var errors: [Error] = []
+        var isHaveInvites: Bool = false
     }
     
     struct TokenResponse: Decodable {
@@ -33,22 +35,54 @@ class Network {
     
     public func loadData(complete: @escaping DataBlock) {
         
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
         self.loadWeather { (weather, error) in
             
             if let weather = weather {
                 self.response.weather = weather
             }
-            
-            self.loadEvents { (events, error) in
-                if let events = events {
-                    print("Events Error", events.errors?.first?.message)
-                    print("Events data:", events.data?.events)
-                    self.response.events = events.data?.events
-                }
-            
-                complete(self.response, error)
+            else if let error = error {
+                self.response.errors.append(error)
             }
+            
+            dispatchGroup.leave()
         }
+        
+        dispatchGroup.enter()
+        self.loadEvents { (events, error) in
+            if let events = events {
+                self.response.events = events.data?.events
+            }
+            else if let error = error {
+                self.response.errors.append(error)
+            }
+            
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        self.loadInbox { (isHaveInvites, error) in
+            self.response.isHaveInvites = isHaveInvites
+            
+            if let error = error {
+                self.response.errors.append(error)
+            }
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            
+            print("DONE")
+            print("ERRORS: ---->>", self.response.errors.count)
+            print("Events: --->", self.response.events?.count)
+            print("Is have invites: -->", self.response.isHaveInvites)
+            print("Weather: ---> ", self.response.weather?.temperature)
+            
+            complete(self.response, self.response.errors.first)
+        }
+        
     }
     
     public func loadEvents(complete: @escaping EventsBlock) {
