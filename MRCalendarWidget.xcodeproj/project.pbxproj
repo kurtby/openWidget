@@ -28,6 +28,7 @@
 		A342AADE25D1982000C52083 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A342AADD25D1982000C52083 /* WeatherView.swift */; };
 		A3528BE72604D305003AE981 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A3528BE12604D300003AE981 /* Localizable.stringsdict */; };
 		A3555D8A25DD12E100649177 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3555D8725DD12DE00649177 /* EventsView.swift */; };
+		A395775D2608AB94001A9288 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F2B825DFB3CD00843381 /* Constants.swift */; };
 		A39D1BBE25DFE1F000C28833 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
 		A39D1BC025DFE1F500C28833 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
 		A3C277A8260111C300311626 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C277A7260111C200311626 /* Inbox.swift */; };
@@ -487,6 +488,7 @@
 				A3C7F7E925F698BA00BC6CB2 /* DateExtension.swift in Sources */,
 				A3C7F7E025F697F600BC6CB2 /* APIError.swift in Sources */,
 				A3C7F7DD25F697E200BC6CB2 /* UserDefaultsExtension.swift in Sources */,
+				A395775D2608AB94001A9288 /* Constants.swift in Sources */,
 				A3C7F7E225F697F600BC6CB2 /* APIRequestBuilder.swift in Sources */,
 				A3C7F7D725F697D000BC6CB2 /* Weather.swift in Sources */,
 			);

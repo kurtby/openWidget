@@ -108,7 +108,7 @@ extension APIEndpoint: APIRequestBuilder {
             let refreshToken = UserDefaults.appGroup.string(forKey: UserDefaults.Keys.token.rawValue)
             
             let parameters = [
-                "client_id": "685d470d9fdc4dd9be87e784f328e5e9",
+                "client_id": Constants.App.clientID,
                 "grant_type": "refresh_token",
                 "refresh_token": refreshToken
             ]

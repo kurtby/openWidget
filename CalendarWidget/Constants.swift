@@ -9,6 +9,10 @@ import Foundation
 
 struct Constants {
     
+    struct App {
+        static let clientID: String = "685d470d9fdc4dd9be87e784f328e5e9"
+    }
+    
     struct Timing {
         static let updateInterval: Int = 15
         static let callOffsetInterval: Int = -10
