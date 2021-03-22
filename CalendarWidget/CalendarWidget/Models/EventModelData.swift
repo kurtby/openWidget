@@ -35,8 +35,6 @@ class EventModelData {
         // Check for calendars selected, if empty, show all calendars
         let allowedCalendars = calendars.map({$0.identifier})
         
-        print("allowedCalendars", allowedCalendars)
-        
         if !allowedCalendars.isEmpty {
             nextEvents = events.filter({allowedCalendars.contains($0.calendar.uid)})
         }

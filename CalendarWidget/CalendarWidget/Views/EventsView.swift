@@ -104,9 +104,12 @@ struct EventView: View {
                 if event.eventStatus == Event.Status.needAction {
                     ButtonsPendingView(event: event)
                 }
+                // Show call button
                 else if let callURL = event.call {
-                    // Show call button
-                    if Date().isBetween(event.from, date2: event.to) {
+                    // Show button in 10 minutes before start
+                    let fromDate: Date = Calendar.current.date(byAdding: .minute, value: Constants.Timing.callOffsetInterval, to: event.from) ?? Date()
+                    
+                    if Date().isBetween(fromDate, date2: event.to) {
                         ButtonСallView(url: callURL)
                     }
                 }

@@ -32,25 +32,35 @@ struct CalendarWidgetTimelineProvider: IntentTimelineProvider {
             print("weather", data.weather, error)
             
             var entries: [CalendarWidgetEntry] = []
-            let nextHourFromNow = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
             
-            if let events = data.events , let eventEndDate = events.filter({$0.fullDay == false}).sorted(by: {$0.from < $1.from}).map({$0.to}).first {
+            // Update every (n) minutes
+            let now = Date()
+            let interval: Int = Constants.Timing.updateInterval
+            let nextUpdateDate: Date = Calendar.current.date(byAdding: .minute, value: interval, to: now) ?? now
             
-                var nextUpdateDate: Date = eventEndDate
+            if let events = data.events , let nextEvent = events.filter({$0.fullDay == false}).sorted(by: {$0.from < $1.from}).first {
                 
-                // Check if next update will be more then 1 hour, if yes update earlier
-                if let minutes = Calendar.current.dateComponents([.minute], from: Date(), to: eventEndDate).minute , minutes > 60 {
-                    nextUpdateDate = nextHourFromNow
+                var updateDate = nextUpdateDate
+                
+                // If call in next event, update earlier to show button
+                if let _ = nextEvent.call {
+                    if let fromDate: Date = Calendar.current.date(byAdding: .minute, value: Constants.Timing.callOffsetInterval, to: nextEvent.from) , fromDate > now {
+                        updateDate = fromDate
+                    }
+                }
+                // If event end earlier then update interval
+                else if let minutes = Calendar.current.dateComponents([.minute], from: now, to: nextEvent.to).minute , minutes < interval {
+                    updateDate = nextEvent.to
                 }
                 
-                print("First event end:\(eventEndDate)", "NEXT UPDATE", nextUpdateDate)
-                
-                var entry = CalendarWidgetEntry(date: nextUpdateDate, configuration: configuration)
+                print("NEXT UPDATE:-->>", updateDate, nextEvent.from, nextEvent.to)
+    
+                var entry = CalendarWidgetEntry(date: updateDate, configuration: configuration)
                 entry.data = data
                 entries.append(entry)
             }
             else {
-                var entry = CalendarWidgetEntry(date: nextHourFromNow, configuration: configuration)
+                var entry = CalendarWidgetEntry(date: nextUpdateDate, configuration: configuration)
                 entry.data = data
                 entries.append(entry)
             }

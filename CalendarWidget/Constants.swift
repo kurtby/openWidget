@@ -8,7 +8,12 @@
 import Foundation
 
 struct Constants {
-   
+    
+    struct Timing {
+        static let updateInterval: Int = 15
+        static let callOffsetInterval: Int = -10
+    }
+     
     struct DeepLink {
         static let prefix = "widget-deeplink://"
     }
