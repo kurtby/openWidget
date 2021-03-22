@@ -11,6 +11,5 @@ struct CalendarWidgetEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
     
-    var weather: Weather?
-    var events: [Event]?
+    var data: Network.ResponseData = .init()
 }

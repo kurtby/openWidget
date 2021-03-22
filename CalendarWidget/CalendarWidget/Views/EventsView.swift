@@ -29,7 +29,7 @@ struct EventsView: View {
                 EventDateHeaderView(date: event.from)
             }
             if event.calendar.calendarType == .personal {
-                if let url = URL(string: Constants.DeepLink.Event.openEvent(eventID: event.uid, calendarID: event.calendar.uid).urlSceme) {
+                if let url = URL(string: Constants.DeepLink.Event.openEvent(eventID: event.uid, calendarID: event.calendar.uid).url) {
                     Link(destination: url) {
                         EventView(event: event)
                     }
@@ -39,7 +39,7 @@ struct EventsView: View {
                 }
             }
             else if event.calendar.calendarType == .holidays {
-                if let url = URL(string: Constants.DeepLink.Event.openEvent(eventID: event.uid, calendarID: event.calendar.uid).urlSceme) {
+                if let url = URL(string: Constants.DeepLink.Event.openEvent(eventID: event.uid, calendarID: event.calendar.uid).url) {
                     Link(destination: url) {
                         EventTextView(title: event.title, color: event.calendar.color, isBirthday: event.calendar.isBirthday)
                     }
@@ -168,7 +168,7 @@ struct ButtonСallView: View {
     
     var body: some View {
         ZStack {
-            Link(destination: URL(string: Constants.DeepLink.Event.url(url).urlSceme)!) {
+            Link(destination: URL(string: Constants.DeepLink.Event.url(url).url)!) {
                 HStack(alignment: .center)  {
                     Image("button_camera_icon")
                         .padding(.leading, 12)
@@ -205,9 +205,9 @@ struct ButtonsPendingView: View {
     }
     
     private var buttons: [ButtonData] {
-        [.init(title: "Иду", scheme: Constants.DeepLink.Event.event(.yes, eventID: event.uid, calendarID: event.calendar.uid).urlSceme),
-         .init(title: "Не иду", scheme: Constants.DeepLink.Event.event(.no, eventID: event.uid, calendarID: event.calendar.uid).urlSceme),
-         .init(title: "Может быть", scheme: Constants.DeepLink.Event.event(.maybe, eventID: event.uid, calendarID: event.calendar.uid).urlSceme)]
+        [.init(title: "Иду", scheme: Constants.DeepLink.Event.event(.yes, eventID: event.uid, calendarID: event.calendar.uid).url),
+         .init(title: "Не иду", scheme: Constants.DeepLink.Event.event(.no, eventID: event.uid, calendarID: event.calendar.uid).url),
+         .init(title: "Может быть", scheme: Constants.DeepLink.Event.event(.maybe, eventID: event.uid, calendarID: event.calendar.uid).url)]
     }
     
     var body: some View {

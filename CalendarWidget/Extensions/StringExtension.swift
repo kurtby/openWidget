@@ -16,5 +16,13 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
+
+}
+
+extension String {
+    
+    var localized: String {
+        NSLocalizedString(self, comment: "")
+    }
     
 }

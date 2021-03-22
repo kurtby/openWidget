@@ -9,7 +9,7 @@ import Foundation
 
 class EventModelData {
     
-    private var events: [Event]
+    public var events: [Event]
     private var calendars: [CalendarType]
     
     private var headersDate: [Date] = []
