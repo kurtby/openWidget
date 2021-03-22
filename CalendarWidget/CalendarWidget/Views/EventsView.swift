@@ -28,7 +28,7 @@ struct EventsView: View {
             if self.modelData.isDateHeaderNeeded(for: event.from) {
                 EventDateHeaderView(date: event.from)
             }
-            if event.calendar.calendarType == .personal {
+            if event.calendar.calendarType == .personal && event.fullDay == false {
                 if let url = URL(string: Constants.DeepLink.Event.openEvent(eventID: event.uid, calendarID: event.calendar.uid).url) {
                     Link(destination: url) {
                         EventView(event: event)
@@ -38,7 +38,7 @@ struct EventsView: View {
                     EventView(event: event)
                 }
             }
-            else if event.calendar.calendarType == .holidays {
+            else if event.calendar.calendarType == .holidays || event.fullDay {
                 if let url = URL(string: Constants.DeepLink.Event.openEvent(eventID: event.uid, calendarID: event.calendar.uid).url) {
                     Link(destination: url) {
                         EventTextView(title: event.title, color: event.calendar.color, isBirthday: event.calendar.isBirthday)

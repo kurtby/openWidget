@@ -51,6 +51,22 @@ struct Event: Decodable {
             return .unknow
         }
     }
+    
+    // For order in list (lower on top)
+    var orderPriority: Int {
+         if self.calendar.calendarType == .personal {
+            return 0
+        }
+        else if self.calendar.isBirthday {
+            return 1
+        }
+        
+        return 2
+    }
+    
+    var orderFullday: Int {
+        self.fullDay ? 1 : 0
+    }
 }
 
 struct ServerError: Decodable {
@@ -88,6 +104,7 @@ struct EventCalendar: Decodable {
         }
         return false
     }
+    
 }
 
 struct Location: Decodable {

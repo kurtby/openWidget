@@ -64,7 +64,7 @@ struct CalendarWidgetEntryView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
             .padding(4)
            
-            if let events = model.events, !events.isEmpty {
+            if let events = model.nextEvents, !events.isEmpty {
                 Group {
                     LinearGradient(gradient: Gradient(colors: [Color.bottomGradient, Color.bottomGradient.opacity(1), Color.bottomGradient.opacity(0.1)]), startPoint: .bottom, endPoint: .top)
                     .frame(height: 60)
@@ -128,7 +128,7 @@ struct BootomView: View {
         
         if isHaveInvites {
             counter.type = "Приглашения"
-            counter.count = needActionCount
+            counter.count = needActionCount == 0 ? 1 : needActionCount
         }
         else if personalCount > 0 {
             counter.type = String.localizedStringWithFormat(     Constants.LocalizablePluralKey.event.rawValue.localized, personalCount)
