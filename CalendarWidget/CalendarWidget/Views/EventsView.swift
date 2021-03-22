@@ -66,9 +66,8 @@ struct EventView: View {
     }
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .top, spacing: 14) {
             TimeView(event: event)
-            Spacer(minLength: 12)
             VStack(alignment: .leading, spacing: 2) {
                 HStack {
                     Text(event.title.isEmpty ? "Без названия" : event.title)
@@ -302,19 +301,34 @@ struct EventTextView: View {
 
 struct EventDateHeaderView: View {
     let date: Date
-    
+        
     var body: some View {
-        HStack(spacing: 0) {
-            Text(DateFormatter.relativeDateFormatter(date) + ", ")
-                .font(.system(size: 13, weight: .medium, design: .default))
-                .foregroundColor(Color.buttonTextTitle)
-                .accessibility(identifier: "EventDateHeaderViewTextDateLabel")
-            Text(DateFormatter.format(date, format: "d MMMM"))
-                .font(.system(size: 13, weight: .medium, design: .default))
-                .foregroundColor(Color.Event.Time.titlePending)
-                .accessibility(identifier: "EventDateHeaderViewDateLabel")
+        HStack(alignment: .center, spacing: 0) {
+            if DateFormatter.isDateRelative(date) {
+                Text(DateFormatter.relativeDateFormatter(date) + ", ")
+                    .font(.system(size: 13, weight: .medium, design: .default))
+                    .foregroundColor(Color.buttonTextTitle)
+                    .frame(height: 20)
+                    .accessibility(identifier: "EventDateHeaderViewTextDateLabel")
+                Text(DateFormatter.format(date, format: "d MMMM"))
+                    .font(.system(size: 13, weight: .medium, design: .default))
+                    .foregroundColor(Color.Event.Time.titlePending)
+                    .frame(height: 20)
+                    .accessibility(identifier: "EventDateHeaderViewDateLabel")
+            }
+            else {
+                Text(DateFormatter.format(date, format: "d MMMM"))
+                    .font(.system(size: 13, weight: .medium, design: .default))
+                    .foregroundColor(Color.buttonTextTitle)
+                    .frame(height: 20)
+                    .accessibility(identifier: "EventDateHeaderViewDateLabel")
+            }
         }
+        .frame(height: 32)
         .padding(.leading, 11)
+        .offset(x: 0, y: -5)
+        .padding(.top, -5)
+        .padding(.bottom, -15)
         .accessibility(identifier: "EventDateHeaderView")
     }
 }

@@ -31,5 +31,20 @@ extension DateFormatter {
         relativeDateFormatter.locale = Locale.autoupdatingCurrent
         return relativeDateFormatter.string(from: date)
     }
+    
+    static func isDateRelative(_ date: Date) -> Bool {
+        let relativeDateFormatter = DateFormatter()
+        relativeDateFormatter.timeStyle = .none
+        relativeDateFormatter.dateStyle = .medium
+        relativeDateFormatter.doesRelativeDateFormatting = true
+        relativeDateFormatter.locale = Locale.autoupdatingCurrent
+        
+        let relativeString = relativeDateFormatter.string(from: date)
+        relativeDateFormatter.doesRelativeDateFormatting = false
+        
+        let notRelativeString = relativeDateFormatter.string(from: date)
+        
+        return  relativeString != notRelativeString
+    }
 
 }
