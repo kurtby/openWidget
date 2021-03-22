@@ -13,7 +13,7 @@ struct CalendarWidgetEntryView: View {
     var entry: CalendarWidgetTimelineProvider.Entry
     
     var model: EventModelData {
-        EventModelData(events: entry.events ?? [], calendars: entry.configuration.calendarType ?? [])
+        EventModelData(events: entry.data.events ?? [], calendars: entry.configuration.calendarType ?? [])
     }
     
     @Environment(\.colorScheme) var colorScheme
@@ -22,22 +22,24 @@ struct CalendarWidgetEntryView: View {
         ZStack(alignment: .bottom) {
             VStack(spacing: 0) {
                 HStack {
-                    CalendarView { date in
-                        Text(date.shortDateString)
-                            .font(.system(size: 10))
-                            .foregroundColor(Calendar.current.isDateInWeekend(date) || !Calendar.current.isDate(date, equalTo: Date(), toGranularity: .month) ?  Color.Calendar.viewWeekDay : Color.Calendar.viewDay)
-                            .frame(width: 20, height: 20)
-                            .background(Calendar.current.isDateInToday(date) ? Color.Calendar.viewCurrentDay : Color.clear)
-                            .cornerRadius(8)
-                            .shadow(color: colorScheme == .light ? Color.Calendar.viewCurrentDayShadow : .clear, radius: 28, x: 0, y: 5)
-                            .shadow(color: colorScheme == .light ? Color.Calendar.viewCurrentDayShadow : .clear, radius: 10, x: 0, y: 4)
+                    Link(destination: URL(string: Constants.DeepLink.Event.calendar.url)!) {
+                        CalendarView { date in
+                            Text(date.shortDateString)
+                                .font(.system(size: 10))
+                                .foregroundColor(Calendar.current.isDateInWeekend(date) || !Calendar.current.isDate(date, equalTo: Date(), toGranularity: .month) ?  Color.Calendar.viewWeekDay : Color.Calendar.viewDay)
+                                .frame(width: 20, height: 20)
+                                .background(Calendar.current.isDateInToday(date) ? Color.Calendar.viewCurrentDay : Color.clear)
+                                .cornerRadius(8)
+                                .shadow(color: colorScheme == .light ? Color.Calendar.viewCurrentDayShadow : .clear, radius: 28, x: 0, y: 5)
+                                .shadow(color: colorScheme == .light ? Color.Calendar.viewCurrentDayShadow : .clear, radius: 10, x: 0, y: 4)
+                        }
+                        .frame(maxWidth: 160)
+                        .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
                     }
-                    .frame(maxWidth: 160)
-                    .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
             
                     Spacer()
                    
-                    if let w = entry.weather {
+                    if let w = entry.data.weather {
                         WeatherView(weather: w)
                             .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
                     }
@@ -62,11 +64,11 @@ struct CalendarWidgetEntryView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
             .padding(4)
            
-            if let events = model.nextEvents, !events.isEmpty {
+            if let events = model.events, !events.isEmpty {
                 Group {
                     LinearGradient(gradient: Gradient(colors: [Color.bottomGradient, Color.bottomGradient.opacity(1), Color.bottomGradient.opacity(0.1)]), startPoint: .bottom, endPoint: .top)
                     .frame(height: 60)
-                    BootomView(events: events)
+                    BootomView(events: events, isHaveInvites: entry.data.isHaveInvites)
                 }
             }
         }
@@ -83,7 +85,7 @@ struct NoEventsFoundView: View {
                 .multilineTextAlignment(.center)
                 .accessibility(identifier: "NoEventsFoundStackViewTitleLabel")
             
-            if let url = URL(string: Constants.DeepLink.Event.create.urlSceme) {
+            if let url = URL(string: Constants.DeepLink.Event.create.url) {
                 Link(destination: url) {
                     HStack(spacing: 4) {
                         Text("Создать").font(.system(size: 15, weight: .regular, design: .default)).foregroundColor(.buttonTextTitle)
@@ -104,13 +106,14 @@ struct NoEventsFoundView: View {
 struct BootomView: View {
     
     let events: [Event]
+    let isHaveInvites: Bool
     
     struct BottomCounter {
         var count: Int = 0
         var type: String = ""
             
         var title: String {
-            return "\(count) \(type)"
+            return "\(type)"
         }
         
         var isEmpty: Bool {
@@ -121,30 +124,49 @@ struct BootomView: View {
     var counter: BottomCounter {
         var counter = BottomCounter()
         let needActionCount = events.filter({$0.eventStatus == .needAction}).count
-        let personalCount = events.filter({$0.calendar.calendarType == .personal}).count
+        let personalCount = events.filter({$0.calendar.calendarType == .personal && Calendar.current.isDateInToday($0.from)}).count
         
-        if needActionCount > 0 {
-            counter.type = "приглашение"
+        if isHaveInvites {
+            counter.type = "Приглашения"
             counter.count = needActionCount
         }
         else if personalCount > 0 {
-            counter.type = "события"
+            counter.type = String.localizedStringWithFormat(     Constants.LocalizablePluralKey.event.rawValue.localized, personalCount)
             counter.count = personalCount
         }
          
         return counter
     }
+  
     
     var body: some View {
         HStack {
             if !counter.isEmpty {
-                Text(counter.title)
-                    .font(.system(size: 13, weight: .medium, design: .default))
-                    .foregroundColor(Color.buttonTextTitle)
-                    .accessibility(identifier: "CalendarBootomViewCountLabel")
+                if isHaveInvites {
+                    if let url = URL(string: Constants.DeepLink.Event.inbox.url) {
+                        Link(destination: url) {
+                            Text(counter.title)
+                                .font(.system(size: 13, weight: .medium, design: .default))
+                                .foregroundColor(Color.buttonTextTitle)
+                                .accessibility(identifier: "CalendarBootomViewCountLabel")
+                        }
+                    }
+                    else {
+                        Text(counter.title)
+                            .font(.system(size: 13, weight: .medium, design: .default))
+                            .foregroundColor(Color.buttonTextTitle)
+                            .accessibility(identifier: "CalendarBootomViewCountLabel")
+                    }
+                }
+                else {
+                    Text(counter.title)
+                        .font(.system(size: 13, weight: .medium, design: .default))
+                        .foregroundColor(Color.buttonTextTitle)
+                        .accessibility(identifier: "CalendarBootomViewCountLabel")
+                }
             }
             Spacer()
-            if let url = URL(string: Constants.DeepLink.Event.create.urlSceme) {
+            if let url = URL(string: Constants.DeepLink.Event.create.url) {
                 Link(destination: url) {
                     HStack(spacing: 4) {
                         Text("Создать")
