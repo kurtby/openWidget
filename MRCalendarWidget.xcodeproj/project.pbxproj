@@ -27,7 +27,6 @@
 		A342AACC25D1460300C52083 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A342AACB25D1460300C52083 /* CalendarView.swift */; };
 		A342AADE25D1982000C52083 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A342AADD25D1982000C52083 /* WeatherView.swift */; };
 		A3528BE72604D305003AE981 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A3528BE12604D300003AE981 /* Localizable.stringsdict */; };
-		A3528BEC2604D30C003AE981 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A3528BE12604D300003AE981 /* Localizable.stringsdict */; };
 		A3555D8A25DD12E100649177 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3555D8725DD12DE00649177 /* EventsView.swift */; };
 		A39D1BBE25DFE1F000C28833 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
 		A39D1BC025DFE1F500C28833 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
@@ -210,12 +209,20 @@
 				A3D2F2AE25DFB00B00843381 /* CalendarWidget */,
 				A3D2F25B25DEEA7000843381 /* Network */,
 				A3D2F28E25DF9ABF00843381 /* Extensions */,
+				A395774426089539001A9288 /* Resources */,
+			);
+			path = CalendarWidget;
+			sourceTree = "<group>";
+		};
+		A395774426089539001A9288 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				A342AAB525D13E0100C52083 /* CalendarWidget.intentdefinition */,
 				A342AAB625D13E0600C52083 /* Assets.xcassets */,
 				A342AAB825D13E0600C52083 /* Info.plist */,
 				A3528BE12604D300003AE981 /* Localizable.stringsdict */,
 			);
-			path = CalendarWidget;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		A39D1BB225DFC4CB00C28833 /* EntryModel */ = {
@@ -440,7 +447,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3528BEC2604D30C003AE981 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,7 +627,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2K7YUBPRGA;
-				INFOPLIST_FILE = CalendarWidget/Info.plist;
+				INFOPLIST_FILE = CalendarWidget/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -647,7 +653,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2K7YUBPRGA;
-				INFOPLIST_FILE = CalendarWidget/Info.plist;
+				INFOPLIST_FILE = CalendarWidget/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
