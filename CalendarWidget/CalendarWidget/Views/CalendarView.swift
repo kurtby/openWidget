@@ -24,7 +24,7 @@ struct CalendarView<DateView>: View where DateView: View {
             weekDaysView()
             daysGridView()
         }
-        .padding(.top, 12)
+        .padding(.top, 10)
         .padding(.leading, 10)
     }
     
@@ -58,28 +58,25 @@ struct CalendarView<DateView>: View where DateView: View {
                 .accessibility(identifier: "HeaderMonthViewTitleLabel")
             Spacer()
         }
-        .padding(.leading, 4)
-        .padding(.bottom, 8)
-        
+        .frame(height: 16)
         .accessibility(identifier: "HeaderMonthView")
     }
     
     private func weekDaysView() -> some View {
-        HStack(spacing: 4) {
+        HStack(spacing: 1) {
             ForEach(0 ..< 7, id: \.self) { index in
                 Text(weekDaysSorted()[index].localizedUppercase)
-                    .font(.system(size: 8, weight: .medium, design: .default))
+                    .font(.system(size: 9, weight: .medium, design: .default))
                     .scaledToFill()
                     .foregroundColor(Color.Calendar.weekDayTitle)
-                    .frame(width: 16, height: 16, alignment: .center)
+                    .frame(width: 20, height: 20, alignment: .center)
             }
         }
-        .padding(.leading, 2)
-        .padding(.top, 2)
+        .padding(.top, 4)
     }
     
     private func daysGridView() -> some View {
-        LazyVGrid(columns: Array(repeating: GridItem(.fixed(20), spacing: 0, alignment: .center), count: 7), alignment: .leading, spacing: 0) {
+        LazyVGrid(columns: Array(repeating: GridItem(.fixed(20), spacing: 1, alignment: .center), count: 7), alignment: .leading, spacing: 2) {
             ForEach(calendar.days(), id: \.self) { date in
                 content(date).id(date)
             }

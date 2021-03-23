@@ -28,7 +28,7 @@ struct EventsView: View {
             if self.modelData.isDateHeaderNeeded(for: event.from) {
                 EventDateHeaderView(date: event.from)
             }
-            if event.calendar.calendarType == .personal && event.fullDay == false {
+            if event.fullDay == false {
                 if let url = URL(string: Constants.DeepLink.Event.openEvent(eventID: event.uid, calendarID: event.calendar.uid).url) {
                     Link(destination: url) {
                         EventView(event: event)
@@ -79,7 +79,7 @@ struct EventView: View {
                     if event.attendeesCount > 1 {
                         if event.eventStatus == .needAction {
                             if let user = event.organizer {
-                                if event.attendeesCount > 2 {
+                                if event.attendeesCount >= 2 {
                                     UsersView(user: user, count: event.attendeesCount, users: event.attendeesConnection.edges.map({$0.node.user}), color: event.calendar.color, status: event.eventStatus)
                                 }
                                 else {
@@ -146,16 +146,16 @@ struct UsersView: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: -7.0) {
-            if let urlString = user?.imageURL , let url = URL(string: urlString) {
-                URLImageView(url: url)
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 20, height: 20)
-                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    .overlay(Circle().stroke(Color.Event.eventUserBorder, lineWidth: 1))
-                    .accessibility(identifier: "UsersViewUserImage")
+            if users.count == 2 {
+                ForEach(self.users, id: \.email) { user in
+                    self.view(for: user)
+                }
+            }
+            else if let user = user {
+                self.view(for: user)
             }
             
-            if users.count > 0 {
+            if users.count > 2 {
                 ZStack {
                     Text(stringCount)
                         .font(.system(size: 11, weight: .semibold, design: .default))
@@ -172,6 +172,22 @@ struct UsersView: View {
             }
         }
         .accessibility(identifier: "UsersView")
+    }
+    
+    private func view(for user: User) -> some View {
+        Group {
+            if let urlString = user.imageURL , let url = URL(string: urlString) {
+                URLImageView(url: url)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 20, height: 20)
+                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                    .overlay(Circle().stroke(Color.Event.eventUserBorder, lineWidth: 1))
+                    .accessibility(identifier: "UsersViewUserImage")
+            }
+            else {
+                EmptyView()
+            }
+        }
     }
 }
 

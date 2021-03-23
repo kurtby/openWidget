@@ -29,6 +29,8 @@ class ViewController: UIViewController  {
             UserDefaults.appGroup.string(forKey: UserDefaults.Keys.token.rawValue)
         }
         set {
+            // Reset accessToken in widget too
+            UserDefaults.appGroup.set(nil, forKey: UserDefaults.Keys.accessTokenExpireDate.rawValue)
             UserDefaults.appGroup.set(newValue, forKey: UserDefaults.Keys.token.rawValue)
         }
     }
