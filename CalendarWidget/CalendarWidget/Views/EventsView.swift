@@ -120,12 +120,22 @@ struct EventView: View {
 }
 
 struct UsersView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
         
     let user: User?
     var count: Int
     var users: [User]
     var color: String
     var status: Event.Status
+    
+    var titleColor: Color {
+        Color.Event.Time.applyColor(originalColor: Color(hex: color), colorScheme: colorScheme)
+    }
+    
+    var backgroundColor: Color {
+        Color.Event.Time.applyColor(originalColor: Color(hex: color), colorScheme: colorScheme, reverse: true)
+    }
     
     var stringCount: String {
         if count > 999 {
@@ -149,12 +159,12 @@ struct UsersView: View {
                 ZStack {
                     Text(stringCount)
                         .font(.system(size: 11, weight: .semibold, design: .default))
-                        .foregroundColor(Color.Event.Time.title)
+                        .foregroundColor(status == .needAction ? Color(hex: "#858585") : titleColor)
                         .padding(.horizontal, count > 99 ? 4 : 2)
                         .frame(minWidth: 20)
                         .frame(height: 20)
                         .multilineTextAlignment(.center)
-                        .background(status == .needAction ? Color(hex: "#EBECEF") : Color(hex: color))
+                        .background(status == .needAction ? Color(hex: "#EBECEF") : backgroundColor)
                         .clipShape(Capsule())
                         .overlay(Capsule().stroke(Color.Event.eventUserBorder, lineWidth: 2))
                         .accessibility(identifier: "UsersViewCountLabel")
@@ -235,29 +245,33 @@ struct ButtonsPendingView: View {
 }
 
 struct TimeView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
  
     let event: Event
+    
+    var titleColor: Color {
+        Color.Event.Time.applyColor(originalColor: Color(hex: event.calendar.color), colorScheme: colorScheme)
+    }
+    
+    var backgroundColor: Color {
+        Color.Event.Time.applyColor(originalColor: Color(hex: event.calendar.color), colorScheme: colorScheme, reverse: true)
+    }
     
     var body: some View {
         ZStack {
             if event.eventStatus == .maybe {
                 Image("time_bg")
                     .renderingMode(.template)
-                    .foregroundColor(Color(hex: event.calendar.color))
+                    .foregroundColor(backgroundColor)
             }
             Text(event.from.timeString)
                 .font(.system(size: 11, weight: .semibold, design: .default))
-                .foregroundColor(event.eventStatus == .needAction ?
-                                    Color.Event.Time.titlePending :
-                                    Color.Event.Time.title)
+                .foregroundColor(event.eventStatus == .needAction ? Color.Event.Time.borderDashPending : titleColor)
                 .accessibility(identifier: "TimeViewTimeLabel")
         }
         .frame(width: 40, height: 22)
-        .if(event.eventStatus == .needAction || event.eventStatus == .maybe) {
-            $0.background(event.eventStatus == .needAction ? Color.clear : Color.Event.Time.background)
-        } else: {
-            $0.background(Color(hex: event.calendar.color))
-        }
+        .background(event.eventStatus == .needAction || event.eventStatus == .maybe ? Color.clear : backgroundColor)
         .cornerRadius(8)
         .if(event.eventStatus == .needAction || event.eventStatus == .maybe) {
             $0.overlay(
@@ -265,7 +279,7 @@ struct TimeView: View {
                     .strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [2,2]))
                     .foregroundColor(event.eventStatus == .needAction ?
                                         Color.Event.Time.borderDashPending :
-                                        Color(hex: event.calendar.color))
+                                        backgroundColor)
             )
         }
         .accessibility(identifier: "TimeView")
@@ -274,15 +288,17 @@ struct TimeView: View {
 }
 
 struct EventTextView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
 
     let title: String
     let color: String
     let isBirthday: Bool
-   
+    
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             RoundedRectangle(cornerRadius: 2, style: .circular)
-                .fill(Color.init(hex: color))
+                .fill(Color.Event.Time.applyColor(originalColor: Color(hex: color), colorScheme: colorScheme, reverse: true))
                 .frame(width: 4, height: 20)
             
             Text(isBirthday ? "День рождения \(title)" : title)

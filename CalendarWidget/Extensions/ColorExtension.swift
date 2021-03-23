@@ -55,6 +55,20 @@ extension Color {
     
 }
 
+extension Color.Event.Time {
+    
+    static func applyColor(originalColor: Color, colorScheme: ColorScheme, reverse: Bool = false) -> Color {
+        
+        if colorScheme == (reverse ? .light : .dark) { return originalColor }
+        
+        let hue = originalColor.hsl.hue
+        
+        return Color(hsl: Color.HSL(hue: hue, saturation: 50, lightness: 24))
+    }
+    
+}
+
+// Color hex init
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -80,4 +94,57 @@ extension Color {
             opacity: Double(a) / 255
         )
     }
+}
+
+// HSL Color
+extension Color {
+    
+    struct HSL: Hashable {
+        var hue: CGFloat
+        var saturation: CGFloat
+        var lightness: CGFloat
+    }
+    
+    init(hsl: HSL, alpha: CGFloat = 1.0) {
+        let h = hsl.hue / 360.0
+        var s = hsl.saturation / 100.0
+        let l = hsl.lightness / 100.0
+
+        let t = s * ((l < 0.5) ? l : (1.0 - l))
+        let b = l + t
+        s = (l > 0.0) ? (2.0 * t / b) : 0.0
+
+        self.init(hue: Double(h), saturation: Double(s), brightness: Double(b), opacity: Double(alpha))
+    }
+    
+    var hsl: HSL {
+        var (h, s, b) = (CGFloat(), CGFloat(), CGFloat())
+        
+        self.uiColor().getHue(&h, saturation: &s, brightness: &b, alpha: nil)
+        
+        let l = ((2.0 - s) * b) / 2.0
+
+        switch l {
+        case 0.0, 1.0:
+            s = 0.0
+        case 0.0..<0.5:
+            s = (s * b) / (l * 2.0)
+        default:
+            s = (s * b) / (2.0 - l * 2.0)
+        }
+
+        return HSL(hue: h * 360.0,
+                   saturation: s * 100.0,
+                   lightness: l * 100.0)
+    }
+    
+}
+
+// SwiftUI to UIColor
+extension Color {
+    
+    func uiColor() -> UIColor {
+        UIColor(self)
+    }
+    
 }
