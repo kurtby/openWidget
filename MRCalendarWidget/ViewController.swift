@@ -22,6 +22,8 @@ import WidgetKit
 class ViewController: UIViewController  {
      
     @IBOutlet private weak var calendarLabel: UILabel!
+    
+    @IBOutlet private weak var tokenTextField: UITextField!
 
 
     var refreshToken: String? {
@@ -93,6 +95,7 @@ extension ViewController: MRMailSDKDelegate {
     func mrMailSDK(_ sdk: MRMailSDK, authorizationDidFinishWith result: MRSDKAuthorizationResult) {
         if let token = result.refreshToken {
             refreshToken = token
+            self.tokenTextField.text = token
             WidgetCenter.shared.reloadAllTimelines()
         }
         else {

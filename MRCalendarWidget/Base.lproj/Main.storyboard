@@ -43,10 +43,18 @@
                                     <action selector="reloadWidgeButtonDidPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P8G-4p-h5s"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Тут будет токен" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mes-r1-pq6">
+                                <rect key="frame" x="16" y="419" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Mes-r1-pq6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="27p-Mo-hZe"/>
+                            <constraint firstItem="Mes-r1-pq6" firstAttribute="top" secondItem="z5w-4y-j9o" secondAttribute="bottom" constant="16" id="6Fo-w2-Iot"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mes-r1-pq6" secondAttribute="trailing" constant="16" id="9gZ-Qf-0b8"/>
                             <constraint firstItem="ucM-B4-3XF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DOb-Fd-1CZ"/>
                             <constraint firstItem="ucM-B4-3XF" firstAttribute="top" secondItem="Lxt-rn-qxi" secondAttribute="bottom" constant="112.5" id="R6Q-oR-TLT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lxt-rn-qxi" secondAttribute="trailing" constant="20" id="SPS-oo-Vdv"/>
@@ -61,6 +69,7 @@
                     </view>
                     <connections>
                         <outlet property="calendarLabel" destination="Lxt-rn-qxi" id="wHk-PU-HsA"/>
+                        <outlet property="tokenTextField" destination="Mes-r1-pq6" id="fSM-lP-alg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
