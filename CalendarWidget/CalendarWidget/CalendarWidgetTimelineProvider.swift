@@ -65,8 +65,7 @@ struct CalendarWidgetTimelineProvider: IntentTimelineProvider {
                 entry.data = data
                 entries.append(entry)
             }
-            #warning("check for no connection?")
-            
+         
             let timeline = Timeline(entries: entries, policy: .atEnd)
             completion(timeline)
         }

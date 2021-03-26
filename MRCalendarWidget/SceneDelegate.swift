@@ -86,6 +86,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         if type == "create" {
                             self.showAlert(with: "CREATE EVENT")
                         }
+                        else if type == "reload" {
+                            self.showAlert(with: "Reload Pressed")
+                            WidgetCenter.shared.reloadAllTimelines()
+                        }
                         else if type == "response" {
                             if let status = queryParams?["status"] as? String , let eventID =  queryParams?["eventID"] as? String , let calendarID = queryParams?["calendarID"] as? String {
                                 

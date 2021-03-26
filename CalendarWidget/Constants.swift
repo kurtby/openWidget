@@ -62,6 +62,7 @@ extension Constants.DeepLink {
         case event(EventResponse, eventID: String, calendarID: String)
         case openEvent(eventID: String, calendarID: String)
         case create
+        case reload
         case inbox
         case calendar
         case url(_ url: String)
@@ -74,6 +75,8 @@ extension Constants.DeepLink {
                 return prefix + "?action=event&type=open&eventID=\(eventID)&calendarID=\(calendarID)"
             case .create:
                return prefix + "?action=event&type=create"
+            case .reload:
+               return prefix + "?action=event&type=reload"
             case .inbox:
                 return Event.url("https://touch.calendar.mail.ru/inbox").url
             case .calendar:

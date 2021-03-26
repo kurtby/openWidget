@@ -24,6 +24,14 @@ class Network {
         var weather: Weather?
         var errors: [Error] = []
         var isHaveInvites: Bool = false
+        
+        var isNoConnection: Bool {
+            if let err = errors.first as? URLError, err.code == URLError.Code.notConnectedToInternet {
+                return true
+            }
+            
+            return false
+        }
     }
     
     struct TokenResponse: Decodable {
