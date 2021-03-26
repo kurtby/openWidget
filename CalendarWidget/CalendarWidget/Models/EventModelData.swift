@@ -10,7 +10,7 @@ import Foundation
 class EventModelData {
     
     struct EventCalendar {
-        let day: Int
+        let date: DateComponents
         var events: [Event]
     }
     
@@ -46,16 +46,16 @@ class EventModelData {
         }
       
         // Group events by week day
-        let groupedByDay = Dictionary(grouping: nextEvents, by: { Int($0.from.shortDateString) ?? 0 })
+        let groupedByDay = Dictionary(grouping: nextEvents, by: { $0.from.components })
       
         // Map and sort events
-        self.days = groupedByDay.map { (day, events) -> EventCalendar in
+        self.days = groupedByDay.map { (date, events) -> EventCalendar in
             let sortedEvents = events.sorted(by: { ($0.orderFullday, $0.from, $0.orderPriority) < ($1.orderFullday, $1.from, $1.orderPriority) })
-            return EventCalendar(day: day, events: sortedEvents)
+            return EventCalendar(date: date, events: sortedEvents)
         }
         
         // Sort days
-        self.days.sort(by: {$0.day < $1.day})
+        self.days.sort(by: {($0.date.year ?? 0, $0.date.month ?? 0, $0.date.day ?? 0) < ($1.date.year ?? 0, $1.date.month ?? 0, $1.date.day ?? 0)})
 
         // Flat array
         let sortedEvents = self.days.flatMap({$0.events})
