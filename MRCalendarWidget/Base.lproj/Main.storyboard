@@ -48,6 +48,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDn-QT-Ipo">
+                                <rect key="frame" x="158" y="309.5" width="98" height="30"/>
+                                <state key="normal" title="Request Inbox"/>
+                                <connections>
+                                    <action selector="requestInboxButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TCy-7c-kQo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -56,6 +63,8 @@
                             <constraint firstItem="Mes-r1-pq6" firstAttribute="top" secondItem="z5w-4y-j9o" secondAttribute="bottom" constant="16" id="6Fo-w2-Iot"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mes-r1-pq6" secondAttribute="trailing" constant="16" id="9gZ-Qf-0b8"/>
                             <constraint firstItem="ucM-B4-3XF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DOb-Fd-1CZ"/>
+                            <constraint firstItem="IDn-QT-Ipo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GEp-hI-Cns"/>
+                            <constraint firstItem="IDn-QT-Ipo" firstAttribute="top" secondItem="iXI-Jt-iu4" secondAttribute="bottom" constant="10" id="H3J-Yn-7l7"/>
                             <constraint firstItem="ucM-B4-3XF" firstAttribute="top" secondItem="Lxt-rn-qxi" secondAttribute="bottom" constant="112.5" id="R6Q-oR-TLT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lxt-rn-qxi" secondAttribute="trailing" constant="20" id="SPS-oo-Vdv"/>
                             <constraint firstItem="z5w-4y-j9o" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ds0-Lw-svz"/>

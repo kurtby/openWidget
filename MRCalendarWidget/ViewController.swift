@@ -66,7 +66,6 @@ class ViewController: UIViewController  {
         }
         retrieveAccessToken(refreshToken: token) { (accessToken) in
             if let token = accessToken {
-                
                 self.requestCalendars(accessToken: token) { (calendars) in
                     if let calendars = calendars {
                         self.calendarLabel.text = calendars.reduce("", { (str, calendar) -> String in
@@ -83,6 +82,30 @@ class ViewController: UIViewController  {
             }
         }
     }
+    
+    @IBAction private func requestInboxButtonPressed(_ sender: UIButton) {
+        guard let token = refreshToken else {
+            calendarLabel.text = "Получите вначале refresh token!!!"
+            return
+        }
+        retrieveAccessToken(refreshToken: token) { (accessToken) in
+            if let token = accessToken {
+                self.requestInbox(accessToken: token) { (haveInvites) in
+                    if haveInvites {
+                        self.calendarLabel.text = "У вас ЕСТЬ приглашения"
+                    }
+                    else {
+                        self.calendarLabel.text = "У вас НЕТ приглашений"
+                    }
+                }
+            }
+            else {
+                self.calendarLabel.text = "Не удалось получить access token!!!"
+            }
+        }
+    }
+    
+    
 }
 
 extension ViewController: MRMailSDKUIDelegate {
@@ -174,7 +197,6 @@ fileprivate extension ViewController {
             "query":"query FetchCalendarsWidget {calendars {uid, title, type, color } }"
         ]
         
-    
         
         sendPostRequest(
             urlString: "https://calendar.mail.ru/graphql",
@@ -253,6 +275,57 @@ fileprivate extension ViewController {
                 completion(nil)
             }
         }
+    }
+    
+    func requestInbox(accessToken: String, completion: @escaping (Bool) -> Void) {
+        
+        struct InboxResponse: Decodable {
+            let data: Inbox
+            
+            struct Inbox: Decodable {
+                let inbox: Events
+            }
+            
+            struct Events: Decodable {
+                let events: HasEvents
+            }
+            
+            struct HasEvents: Decodable {
+                let hasEvents: Bool
+            }
+        }
+        
+        let headers = [
+            "Authorization" : "Bearer \(accessToken)",
+            "Accept"        : "application/json",
+            "Content-Type"  : "application/json"
+        ]
+
+        let parameters = [
+            "operationName" : "InboxWidget",
+            "query" : "query InboxWidget {inbox{events {hasEvents}}}"
+        ]
+        
+        sendPostRequest(
+            urlString: "https://calendar.mail.ru/graphql",
+            additionalHeaders: headers,
+            jsonParameters: parameters) { (result) in
+            switch result {
+            case .success(let data):
+                let decoder = JSONDecoder()
+                
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let result = try? decoder.decode(InboxResponse.self, from: data) {
+                    completion(result.data.inbox.events.hasEvents)
+                }
+                else {
+                    completion(false)
+                }
+            case .failure:
+                completion(false)
+            }
+        }
+        
     }
     
 

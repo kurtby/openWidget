@@ -12,6 +12,10 @@ extension Date {
     var shortDateString: String {
         DateFormatter.format(self, format: "d")
     }
+        
+    var components: DateComponents {
+        Calendar.current.dateComponents(Set(arrayLiteral: .day, .month, .year), from: self)
+    }
     
     var timeString: String {
         DateFormatter.format(self, format: "HH:mm")
