@@ -58,7 +58,16 @@ struct EventView: View {
     var subTitle: String {
         var text = "до \(event.to.timeString)"
         
-        if let location = event.location , location.description.count > 0 {
+        if let _ = event.call {
+            if let location = event.location , location.description.count > 0 {
+                text.append(" в \(location.description)")
+                text.append(", в звонке")
+            }
+            else {
+                text.append(" в звонке")
+            }
+        }
+        else if let location = event.location , location.description.count > 0 {
             text.append(" в \(location.description)")
         }
         
