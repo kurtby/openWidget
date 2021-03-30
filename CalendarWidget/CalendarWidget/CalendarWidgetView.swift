@@ -137,7 +137,7 @@ struct BootomView: View {
     var counter: BottomCounter {
         var counter = BottomCounter()
         let needActionCount = events.filter({$0.eventStatus == .needAction}).count
-        let personalCount = events.filter({Calendar.current.isDateInToday($0.from) && $0.fullDay == false}).count
+        let personalCount = events.filter({Calendar.current.isDateInToday($0.from)}).count
         
         if isHaveInvites {
             counter.type = "calendar_bottom_invite_title".localized
