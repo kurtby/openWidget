@@ -56,19 +56,20 @@ struct EventView: View {
     let event: Event
 
     var subTitle: String {
-        var text = "до \(event.to.timeString)"
+        var text = "\("calendar_event_sub_title_to".localized) \(event.to.timeString)"
         
         if let _ = event.call {
             if let location = event.location , location.description.count > 0 {
-                text.append(" в \(location.description)")
-                text.append(", в звонке")
+                text.append(" \("calendar_event_sub_title_in".localized) \(location.description)")
+                text.append(", \("calendar_event_sub_title_in_call".localized)")
             }
             else {
-                text.append(" в звонке")
+                text.append(" ")
+                text.append("calendar_event_sub_title_in_call".localized)
             }
         }
         else if let location = event.location , location.description.count > 0 {
-            text.append(" в \(location.description)")
+            text.append(" \("calendar_event_sub_title_in".localized) \(location.description)")
         }
         
         return text
@@ -79,7 +80,7 @@ struct EventView: View {
             TimeView(event: event)
             VStack(alignment: .leading, spacing: 2) {
                 HStack {
-                    Text(event.title.isEmpty ? "Без названия" : event.title)
+                    Text(event.title.isEmpty ? "calendar_event_title_no_name".localized : event.title)
                         .font(.system(size: 15, weight: .semibold, design: .default))
                         .foregroundColor(Color.buttonTextTitle)
                         .lineLimit(1)
@@ -212,7 +213,7 @@ struct ButtonСallView: View {
                         .padding(.top, 12)
                         .padding(.bottom, 12)
                         .accessibility(identifier: "ButtonСallViewIconImage")
-                    Text("Присоединиться к звонку")
+                    Text("calendar_event_buttons_call_title".localized)
                         .font(.system(size: 13, weight: .medium, design: .default))
                         .foregroundColor(Color.buttonTextTitle)
                         .padding(.trailing, 18)
@@ -242,9 +243,9 @@ struct ButtonsPendingView: View {
     }
     
     private var buttons: [ButtonData] {
-        [.init(title: "Иду", scheme: Constants.DeepLink.Event.event(.yes, eventID: event.uid, calendarID: event.calendar.uid).url),
-         .init(title: "Не иду", scheme: Constants.DeepLink.Event.event(.no, eventID: event.uid, calendarID: event.calendar.uid).url),
-         .init(title: "Может быть", scheme: Constants.DeepLink.Event.event(.maybe, eventID: event.uid, calendarID: event.calendar.uid).url)]
+        [.init(title: "calendar_event_buttons_going_title".localized, scheme: Constants.DeepLink.Event.event(.yes, eventID: event.uid, calendarID: event.calendar.uid).url),
+         .init(title: "calendar_event_buttons_notgoing_title".localized, scheme: Constants.DeepLink.Event.event(.no, eventID: event.uid, calendarID: event.calendar.uid).url),
+         .init(title: "calendar_event_buttons_maybe_title".localized, scheme: Constants.DeepLink.Event.event(.maybe, eventID: event.uid, calendarID: event.calendar.uid).url)]
     }
     
     var body: some View {
@@ -326,7 +327,7 @@ struct EventTextView: View {
                 .fill(Color.Event.Time.applyColor(originalColor: Color(hex: color), colorScheme: colorScheme, reverse: true))
                 .frame(width: 4, height: 20)
             
-            Text(isBirthday ? "День рождения \(title)" : title)
+            Text(isBirthday ? "\("calendar_event_text_birthday_title".localized) \(title)" : title)
                 .font(.system(size: 15, weight: .regular, design: .default))
                 .foregroundColor(Color.buttonTextTitle)
                 .lineLimit(2)

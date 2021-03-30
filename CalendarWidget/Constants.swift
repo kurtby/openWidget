@@ -37,14 +37,14 @@ extension Constants.WidgetKind {
     var displayName: String {
         switch self {
         case .calendarWidget:
-            return "Mail.ru виджет"
+            return "calendar_widget_name".localized
         }
     }
     
     var description: String {
         switch self {
         case .calendarWidget:
-            return "Календарь, Погода, События"
+            return "calendar_widget_name".localized
         }
     }
     

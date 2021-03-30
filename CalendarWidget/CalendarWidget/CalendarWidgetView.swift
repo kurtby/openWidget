@@ -20,7 +20,7 @@ struct CalendarWidgetEntryView: View {
     
     var body: some View {
         if entry.data.isNoConnection {
-            NoInternetConnection()
+            NoInternetConnectionView()
         }
         else {
             ZStack(alignment: .bottom) {
@@ -91,7 +91,7 @@ struct CalendarWidgetEntryView: View {
 struct NoEventsFoundView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
-            Text("На сегодня событий больше нет")
+            Text("calendar_no_events_found_title".localized)
                 .font(.system(size: 15, weight: .regular, design: .default))
                 .foregroundColor(.emptyTextInfo)
                 .frame(width: 157)
@@ -101,7 +101,7 @@ struct NoEventsFoundView: View {
             if let url = URL(string: Constants.DeepLink.Event.create.url) {
                 Link(destination: url) {
                     HStack(spacing: 4) {
-                        Text("Создать").font(.system(size: 15, weight: .regular, design: .default)).foregroundColor(.buttonTextTitle)
+                        Text("calendar_no_events_found_button".localized).font(.system(size: 15, weight: .regular, design: .default)).foregroundColor(.buttonTextTitle)
                         Image("button_icon_plus")
                     }
                     
@@ -140,7 +140,7 @@ struct BootomView: View {
         let personalCount = events.filter({Calendar.current.isDateInToday($0.from) && $0.fullDay == false}).count
         
         if isHaveInvites {
-            counter.type = "Приглашения"
+            counter.type = "calendar_bottom_invite_title".localized
             counter.count = needActionCount == 0 ? 1 : needActionCount
         }
         else if personalCount > 0 {
@@ -197,7 +197,7 @@ struct BootomView: View {
     }
 }
 
-struct NoInternetConnection: View {
+struct NoInternetConnectionView: View {
     var body: some View {
         ZStack(alignment: .top) {
             HStack {
@@ -209,7 +209,7 @@ struct NoInternetConnection: View {
             .padding(.trailing, 15)
             
             VStack(alignment: .center, spacing: 24) {
-                Text("Ошибка загрузки данных из сети")
+                Text("calendar_no_internet_connection_title".localized)
                     .font(.system(size: 15, weight: .regular, design: .default))
                     .foregroundColor(.emptyTextInfo)
                     .frame(width: 200)
@@ -220,7 +220,7 @@ struct NoInternetConnection: View {
                     Link(destination: url) {
                         HStack(spacing: 10) {
                             Image("button_icon_reload")
-                            Text("Повторить загрузку").font(.system(size: 15, weight: .regular, design: .default)).foregroundColor(.buttonTextTitle)
+                            Text("calendar_no_internet_connection_button".localized).font(.system(size: 15, weight: .regular, design: .default)).foregroundColor(.buttonTextTitle)
                         }
                         
                     }

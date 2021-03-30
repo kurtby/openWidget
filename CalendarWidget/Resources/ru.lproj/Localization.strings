@@ -1,0 +1,43 @@
+/* 
+  Localization.strings
+  MRCalendarWidget
+
+  Created by Valentine Eyiubolu on 30.03.21.
+  
+*/
+
+// Common
+"calendar_widget_name" = "Mail.ru виджет";
+"calendar_widget_description" = "Календарь, Погода, События";
+
+// NoEventsFoundView
+"calendar_no_events_found_title" = "На сегодня событий больше нет";
+"calendar_no_events_found_button" = "Создать";
+
+// BootomView
+"calendar_bottom_invite_title" = "Приглашения";
+
+// NoInternetConnectionView
+"calendar_no_internet_connection_title" = "Ошибка загрузки данных из сети";
+"calendar_no_internet_connection_button" = "Повторить загрузку";
+
+// EventView
+"calendar_event_sub_title_to" = "до";
+"calendar_event_sub_title_in" = "в";
+"calendar_event_sub_title_in_call" = "в звонке";
+"calendar_event_title_no_name" = "Без названия";
+
+// ButtonСallView
+"calendar_event_buttons_call_title" = "Присоединиться к звонку";
+
+// ButtonsPendingView
+"calendar_event_buttons_pending_title" = "Присоединиться к звонку";
+
+"calendar_event_buttons_going_title" = "Иду";
+"calendar_event_buttons_notgoing_title" = "Не иду";
+"calendar_event_buttons_maybe_title" = "Может быть";
+
+// EventTextView
+"calendar_event_text_birthday_title" = "День рождения";
+
+
