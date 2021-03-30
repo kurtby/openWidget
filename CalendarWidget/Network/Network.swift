@@ -76,11 +76,11 @@ class Network {
             if let error = error {
                 self.response.errors.append(error)
             }
+            
             dispatchGroup.leave()
         }
-        
-        dispatchGroup.notify(queue: .main) {
-            
+               
+        dispatchGroup.notifyWait(target: .main, timeout: .now() + 15) {
             print("DONE")
             print("ERRORS: ---->>", self.response.errors.count)
             print("Events: --->", self.response.events?.count)
@@ -91,7 +91,7 @@ class Network {
         }
         
     }
-    
+
     public func loadEvents(complete: @escaping EventsBlock) {
       
         func runRequest() {
@@ -288,3 +288,4 @@ extension Network {
     }
     
 }
+
