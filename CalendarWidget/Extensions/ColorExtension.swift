@@ -21,11 +21,13 @@ extension Color {
         
         static let viewWeekDay = Color("CalendarViewWeekDay")
         
-        static let viewCurrentDay = Color("CalendarViewCurrentDay")
+        static let viewCurrentDayBackground = Color("CalendarViewCurrentDayBackground")
         
         static let viewCurrentDayShadow = Color("CalendarViewCurrentDayShadow")
         
         static let viewDarkBackground = Color("CalendarViewDarkBackground")
+        
+        static let currentDayTitle = Color("CalendarViewCurrentDay")
     }
     
     struct Event {

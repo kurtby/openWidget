@@ -30,9 +30,9 @@ struct CalendarWidgetEntryView: View {
                             CalendarView { date in
                                 Text(date.shortDateString)
                                     .font(.system(size: 10))
-                                    .foregroundColor(Calendar.current.isDateInWeekend(date) || !Calendar.current.isDate(date, equalTo: Date(), toGranularity: .month) ?  Color.Calendar.viewWeekDay : Color.Calendar.viewDay)
+                                    .foregroundColor(getDayColor(date: date))
                                     .frame(width: 20, height: 20)
-                                    .background(Calendar.current.isDateInToday(date) ? Color.Calendar.viewCurrentDay : Color.clear)
+                                    .background(Calendar.current.isDateInToday(date) ? Color.Calendar.viewCurrentDayBackground : Color.clear)
                                     .cornerRadius(8)
                                     .shadow(color: colorScheme == .light ? Color.Calendar.viewCurrentDayShadow : .clear, radius: 28, x: 0, y: 5)
                                     .shadow(color: colorScheme == .light ? Color.Calendar.viewCurrentDayShadow : .clear, radius: 10, x: 0, y: 4)
@@ -77,7 +77,14 @@ struct CalendarWidgetEntryView: View {
                 }
             }
         }
-     
+    }
+    
+    private func getDayColor(date: Date) -> Color {
+        if Calendar.current.isDateInToday(date) {
+            return Color.Calendar.currentDayTitle
+        }
+   
+        return (Calendar.current.isDateInWeekend(date) || !Calendar.current.isDate(date, equalTo: Date(), toGranularity: .month) ? Color.Calendar.viewWeekDay : Color.Calendar.viewDay)
     }
 }
 
