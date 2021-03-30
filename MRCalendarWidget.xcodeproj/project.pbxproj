@@ -59,8 +59,8 @@
 		A3D2F2B325DFB27900843381 /* CalendarWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F2B225DFB27900843381 /* CalendarWidgetView.swift */; };
 		A3D2F2B925DFB3CD00843381 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F2B825DFB3CD00843381 /* Constants.swift */; };
 		A3D2F2BD25DFB6BB00843381 /* CalendarWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F2BC25DFB6BB00843381 /* CalendarWidgetEntry.swift */; };
-		A3FFA6B32613235800CEA163 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3FFA6B52613235800CEA163 /* Localization.strings */; };
-		A3FFA6B826132B4700CEA163 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3FFA6B52613235800CEA163 /* Localization.strings */; };
+		A3FFA6B32613235800CEA163 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3FFA6B52613235800CEA163 /* Localizable.strings */; };
+		A3FFA6B826132B4700CEA163 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3FFA6B52613235800CEA163 /* Localizable.strings */; };
 		A3FFA6BB26132B4D00CEA163 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F29925DF9D3100843381 /* StringExtension.swift */; };
 		AC42E9AE25C82A9F0052ACBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42E9AD25C82A9F0052ACBF /* AppDelegate.swift */; };
 		AC42E9B025C82A9F0052ACBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42E9AF25C82A9F0052ACBF /* SceneDelegate.swift */; };
@@ -154,7 +154,7 @@
 		A3D2F2B225DFB27900843381 /* CalendarWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetView.swift; sourceTree = "<group>"; };
 		A3D2F2B825DFB3CD00843381 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3D2F2BC25DFB6BB00843381 /* CalendarWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetEntry.swift; sourceTree = "<group>"; };
-		A3FFA6B42613235800CEA163 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localization.strings; sourceTree = "<group>"; };
+		A3FFA6B42613235800CEA163 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AC42E9AA25C82A9F0052ACBF /* MRCalendarWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MRCalendarWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC42E9AD25C82A9F0052ACBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC42E9AF25C82A9F0052ACBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 				A342AAB625D13E0600C52083 /* Assets.xcassets */,
 				A342AAB825D13E0600C52083 /* Info.plist */,
 				A3528BE12604D300003AE981 /* Localizable.stringsdict */,
-				A3FFA6B52613235800CEA163 /* Localization.strings */,
+				A3FFA6B52613235800CEA163 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -453,7 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3FFA6B826132B4700CEA163 /* Localization.strings in Resources */,
+				A3FFA6B826132B4700CEA163 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A342AAB725D13E0600C52083 /* Assets.xcassets in Resources */,
-				A3FFA6B32613235800CEA163 /* Localization.strings in Resources */,
+				A3FFA6B32613235800CEA163 /* Localizable.strings in Resources */,
 				A3528BE72604D305003AE981 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,12 +564,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A3FFA6B52613235800CEA163 /* Localization.strings */ = {
+		A3FFA6B52613235800CEA163 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A3FFA6B42613235800CEA163 /* ru */,
 			);
-			name = Localization.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		AC42E9B325C82AA00052ACBF /* Main.storyboard */ = {
