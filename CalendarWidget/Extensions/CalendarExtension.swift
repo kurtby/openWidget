@@ -13,14 +13,14 @@ extension Calendar {
     func days(for date: Date = Date()) -> [Date] {
         
         // Previous Week
-        guard let prevWeekDate = self.date(byAdding: DateComponents(weekOfYear: -1), to: date) else {
+        guard let prevWeekDate = self.date(byAdding: .weekOfYear, value: -1, to: date) else {
             return []
         }
          
         let startDayOfDate = prevWeekDate.dateStart(.weekOfYear, calendar: self)
         
         // Next Week
-        guard let nextWeekDate = self.date(byAdding: DateComponents(weekOfYear: 1), to: date) else {
+        guard let nextWeekDate = self.date(byAdding: .weekOfYear, value: 1, to: date) else {
             return []
         }
     
@@ -32,7 +32,7 @@ extension Calendar {
     }
     
     func generateDates(inside interval: DateInterval, matching components: DateComponents) -> [Date] {
-        var dates: [Date] = .init()
+        var dates: [Date] = []
         dates.append(interval.start)
 
         enumerateDates(startingAfter: interval.start, matching: components, matchingPolicy: .nextTime) { date, _, stop in

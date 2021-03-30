@@ -85,12 +85,7 @@ struct CalendarView<DateView>: View where DateView: View {
     }
     
     private func weekDaysSorted() -> [String] {
-        var weekDays = Calendar.current.veryShortWeekdaySymbols
-        
-        // Need to cut last character because of design style in ru locale
-        if let locale = Locale.current.languageCode , locale == "ru" {
-            weekDays = weekDays.map { String($0.dropLast()) }
-        }
+        let weekDays = Calendar.current.veryShortStandaloneWeekdaySymbols
         
         let sortedWeekDays = Array(weekDays[Calendar.current.firstWeekday - 1 ..< Calendar.current.shortWeekdaySymbols.count] + weekDays[0 ..< Calendar.current.firstWeekday - 1])
         return sortedWeekDays

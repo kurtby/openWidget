@@ -148,7 +148,7 @@ struct UsersView: View {
     
     var stringCount: String {
         if count > 999 {
-            return "\(999)+"
+            return "999+"
         }
         return "\(count)"
     }

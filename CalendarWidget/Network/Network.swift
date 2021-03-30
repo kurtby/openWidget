@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 class Network {
     
@@ -39,7 +38,7 @@ class Network {
         let expiresIn: Int
     }
     
-    private var response: ResponseData = .init()
+    private var response: ResponseData = ResponseData()
     
     public func loadData(complete: @escaping DataBlock) {
         
