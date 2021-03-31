@@ -25,9 +25,15 @@ struct EventParams {
 extension APIEndpoint: APIRequestBuilder {
     
     var headers: [String: String] {
-        ["Authorization" : "Bearer \(UserDefaults.appGroup.string(forKey: UserDefaults.Keys.accessToken.rawValue) ?? "")",
-        "Accept"        : "application/json",
+        var defaultHeaders =
+        ["Accept"       : "application/json",
         "Content-Type"  : "application/json"]
+        
+        if let token = Defaults.get(.accessToken) {
+            defaultHeaders["Authorization"] = "Bearer \(token)"
+        }
+        
+        return defaultHeaders
     }
     
     var baseURL: URL {
@@ -104,14 +110,15 @@ extension APIEndpoint: APIRequestBuilder {
             var request = URLRequest(url: baseURL)
             request.httpMethod = "POST"
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            
-            let refreshToken = UserDefaults.appGroup.string(forKey: UserDefaults.Keys.token.rawValue)
-            
-            let parameters = [
+        
+            var parameters = [
                 "client_id": Constants.App.clientID,
-                "grant_type": "refresh_token",
-                "refresh_token": refreshToken
+                "grant_type": "refresh_token"
             ]
+            
+            if let refreshToken = Defaults.get(.token) as? String {
+                parameters["refresh_token"] = refreshToken
+            }
             
             var postUrlComponents = URLComponents()
             postUrlComponents.queryItems = parameters.compactMap { URLQueryItem(name: $0, value: $1) }

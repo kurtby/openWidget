@@ -122,12 +122,13 @@ class Network {
             self.loadAccessToken { (response, error) in
                 
                 if let response = response , response.accessToken.count > 0  {
-                    UserDefaults.appGroup.setValue(response.accessToken, forKey: UserDefaults.Keys.accessToken.rawValue)
+                    
+                    Defaults.save(response.accessToken, .accessToken)
                     
                     var expireDate = Date()
                     expireDate.addTimeInterval(TimeInterval(response.expiresIn))
                 
-                    UserDefaults.appGroup.setValue(expireDate, forKey: UserDefaults.Keys.accessTokenExpireDate.rawValue)
+                    Defaults.save(expireDate, .accessTokenExpireDate)
                     
                     runRequest()
                 }
@@ -157,8 +158,8 @@ class Network {
     }
     
     public func loadAccessToken(complete: @escaping TokenBlock) {
-        
-        guard let _ = UserDefaults.appGroup.string(forKey: UserDefaults.Keys.token.rawValue) else {
+     
+        guard let _ = Defaults.get(.token) as? String else {
             print("NO REFRESH TOKEN GO TO MAIN TARGET APP")
             complete(nil, nil)
             return
@@ -249,7 +250,7 @@ extension Network {
 extension Network {
     
     var isTokenExistAndAlive: Bool {
-        if let expireDate = UserDefaults.appGroup.object(forKey: UserDefaults.Keys.accessTokenExpireDate.rawValue) as? Date {
+        if let expireDate = Defaults.get(.accessTokenExpireDate) as? Date {
             if expireDate < Date() {
                 print("TOKEN EXPIRED", expireDate)
                 return false

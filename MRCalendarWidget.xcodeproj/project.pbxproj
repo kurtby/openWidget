@@ -30,7 +30,6 @@
 		A3555D8A25DD12E100649177 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3555D8725DD12DE00649177 /* EventsView.swift */; };
 		A395775D2608AB94001A9288 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F2B825DFB3CD00843381 /* Constants.swift */; };
 		A39D1BBE25DFE1F000C28833 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
-		A39D1BC025DFE1F500C28833 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
 		A3C277A8260111C300311626 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C277A7260111C200311626 /* Inbox.swift */; };
 		A3C277A9260111C300311626 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C277A7260111C200311626 /* Inbox.swift */; };
 		A3C7F7D025F695E300BC6CB2 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C7F7CF25F695E300BC6CB2 /* Calendar.swift */; };
@@ -38,7 +37,6 @@
 		A3C7F7D425F6977E00BC6CB2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324AC0625E39ADD00144635 /* Network.swift */; };
 		A3C7F7D725F697D000BC6CB2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33496FC25E3BB6600668641 /* Weather.swift */; };
 		A3C7F7DA25F697D400BC6CB2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F27B25DEFD3700843381 /* Event.swift */; };
-		A3C7F7DD25F697E200BC6CB2 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
 		A3C7F7E025F697F600BC6CB2 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F27025DEF8FC00843381 /* APIError.swift */; };
 		A3C7F7E125F697F600BC6CB2 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F26725DEF7E800843381 /* APIEndpoint.swift */; };
 		A3C7F7E225F697F600BC6CB2 /* APIRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F26D25DEF8BB00843381 /* APIRequestBuilder.swift */; };
@@ -64,6 +62,8 @@
 		A3FFA6BB26132B4D00CEA163 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F29925DF9D3100843381 /* StringExtension.swift */; };
 		A3FFA6C62613619D00CEA163 /* DispatchGroupExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FFA6C52613619D00CEA163 /* DispatchGroupExtension.swift */; };
 		A3FFA6C72613619D00CEA163 /* DispatchGroupExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FFA6C52613619D00CEA163 /* DispatchGroupExtension.swift */; };
+		A3FFA6CB26145B4400CEA163 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FFA6CA26145B4400CEA163 /* Defaults.swift */; };
+		A3FFA6CC26145B4400CEA163 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FFA6CA26145B4400CEA163 /* Defaults.swift */; };
 		AC42E9AE25C82A9F0052ACBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42E9AD25C82A9F0052ACBF /* AppDelegate.swift */; };
 		AC42E9B025C82A9F0052ACBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42E9AF25C82A9F0052ACBF /* SceneDelegate.swift */; };
 		AC42E9B225C82AA00052ACBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42E9B125C82AA00052ACBF /* ViewController.swift */; };
@@ -158,6 +158,7 @@
 		A3D2F2BC25DFB6BB00843381 /* CalendarWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetEntry.swift; sourceTree = "<group>"; };
 		A3FFA6B42613235800CEA163 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A3FFA6C52613619D00CEA163 /* DispatchGroupExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchGroupExtension.swift; sourceTree = "<group>"; };
+		A3FFA6CA26145B4400CEA163 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		AC42E9AA25C82A9F0052ACBF /* MRCalendarWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MRCalendarWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC42E9AD25C82A9F0052ACBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC42E9AF25C82A9F0052ACBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +215,7 @@
 			children = (
 				A3D2F2B825DFB3CD00843381 /* Constants.swift */,
 				A3D2F2A925DFACD800843381 /* WidgetsBundle.swift */,
+				A3FFA6CA26145B4400CEA163 /* Defaults.swift */,
 				A3D2F2AE25DFB00B00843381 /* CalendarWidget */,
 				A3D2F25B25DEEA7000843381 /* Network */,
 				A3D2F28E25DF9ABF00843381 /* Extensions */,
@@ -499,8 +501,8 @@
 				A32CF8C825F0ED36008CFACC /* IntentHandler.swift in Sources */,
 				A3C7F7DA25F697D400BC6CB2 /* Event.swift in Sources */,
 				A3C7F7E925F698BA00BC6CB2 /* DateExtension.swift in Sources */,
+				A3FFA6CC26145B4400CEA163 /* Defaults.swift in Sources */,
 				A3C7F7E025F697F600BC6CB2 /* APIError.swift in Sources */,
-				A3C7F7DD25F697E200BC6CB2 /* UserDefaultsExtension.swift in Sources */,
 				A395775D2608AB94001A9288 /* Constants.swift in Sources */,
 				A3C7F7E225F697F600BC6CB2 /* APIRequestBuilder.swift in Sources */,
 				A3C7F7D725F697D000BC6CB2 /* Weather.swift in Sources */,
@@ -518,7 +520,6 @@
 				A32CF8B625F0CF1B008CFACC /* URLImageView.swift in Sources */,
 				A3D2F2A625DFAA4900843381 /* CalendarWidgetTimelineProvider.swift in Sources */,
 				A3D2F28925DEFEAE00843381 /* APIRequestBuilder.swift in Sources */,
-				A39D1BC025DFE1F500C28833 /* UserDefaultsExtension.swift in Sources */,
 				A3D2F2B325DFB27900843381 /* CalendarWidgetView.swift in Sources */,
 				A3FFA6C62613619D00CEA163 /* DispatchGroupExtension.swift in Sources */,
 				A3D2F2AA25DFACD800843381 /* WidgetsBundle.swift in Sources */,
@@ -537,6 +538,7 @@
 				A3D2F29D25DF9D9400843381 /* DateExtension.swift in Sources */,
 				A3D2F28825DEFEAE00843381 /* APIEndpoint.swift in Sources */,
 				A3D2F28B25DEFEAE00843381 /* APIError.swift in Sources */,
+				A3FFA6CB26145B4400CEA163 /* Defaults.swift in Sources */,
 				A324AC0725E39ADD00144635 /* Network.swift in Sources */,
 				A3D2F2B925DFB3CD00843381 /* Constants.swift in Sources */,
 			);

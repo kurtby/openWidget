@@ -11,6 +11,7 @@ struct Constants {
     
     struct App {
         static let clientID: String = "685d470d9fdc4dd9be87e784f328e5e9"
+        static let appGroupBundle: String = "group.ru.mail.calendar.widget"
     }
     
     struct Timing {
