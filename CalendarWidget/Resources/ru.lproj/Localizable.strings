@@ -7,8 +7,8 @@
 */
 
 // Common
-"calendar_widget_name" = "Mail.ru виджет";
-"calendar_widget_description" = "Календарь, Погода, События";
+"calendar_widget_name" = "Календарь Mail.ru";
+"calendar_widget_description" = "Показывает встречи и приглашения, напоминает о планах, предупреждает о погоде.";
 
 // NoEventsFoundView
 "calendar_no_events_found_title" = "На сегодня событий больше нет";
