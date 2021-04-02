@@ -45,7 +45,7 @@ extension Constants.WidgetKind {
     var description: String {
         switch self {
         case .calendarWidget:
-            return "calendar_widget_name".localized
+            return "calendar_widget_description".localized
         }
     }
     
