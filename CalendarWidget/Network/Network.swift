@@ -16,7 +16,10 @@ class Network {
     typealias EventsBlock = (EventResponse?, Error?) -> Void
     typealias CalendarBlock = (CalendarResponse?, Error?) -> Void
     typealias InboxBlock = (Bool, Error?) -> Void
-    typealias TokenBlock = (TokenResponse?, Error?) -> Void
+    
+    private var isLoading: Bool = false
+    
+    private let tokenManager: APITokenManager = APITokenManager(maxRetryCount: 5)
     
     struct ResponseData {
         var events: [Event]?
@@ -31,16 +34,29 @@ class Network {
             
             return false
         }
-    }
-    
-    struct TokenResponse: Decodable {
-        let accessToken: String
-        let expiresIn: Int
+        
+        var isNeedAuth: Bool {
+            if let err = errors.first as? URLError, err.code == URLError.Code.userAuthenticationRequired {
+                return true
+            }
+            
+            return false
+        }
     }
     
     private var response: ResponseData = ResponseData()
     
+    private var completeBlock: DataBlock = { _,_  in }
+    
     public func loadData(complete: @escaping DataBlock) {
+  
+        if self.isLoading {
+            return
+        }
+        
+        self.response = ResponseData()
+        self.completeBlock = complete
+        self.isLoading = true
         
         let dispatchGroup = DispatchGroup()
         
@@ -81,60 +97,51 @@ class Network {
         }
                
         dispatchGroup.notifyWait(target: .main, timeout: .now() + 15) {
-            print("DONE")
+            if self.isLoading {
+                self.isLoading = false
+            }
+            
+            print("DONE", self.isLoading)
             print("ERRORS: ---->>", self.response.errors.count)
             print("Events: --->", self.response.events?.count)
             print("Is have invites: -->", self.response.isHaveInvites)
             print("Weather: ---> ", self.response.weather?.temperature)
             
-            complete(self.response, self.response.errors.first)
+            if self.response.isNeedAuth {
+                self.tokenManager.requestAccessToken { (_, error) in
+                    if error == nil {
+                        self.isLoading = false
+                        self.loadData(complete: self.completeBlock)
+                    }
+                    else {
+                        complete(self.response, self.response.errors.first)
+                    }
+                }
+            }
+            else {
+                complete(self.response, self.response.errors.first)
+            }
         }
         
     }
 
     public func loadEvents(complete: @escaping EventsBlock) {
-      
-        func runRequest() {
-            self.load(builder: APIEndpoint.events(.init(from: Date()))) { (result) in
-                switch result {
-                case .success(let data):
-                    
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    decoder.dateDecodingStrategy = .iso8601
-                    
-                    do {
-                        let result = try decoder.decode(EventResponse.self, from: data)
-                        complete(result, nil)
-                    } catch(let error) {
-                        complete(nil, error)
-                    }
-                case .failure(let error):
+        self.load(builder: APIEndpoint.events(.init(from: Date()))) { (result) in
+            switch result {
+            case .success(let data):
+                
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                decoder.dateDecodingStrategy = .iso8601
+                
+                do {
+                    let result = try decoder.decode(EventResponse.self, from: data)
+                    complete(result, nil)
+                } catch(let error) {
                     complete(nil, error)
                 }
-            }
-        }
-        
-        if self.isTokenExistAndAlive {
-            runRequest()
-        }
-        else {
-            self.loadAccessToken { (response, error) in
-                
-                if let response = response , response.accessToken.count > 0  {
-                    
-                    Defaults.save(response.accessToken, .accessToken)
-                    
-                    var expireDate = Date()
-                    expireDate.addTimeInterval(TimeInterval(response.expiresIn))
-                
-                    Defaults.save(expireDate, .accessTokenExpireDate)
-                    
-                    runRequest()
-                }
-                else {
-                    complete(nil, error)
-                }
+            case .failure(let error):
+                complete(nil, error)
             }
         }
     }
@@ -149,32 +156,6 @@ class Network {
                     complete(result, nil)
                 }
                 catch(let error) {
-                    complete(nil, error)
-                }
-            case .failure(let error):
-                complete(nil, error)
-            }
-        }
-    }
-    
-    public func loadAccessToken(complete: @escaping TokenBlock) {
-     
-        guard let _ = Defaults.get(.token) as? String else {
-            print("NO REFRESH TOKEN GO TO MAIN TARGET APP")
-            complete(nil, nil)
-            return
-        }
-        
-        self.load(builder: APIEndpoint.accessToken) { (result) in
-            switch result {
-            case .success(let data):
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                
-                do {
-                    let result = try decoder.decode(TokenResponse.self, from: data)
-                    complete(result, nil)
-                } catch(let error) {
                     complete(nil, error)
                 }
             case .failure(let error):
@@ -227,40 +208,26 @@ class Network {
 extension Network {
 
     func load(builder: APIRequestBuilder, complete: @escaping ResultBlock)  {
+        
         URLSession.shared.dataTask(with: builder.urlRequest) { (data, response, error) in
-            DispatchQueue.main.async {
-                
-                if let error = error {
-                    complete(.failure(error))
-                    return
-                }
-                
-                guard let data = data, let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                    complete(.failure(NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: nil)))
-                    return
-                }
-                
-                complete(.success(data))
+            if let error = error {
+                complete(.failure(error))
+                return
             }
-        }.resume()
-    }
-    
-}
-
-extension Network {
-    
-    var isTokenExistAndAlive: Bool {
-        if let expireDate = Defaults.get(.accessTokenExpireDate) as? Date {
-            if expireDate < Date() {
-                print("TOKEN EXPIRED", expireDate)
-                return false
+           
+            guard let data = data, let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                complete(.failure(NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: nil)))
+               return
+            }
+            
+            if let errors = APIError.decode(data: data) , errors.contains(where: { $0.code == .unauthorized }) {
+                complete(.failure(NSError(domain: NSURLErrorDomain, code: NSURLErrorUserAuthenticationRequired, userInfo: nil)))
             }
             else {
-                print("TOKEN GOOD", expireDate)
-                return true
+               complete(.success(data))
             }
-        }
-        return false
+
+        }.resume()
     }
     
 }
@@ -289,4 +256,3 @@ extension Network {
     }
     
 }
-

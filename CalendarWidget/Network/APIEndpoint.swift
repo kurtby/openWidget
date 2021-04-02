@@ -12,7 +12,7 @@ enum APIEndpoint {
     case events(_ params: EventParams)
     case weather
     case inbox
-    case accessToken
+    case accessToken(APITokenGrant)
 }
 
 struct EventParams {
@@ -29,7 +29,7 @@ extension APIEndpoint: APIRequestBuilder {
         ["Accept"       : "application/json",
         "Content-Type"  : "application/json"]
         
-        if let token = Defaults.get(.accessToken) {
+        if let token = APITokenStorage().get()?.accessToken {
             defaultHeaders["Authorization"] = "Bearer \(token)"
         }
         
@@ -86,9 +86,6 @@ extension APIEndpoint: APIRequestBuilder {
                 request.httpBody = body
             }
             
-            print("PARAMS", parameters, headers)
-            
-            
             return request
         case .inbox:
             var request = URLRequest(url: baseURL)
@@ -106,27 +103,12 @@ extension APIEndpoint: APIRequestBuilder {
             }
             
             return request
-        case .accessToken:
+        case .accessToken(let parameters):
             var request = URLRequest(url: baseURL)
             request.httpMethod = "POST"
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
-            var parameters = [
-                "client_id": Constants.App.clientID,
-                "grant_type": "refresh_token"
-            ]
-            
-            if let refreshToken = Defaults.get(.token) as? String {
-                parameters["refresh_token"] = refreshToken
-            }
-            
-            var postUrlComponents = URLComponents()
-            postUrlComponents.queryItems = parameters.compactMap { URLQueryItem(name: $0, value: $1) }
-            
-            if let query = postUrlComponents.url?.query {
-                request.httpBody = Data(query.utf8)
-            }
-            
+            request.setHTTPBody(parameters: parameters.parameters as [String: AnyObject])
+
             return request
         }
     }

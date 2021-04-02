@@ -69,10 +69,6 @@ struct Event: Decodable {
     }
 }
 
-struct ServerError: Decodable {
-    let message: String
-}
-
 struct EventCalendar: Decodable {
     
     enum CalendarType {
