@@ -21,7 +21,7 @@ extension Event {
                 "variables": ["from" : self.from.iso8601String,
                               "to" : self.to.iso8601String],
                 "query":"query FetchEventsWidget($from: Time!, $to: Time!) {events(from: $from, to: $to, buildVirtual: true) {uid, title, from, to, fullDay, recurrenceID, status, calendar {uid, title, color, type }, call, organizer { email }, location { description }, access, attendeesCount, attendeesConnection(first: 5) { edges { node { user { email } } } } } }"
-            ]
+            ] as [String: AnyObject]
         }
     
     }
