@@ -33,4 +33,10 @@ class APITokenStorage {
         return APIToken(accessToken: accessToken, expiresAt: expireDate, refreshToken: refreshToken)
     }
     
+    public func clear() {
+        Defaults.clear(.accessToken)
+        Defaults.clear(.widgetRefreshToken)
+        Defaults.clear(.accessTokenExpireDate)
+    }
+    
 }

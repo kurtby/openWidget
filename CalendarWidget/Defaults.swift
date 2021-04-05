@@ -26,5 +26,9 @@ struct Defaults {
         self.userDefault?.value(forKey: key.rawValue)
     }
     
+    static func clear(_ key: Key) {
+        self.userDefault?.setValue(nil, forKey: key.rawValue)
+    }
+    
 }
 
