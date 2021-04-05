@@ -9,17 +9,10 @@ import Foundation
 
 enum APIEndpoint {
     case calendars
-    case events(_ params: EventParams)
+    case events(_ params: Event.RequestParameters)
     case weather
     case inbox
     case accessToken(APITokenGrant)
-}
-
-struct EventParams {
-    let from: Date
-    var to: Date {
-        Calendar.current.date(byAdding: DateComponents(weekOfYear: 1), to: from) ?? from
-    }
 }
 
 extension APIEndpoint: APIRequestBuilder {

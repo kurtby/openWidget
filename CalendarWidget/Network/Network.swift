@@ -74,7 +74,7 @@ class Network {
         }
         
         dispatchGroup.enter()
-        self.loadEvents { (events, error) in
+        self.loadEvents(params: .init(from: Date())) { (events, error) in
             if let events = events {
                 self.response.events = events.data?.events
             }
@@ -125,8 +125,8 @@ class Network {
         
     }
 
-    public func loadEvents(complete: @escaping EventsBlock) {
-        self.load(builder: APIEndpoint.events(.init(from: Date()))) { (result) in
+    public func loadEvents(params: Event.RequestParameters, complete: @escaping EventsBlock) {
+        self.load(builder: APIEndpoint.events(params)) { (result) in
             switch result {
             case .success(let data):
                 

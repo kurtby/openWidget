@@ -9,8 +9,6 @@ import Foundation
 
 class APIToken {
     
-    public let HTTPHeaderFieldAuthorization = "Authorization"
-    
     typealias TokenBlock = (TokenResponse?, Error?) -> Void
     
     struct TokenResponse: Decodable {

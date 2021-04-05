@@ -126,3 +126,14 @@ struct User: Decodable {
         return "https://filin.mail.ru/pic?email=\(email)&width=60px&height=60px"
     }
 }
+
+extension Event {
+    
+    struct RequestParameters {
+        let from: Date
+        var to: Date {
+            Calendar.current.date(byAdding: .weekOfYear, value: 1, to: from) ?? from
+        }
+    }
+
+}
