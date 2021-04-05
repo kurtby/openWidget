@@ -22,7 +22,7 @@ extension APIEndpoint: APIRequestBuilder {
         ["Accept"       : "application/json",
         "Content-Type"  : "application/json"]
         
-        if let token = APITokenStorage().get()?.accessToken {
+        if let token = APITokenStorage().token?.accessToken {
             defaultHeaders["Authorization"] = "Bearer \(token)"
         }
         
@@ -45,17 +45,14 @@ extension APIEndpoint: APIRequestBuilder {
         case .calendars:
             var request = URLRequest(url: baseURL)
             request.httpMethod = "POST"
-            
-            self.additionalHeaders(headers, request: &request)
+            request.additionalHeaders(headers)
             
             let parameters = [
                 "operationName":"FetchCalendarsWidget",
                 "query":"query FetchCalendarsWidget {calendars {uid, title, type, color } }"
-            ]
+            ] as [String: AnyObject]
             
-            if let body = try? JSONSerialization.data(withJSONObject: parameters) {
-                request.httpBody = body
-            }
+            request.setHTTPBody(parameters: parameters, type: .json)
             
             return request
         case .weather:
@@ -64,58 +61,29 @@ extension APIEndpoint: APIRequestBuilder {
         case .events(let params):
             var request = URLRequest(url: baseURL)
             request.httpMethod = "POST"
-            
-            self.additionalHeaders(headers, request: &request)
-            
-            let parameters = [
-                "operationName":"FetchEventsWidget",
-                "variables": ["from" : params.from.iso8601String,
-                              "to" : params.to.iso8601String],
-                "query":"query FetchEventsWidget($from: Time!, $to: Time!) {events(from: $from, to: $to, buildVirtual: true) {uid, title, from, to, fullDay, recurrenceID, status, calendar {uid, title, color, type }, call, organizer { email }, location { description }, access, attendeesCount, attendeesConnection(first: 5) { edges { node { user { email } } } } } }"
-
-            ] as [String : Any]
-            
-            if let body = try? JSONSerialization.data(withJSONObject: parameters) {
-                request.httpBody = body
-            }
+            request.additionalHeaders(headers)
+            request.setHTTPBody(parameters: params.parameters, type: .json)
             
             return request
         case .inbox:
             var request = URLRequest(url: baseURL)
             request.httpMethod = "POST"
-            
-            self.additionalHeaders(headers, request: &request)
+            request.additionalHeaders(headers)
             
             let parameters = [
                 "operationName" : "InboxWidget",
                 "query" : "query InboxWidget {inbox{events {hasEvents}}}"
-            ]
+            ] as [String: AnyObject]
             
-            if let body = try? JSONSerialization.data(withJSONObject: parameters) {
-                request.httpBody = body
-            }
-            
+            request.setHTTPBody(parameters: parameters, type: .json)
             return request
-        case .accessToken(let parameters):
+        case .accessToken(let params):
             var request = URLRequest(url: baseURL)
             request.httpMethod = "POST"
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.setHTTPBody(parameters: parameters.parameters as [String: AnyObject])
+            request.setHTTPBody(parameters: params.parameters, type: .query)
 
             return request
-        }
-    }
-    
-}
-
-extension APIEndpoint {
-    
-    fileprivate func additionalHeaders(_ additionalHeaders: [String: String]?, request: inout URLRequest) {
-        
-        guard let headers = additionalHeaders else { return }
-        
-        for (key, value) in headers {
-            request.setValue(value, forHTTPHeaderField: key)
         }
     }
     

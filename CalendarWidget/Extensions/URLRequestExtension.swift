@@ -9,7 +9,39 @@ import Foundation
  
 extension URLRequest {
     
-    mutating func setHTTPBody(parameters: [String: AnyObject]?) {
+    mutating func setHTTPBody(parameters: [String: AnyObject]?, type: RequestEncodeType) {
+        type == .json ? setJSONBody(parameters: parameters) : setQueryBody(parameters: parameters)
+    }
+    
+    mutating func additionalHeaders(_ additionalHeaders: [String: String]?) {
+        guard let headers = additionalHeaders else { return }
+        
+        for (key, value) in headers {
+            setValue(value, forHTTPHeaderField: key)
+        }
+    }
+    
+}
+
+extension URLRequest {
+    
+    enum RequestEncodeType {
+        case json
+        case query
+    }
+    
+    private mutating func setJSONBody(parameters: [String: AnyObject]?) {
+        guard let parameters = parameters else { return }
+        
+        if let body = try? JSONSerialization.data(withJSONObject: parameters) {
+            httpBody = body
+        }
+        else {
+            httpBody = nil
+        }
+    }
+  
+    private mutating func setQueryBody(parameters: [String: AnyObject]?) {
         if let parameters = parameters {
             var components: [(String, String)] = []
             for (key, value) in parameters {
@@ -21,7 +53,6 @@ extension URLRequest {
             httpBody = nil
         }
     }
-    
 }
 
 extension URLRequest {

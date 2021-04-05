@@ -9,6 +9,15 @@ import Foundation
 
 class APITokenStorage {
     
+    public var token: APIToken? {
+        get {
+            self.get()
+        }
+        set {
+            self.save(newValue)
+        }
+    }
+    
     public func save(_ token: APIToken?) {
         
         guard let refreshToken = token?.refreshToken, let accessToken = token?.accessToken else {

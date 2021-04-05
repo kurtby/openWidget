@@ -46,6 +46,8 @@
 		A369B93E261756F8007AEAAB /* APITokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369B93C261756F8007AEAAB /* APITokenStorage.swift */; };
 		A382E8B7261AE58C008336E4 /* EventDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A382E8B6261AE58C008336E4 /* EventDemo.swift */; };
 		A382E8B8261AE58C008336E4 /* EventDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A382E8B6261AE58C008336E4 /* EventDemo.swift */; };
+		A382E8BC261B111B008336E4 /* Event+RequestParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = A382E8BB261B111A008336E4 /* Event+RequestParams.swift */; };
+		A382E8BD261B111B008336E4 /* Event+RequestParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = A382E8BB261B111A008336E4 /* Event+RequestParams.swift */; };
 		A395775D2608AB94001A9288 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F2B825DFB3CD00843381 /* Constants.swift */; };
 		A39D1BBE25DFE1F000C28833 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
 		A3C277A8260111C300311626 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C277A7260111C200311626 /* Inbox.swift */; };
@@ -162,6 +164,7 @@
 		A369B92926173C35007AEAAB /* CalendarWidgetDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetDataProvider.swift; sourceTree = "<group>"; };
 		A369B93C261756F8007AEAAB /* APITokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITokenStorage.swift; sourceTree = "<group>"; };
 		A382E8B6261AE58C008336E4 /* EventDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDemo.swift; sourceTree = "<group>"; };
+		A382E8BB261B111A008336E4 /* Event+RequestParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+RequestParams.swift"; sourceTree = "<group>"; };
 		A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		A39DAE4525DE9CAC0098F51F /* MRCalendarWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MRCalendarWidget.entitlements; sourceTree = "<group>"; };
 		A3C277A7260111C200311626 /* Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
@@ -261,6 +264,32 @@
 			path = Token;
 			sourceTree = "<group>";
 		};
+		A382E8C0261B112E008336E4 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				A3D2F27B25DEFD3700843381 /* Event.swift */,
+				A382E8BB261B111A008336E4 /* Event+RequestParams.swift */,
+				A382E8B6261AE58C008336E4 /* EventDemo.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		A382E8C5261B1139008336E4 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				A369B8EC261479C3007AEAAB /* Error.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		A382E8C8261B113F008336E4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A340C6B725E6BA5B00138D21 /* EventModelData.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A395774426089539001A9288 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,13 +325,12 @@
 		A3D2F27625DEFBFE00843381 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A3D2F27B25DEFD3700843381 /* Event.swift */,
-				A382E8B6261AE58C008336E4 /* EventDemo.swift */,
+				A382E8C0261B112E008336E4 /* Event */,
 				A3C7F7CF25F695E300BC6CB2 /* Calendar.swift */,
 				A3C277A7260111C200311626 /* Inbox.swift */,
 				A33496FC25E3BB6600668641 /* Weather.swift */,
-				A369B8EC261479C3007AEAAB /* Error.swift */,
-				A340C6B725E6BA5B00138D21 /* EventModelData.swift */,
+				A382E8C5261B1139008336E4 /* Error */,
+				A382E8C8261B113F008336E4 /* ViewModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -546,6 +574,7 @@
 				A3C7F7D425F6977E00BC6CB2 /* Network.swift in Sources */,
 				A32CF8C825F0ED36008CFACC /* IntentHandler.swift in Sources */,
 				A369B8EE261479C3007AEAAB /* Error.swift in Sources */,
+				A382E8BD261B111B008336E4 /* Event+RequestParams.swift in Sources */,
 				A369B93E261756F8007AEAAB /* APITokenStorage.swift in Sources */,
 				A3C7F7DA25F697D400BC6CB2 /* Event.swift in Sources */,
 				A3C7F7E925F698BA00BC6CB2 /* DateExtension.swift in Sources */,
@@ -601,6 +630,7 @@
 				A369B90A261495D3007AEAAB /* APITokenGrant.swift in Sources */,
 				A324AC0725E39ADD00144635 /* Network.swift in Sources */,
 				A3D2F2B925DFB3CD00843381 /* Constants.swift in Sources */,
+				A382E8BC261B111B008336E4 /* Event+RequestParams.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
