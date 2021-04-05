@@ -32,8 +32,6 @@
 		A369B8EE261479C3007AEAAB /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369B8EC261479C3007AEAAB /* Error.swift */; };
 		A369B8F42614848B007AEAAB /* APIToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369B8F32614848B007AEAAB /* APIToken.swift */; };
 		A369B8F52614848B007AEAAB /* APIToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369B8F32614848B007AEAAB /* APIToken.swift */; };
-		A369B90526148F66007AEAAB /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369B90426148F66007AEAAB /* APITokenManager.swift */; };
-		A369B90626148F66007AEAAB /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369B90426148F66007AEAAB /* APITokenManager.swift */; };
 		A369B90A261495D3007AEAAB /* APITokenGrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369B909261495D3007AEAAB /* APITokenGrant.swift */; };
 		A369B90B261495D3007AEAAB /* APITokenGrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369B909261495D3007AEAAB /* APITokenGrant.swift */; };
 		A369B91426149A1E007AEAAB /* URLRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A369B91326149A1E007AEAAB /* URLRequestExtension.swift */; };
@@ -52,6 +50,8 @@
 		A382E8CF261B150F008336E4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A382E8CD261B150F008336E4 /* APIClient.swift */; };
 		A382E8DA261B16DD008336E4 /* Network+ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A382E8D9261B16DD008336E4 /* Network+ResponseData.swift */; };
 		A382E8DB261B16DD008336E4 /* Network+ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A382E8D9261B16DD008336E4 /* Network+ResponseData.swift */; };
+		A382E8E1261B309B008336E4 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A382E8E0261B309B008336E4 /* APITokenManager.swift */; };
+		A382E8E2261B309B008336E4 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A382E8E0261B309B008336E4 /* APITokenManager.swift */; };
 		A395775D2608AB94001A9288 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F2B825DFB3CD00843381 /* Constants.swift */; };
 		A39D1BBE25DFE1F000C28833 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */; };
 		A3C277A8260111C300311626 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C277A7260111C200311626 /* Inbox.swift */; };
@@ -162,7 +162,6 @@
 		A364DD6F25DFFDBA00932DEB /* CalendarWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CalendarWidgetExtension.entitlements; sourceTree = "<group>"; };
 		A369B8EC261479C3007AEAAB /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		A369B8F32614848B007AEAAB /* APIToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIToken.swift; sourceTree = "<group>"; };
-		A369B90426148F66007AEAAB /* APITokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APITokenManager.swift; path = ../../../../../Documents/APITokenManager.swift; sourceTree = "<group>"; };
 		A369B909261495D3007AEAAB /* APITokenGrant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITokenGrant.swift; sourceTree = "<group>"; };
 		A369B91326149A1E007AEAAB /* URLRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtension.swift; sourceTree = "<group>"; };
 		A369B92926173C35007AEAAB /* CalendarWidgetDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetDataProvider.swift; sourceTree = "<group>"; };
@@ -171,6 +170,7 @@
 		A382E8BB261B111A008336E4 /* Event+RequestParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+RequestParams.swift"; sourceTree = "<group>"; };
 		A382E8CD261B150F008336E4 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A382E8D9261B16DD008336E4 /* Network+ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+ResponseData.swift"; sourceTree = "<group>"; };
+		A382E8E0261B309B008336E4 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		A39D1BBD25DFE1F000C28833 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		A39DAE4525DE9CAC0098F51F /* MRCalendarWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MRCalendarWidget.entitlements; sourceTree = "<group>"; };
 		A3C277A7260111C200311626 /* Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 		A369B90126148F55007AEAAB /* Token */ = {
 			isa = PBXGroup;
 			children = (
-				A369B90426148F66007AEAAB /* APITokenManager.swift */,
+				A382E8E0261B309B008336E4 /* APITokenManager.swift */,
 				A369B93C261756F8007AEAAB /* APITokenStorage.swift */,
 				A369B8F32614848B007AEAAB /* APIToken.swift */,
 				A369B909261495D3007AEAAB /* APITokenGrant.swift */,
@@ -571,7 +571,6 @@
 				A369B90B261495D3007AEAAB /* APITokenGrant.swift in Sources */,
 				A32CF8D425F0F14B008CFACC /* CalendarWidget.intentdefinition in Sources */,
 				A369B93326174340007AEAAB /* CalendarWidgetTimelineProvider.swift in Sources */,
-				A369B90626148F66007AEAAB /* APITokenManager.swift in Sources */,
 				A3FFA6C72613619D00CEA163 /* DispatchGroupExtension.swift in Sources */,
 				A369B93026173D9C007AEAAB /* CalendarWidgetEntry.swift in Sources */,
 				A3C7F7E125F697F600BC6CB2 /* APIEndpoint.swift in Sources */,
@@ -591,6 +590,7 @@
 				A3FFA6CC26145B4400CEA163 /* Defaults.swift in Sources */,
 				A3C7F7E025F697F600BC6CB2 /* APIError.swift in Sources */,
 				A395775D2608AB94001A9288 /* Constants.swift in Sources */,
+				A382E8E2261B309B008336E4 /* APITokenManager.swift in Sources */,
 				A3C7F7E225F697F600BC6CB2 /* APIRequestBuilder.swift in Sources */,
 				A382E8B8261AE58C008336E4 /* EventDemo.swift in Sources */,
 				A369B8F52614848B007AEAAB /* APIToken.swift in Sources */,
@@ -631,7 +631,6 @@
 				A3D2F29325DF9C3300843381 /* ColorExtension.swift in Sources */,
 				A382E8CE261B150F008336E4 /* APIClient.swift in Sources */,
 				A3555D8A25DD12E100649177 /* EventsView.swift in Sources */,
-				A369B90526148F66007AEAAB /* APITokenManager.swift in Sources */,
 				A369B8ED261479C3007AEAAB /* Error.swift in Sources */,
 				A3D2F2A325DF9ED800843381 /* ViewExtension.swift in Sources */,
 				A3D2F29D25DF9D9400843381 /* DateExtension.swift in Sources */,
@@ -642,6 +641,7 @@
 				A324AC0725E39ADD00144635 /* Network.swift in Sources */,
 				A3D2F2B925DFB3CD00843381 /* Constants.swift in Sources */,
 				A382E8DA261B16DD008336E4 /* Network+ResponseData.swift in Sources */,
+				A382E8E1261B309B008336E4 /* APITokenManager.swift in Sources */,
 				A382E8BC261B111B008336E4 /* Event+RequestParams.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
