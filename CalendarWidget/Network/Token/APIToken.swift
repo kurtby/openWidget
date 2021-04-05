@@ -38,7 +38,7 @@ extension APIToken {
         var expireDate = Date()
         expireDate.addTimeInterval(TimeInterval(response.expiresIn))
         
-        return APIToken(accessToken: response.accessToken, expiresAt: expireDate, refreshToken:  Defaults.get(.token) as? String)
+        return APIToken(accessToken: response.accessToken, expiresAt: expireDate, refreshToken:  Defaults.get(.refreshToken) as? String)
     }
     
     public class func decode(data: Data) -> APIToken? {

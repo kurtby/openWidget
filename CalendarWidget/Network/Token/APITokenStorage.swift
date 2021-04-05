@@ -16,7 +16,7 @@ class APITokenStorage {
         }
     
         Defaults.save(accessToken, .accessToken)
-        Defaults.save(refreshToken, .token)
+        Defaults.save(refreshToken, .widgetRefreshToken)
      
         if let expireDate = token?.expiresAt {
             Defaults.save(expireDate, .accessTokenExpireDate)
@@ -24,8 +24,7 @@ class APITokenStorage {
     }
 
     public func get() -> APIToken? {
-        
-        guard let refreshToken = Defaults.get(.token) as? String, let accessToken = Defaults.get(.accessToken) as? String else {
+        guard let refreshToken = Defaults.get(.widgetRefreshToken) as? String, let accessToken = Defaults.get(.accessToken) as? String else {
             return nil
         }
         

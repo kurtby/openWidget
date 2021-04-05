@@ -10,7 +10,8 @@ import Foundation
 struct Defaults {
     
     enum Key: String {
-        case token = "token_key"
+        case refreshToken = "token_key"
+        case widgetRefreshToken
         case accessToken
         case accessTokenExpireDate
     }

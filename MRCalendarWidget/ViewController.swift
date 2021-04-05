@@ -28,12 +28,11 @@ class ViewController: UIViewController  {
 
     var refreshToken: String? {
         get {
-            UserDefaults.appGroup.string(forKey: UserDefaults.Keys.token.rawValue)
+            UserDefaults.appGroup.string(forKey: UserDefaults.Keys.refreshToken.rawValue)
         }
         set {
             // Reset accessToken in widget too
-            UserDefaults.appGroup.set(nil, forKey: UserDefaults.Keys.accessTokenExpireDate.rawValue)
-            UserDefaults.appGroup.set(newValue, forKey: UserDefaults.Keys.token.rawValue)
+            UserDefaults.appGroup.set(newValue, forKey: UserDefaults.Keys.refreshToken.rawValue)
         }
     }
 

@@ -11,7 +11,8 @@ extension UserDefaults {
     static let appGroup = UserDefaults(suiteName: "group.ru.mail.calendar.widget")!
     
     enum Keys: String {
-        case token = "token_key"
+        case refreshToken = "token_key"
+        case widgetRefreshToken
         case accessToken
         case accessTokenExpireDate
     }
