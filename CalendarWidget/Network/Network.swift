@@ -9,7 +9,6 @@ import Foundation
 
 class Network {
     
-    typealias ResultBlock = (Result<Data, Error>) -> Void
     typealias DataBlock = (ResponseData, Error?) -> Void
     
     typealias WeatherBlock = (Weather?, Error?) -> Void
@@ -17,42 +16,17 @@ class Network {
     typealias CalendarBlock = (CalendarResponse?, Error?) -> Void
     typealias InboxBlock = (Bool, Error?) -> Void
     
-    private var isLoading: Bool = false
-    
+    private let apiClient: APIClient = APIClient()
     private let tokenManager: APITokenManager = APITokenManager(maxRetryCount: 5)
     
-    struct ResponseData {
-        var events: [Event]?
-        var weather: Weather?
-        var errors: [Error] = []
-        var isHaveInvites: Bool = false
+    private var isLoading: Bool = false
         
-        var isNoConnection: Bool {
-            if let err = errors.first as? URLError, err.code == URLError.Code.notConnectedToInternet {
-                return true
-            }
-            
-            return false
-        }
-        
-        var isNeedAuth: Bool {
-            if let err = errors.first as? URLError, err.code == URLError.Code.userAuthenticationRequired {
-                return true
-            }
-            
-            return false
-        }
-    }
-    
     private var response: ResponseData = ResponseData()
     
     private var completeBlock: DataBlock = { _,_  in }
     
     public func loadData(complete: @escaping DataBlock) {
-  
-        if self.isLoading {
-            return
-        }
+        if self.isLoading { return }
         
         self.response = ResponseData()
         self.completeBlock = complete
@@ -126,7 +100,7 @@ class Network {
     }
 
     public func loadEvents(params: Event.RequestParameters, complete: @escaping EventsBlock) {
-        self.load(builder: APIEndpoint.events(params)) { (result) in
+        apiClient.load(builder: APIEndpoint.events(params)) { (result) in
             switch result {
             case .success(let data):
                 
@@ -147,8 +121,7 @@ class Network {
     }
 
     public func loadWeather(complete: @escaping WeatherBlock) {
-        
-        self.load(builder: APIEndpoint.weather) { (result) in
+        apiClient.load(builder: APIEndpoint.weather) { (result) in
             switch result {
             case .success(let data):
                 do {
@@ -165,7 +138,7 @@ class Network {
     }
     
     public func loadCalendars(complete: @escaping CalendarBlock) {
-        self.load(builder: APIEndpoint.calendars) { (result) in
+        apiClient.load(builder: APIEndpoint.calendars) { (result) in
             switch result {
             case .success(let data):
                 let decoder = JSONDecoder()
@@ -184,7 +157,7 @@ class Network {
     }
     
     public func loadInbox(complete: @escaping InboxBlock) {
-        self.load(builder: APIEndpoint.inbox) { (result) in
+        apiClient.load(builder: APIEndpoint.inbox) { (result) in
             switch result {
             case .success(let data):
                 let decoder = JSONDecoder()
@@ -201,33 +174,6 @@ class Network {
                  complete(false, error)
             }
         }
-    }
-    
-}
-
-extension Network {
-
-    func load(builder: APIRequestBuilder, complete: @escaping ResultBlock)  {
-        
-        URLSession.shared.dataTask(with: builder.urlRequest) { (data, response, error) in
-            if let error = error {
-                complete(.failure(error))
-                return
-            }
-           
-            guard let data = data, let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                complete(.failure(NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: nil)))
-               return
-            }
-            
-            if let errors = APIError.decode(data: data) , errors.contains(where: { $0.code == .unauthorized }) {
-                complete(.failure(NSError(domain: NSURLErrorDomain, code: NSURLErrorUserAuthenticationRequired, userInfo: nil)))
-            }
-            else {
-               complete(.success(data))
-            }
-
-        }.resume()
     }
     
 }
