@@ -21,7 +21,7 @@ struct CalendarWidgetTimelineProvider: IntentTimelineProvider {
         Network().loadWeather { (weather, error) in
             var entry = CalendarWidgetEntry(date: Date(), configuration: configuration)
             entry.data.weather = weather
-            entry.data.events = Network().demoEvents()
+            entry.data.events = Event.generateDemo()
             completion(entry)
         }
     }
