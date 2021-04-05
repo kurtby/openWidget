@@ -11,29 +11,30 @@ import WidgetKit
 class CalendarWidgetDataProvider {
     
     typealias Entry = CalendarWidgetEntry
+    typealias TimelineBlock = (Timeline<Entry>) -> ()
     
     private let network = Network()
         
     public var configuration: ConfigurationIntent?
     public var context: TimelineProviderContext?
-    public var completion: (Timeline<Entry>) -> () = { _ in }
-}
-
-extension CalendarWidgetDataProvider {
-    
-    public func run(configuration: ConfigurationIntent, context: TimelineProviderContext, completion: @escaping (Timeline<Entry>) -> ()) {
+    public var completion: TimelineBlock?
+        
+    public func getTimeline(configuration: ConfigurationIntent, context: TimelineProviderContext, completion: @escaping TimelineBlock) {
       
         self.configuration = configuration
         self.context = context
         self.completion = completion
-     
+        
         self.load()
     }
+    
+}
 
+extension CalendarWidgetDataProvider {
+    
     private func load() {
-        
+     
         network.loadData { (data, error) in
-            
             print("events", data.events?.first, error)
             print("weather", data.weather, error)
             
@@ -73,11 +74,9 @@ extension CalendarWidgetDataProvider {
                 entries.append(entry)
             }
 
-            let timeline = Timeline(entries: entries, policy: .atEnd)
-            self.completion(timeline)
+            let timeline = Timeline(entries: entries, policy: .atEnd)            
+            self.completion?(timeline)
         }
     }
     
 }
-
-
