@@ -17,7 +17,7 @@ class EventTracker {
         case timeline(state: TimelineState)
         case request(_ request: APIRequestBuilder)
         case error(_ request: APIRequestBuilder, error: Error, code: Int)
-        case navigate(_ route: String)
+        case deeplink(_ action: String)
         
         enum TimelineState {
             case created(at: Date)
@@ -59,8 +59,8 @@ struct EventTrack: CustomStringConvertible {
             return "Request url \(request.baseURL), method: \(request.endpointDescription)"
         case .error(let request, let error, let code):
             return "Request ERROR: \(error.localizedDescription), code: \(code) url: \(request.baseURL), method: \(request.endpointDescription)"
-        case .navigate(let url):
-            return "Route pressed: \(url)"
+        case .deeplink(let action):
+            return "Deeplink action: \(action)"
         }
     }
 }

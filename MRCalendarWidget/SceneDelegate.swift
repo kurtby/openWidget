@@ -77,6 +77,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let params = queryParams {
                 let deep = DeepAction(queryParams: params)
                 
+                EventTracker.shared.track(.init(name: .deeplink(deep.description)))
+                
                 switch deep {
                 case .openURL(let url):
                     UIApplication.shared.open(url)

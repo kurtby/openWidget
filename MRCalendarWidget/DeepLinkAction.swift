@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum DeepAction {
+enum DeepAction: CustomStringConvertible {
+
     case openURL(url: URL)
     case event(type: EvenType)
     case unknown
@@ -32,10 +33,21 @@ enum DeepAction {
             self = .unknown
         }
     }
+    
+    var description: String {
+        switch self {
+        case .openURL(let url):
+            return "Open url \(url.absoluteString)"
+        case .event(let event):
+            return "\(event)"
+        default:
+            return "Unknown Action"
+        }
+    }
 }
 
 extension DeepAction {
-    struct DeepEvent {
+    struct DeepEvent: CustomStringConvertible {
         var id: String?
         var calendarID: String?
         var status: String?
@@ -45,12 +57,17 @@ extension DeepAction {
             self.calendarID = dictionary["calendarID"] as? String
             self.status = dictionary["status"] as? String
         }
+        
+        var description: String {
+            return "Event: \(id ?? "") calendar: \(calendarID ?? "") , status: \(status ?? "")"
+        }
     }
 }
 
 extension DeepAction {
     
-    enum EvenType {
+    enum EvenType: CustomStringConvertible {
+     
         case create
         case reload
         case response(DeepEvent)
@@ -75,6 +92,21 @@ extension DeepAction {
                 self = .open(DeepEvent(dictionary: queryParams))
             default:
                 self = .unknown
+            }
+        }
+        
+        var description: String {
+            switch self {
+            case .create:
+                return "Create Event Pressed"
+            case .reload:
+                return "Reload Pressed"
+            case .response(let event):
+                return "Action Pressed: \(event)"
+            case .open(let event):
+                return "Open event: \(event)"
+            case .unknown:
+                return "Unknown"
             }
         }
     }

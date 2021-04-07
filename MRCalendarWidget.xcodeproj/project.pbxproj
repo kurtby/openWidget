@@ -15,6 +15,8 @@
 		A31A99ED261D8AB600C54EC5 /* EventTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A99EB261D8AB600C54EC5 /* EventTracker.swift */; };
 		A31A99F5261DAF7800C54EC5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A99E2261C66AA00C54EC5 /* Log.swift */; };
 		A31A9A00261DD48A00C54EC5 /* DeepLinkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A99FF261DD48A00C54EC5 /* DeepLinkAction.swift */; };
+		A31A9A03261DD8D100C54EC5 /* EventTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A99EB261D8AB600C54EC5 /* EventTracker.swift */; };
+		A31A9A06261DD93E00C54EC5 /* APIRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D2F26D25DEF8BB00843381 /* APIRequestBuilder.swift */; };
 		A324AC0725E39ADD00144635 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324AC0625E39ADD00144635 /* Network.swift */; };
 		A32CF8B625F0CF1B008CFACC /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32CF8B525F0CF1B008CFACC /* URLImageView.swift */; };
 		A32CF8C525F0ED36008CFACC /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32CF8C425F0ED36008CFACC /* Intents.framework */; };
@@ -669,6 +671,8 @@
 				A39D1BBE25DFE1F000C28833 /* UserDefaultsExtension.swift in Sources */,
 				A31A9A00261DD48A00C54EC5 /* DeepLinkAction.swift in Sources */,
 				A31A99F5261DAF7800C54EC5 /* Log.swift in Sources */,
+				A31A9A03261DD8D100C54EC5 /* EventTracker.swift in Sources */,
+				A31A9A06261DD93E00C54EC5 /* APIRequestBuilder.swift in Sources */,
 				AC42E9B225C82AA00052ACBF /* ViewController.swift in Sources */,
 				AC42E9AE25C82A9F0052ACBF /* AppDelegate.swift in Sources */,
 				A342AABA25D13E0600C52083 /* CalendarWidget.intentdefinition in Sources */,
