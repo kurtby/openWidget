@@ -7,6 +7,11 @@
 
 import Foundation
 import WidgetKit
+import os
+
+private extension Log.Categories {
+    static let calendarWidgetDataProvider: Self = "Widget.Calendar.DataProvider"
+}
 
 class CalendarWidgetDataProvider {
     
@@ -14,11 +19,12 @@ class CalendarWidgetDataProvider {
     typealias TimelineBlock = (Timeline<Entry>) -> ()
     
     private let network = Network()
-        
+    private let logger = Log.createLogger(category: .calendarWidgetDataProvider)
+    
     public var configuration: ConfigurationIntent?
     public var context: TimelineProviderContext?
     public var completion: TimelineBlock?
-        
+    
     public func getTimeline(configuration: ConfigurationIntent, context: TimelineProviderContext, completion: @escaping TimelineBlock) {
       
         self.configuration = configuration
@@ -34,9 +40,7 @@ extension CalendarWidgetDataProvider {
     
     private func load() {
      
-        network.loadData { (data, error) in
-            print("events", data.events?.first, error)
-            print("weather", data.weather, error)
+        network.loadData(Event.RequestParameters(from: Date())) { (data, error) in
             
             var entries: [CalendarWidgetEntry] = []
             
@@ -60,7 +64,9 @@ extension CalendarWidgetDataProvider {
                     updateDate = nextEvent.to
                 }
                 
-                print("NEXT UPDATE:-->>", updateDate, nextEvent.from, nextEvent.to)
+                self.logger.log(level: .debug, "Next Timeline Update: \(updateDate)")
+                self.logger.log(level: .debug, "Next Event Start: \(nextEvent.from)")
+                self.logger.log(level: .debug, "Next Event finish: \(nextEvent.to)")
                 
                 if let configuration = self.configuration {
                     var entry = CalendarWidgetEntry(date: updateDate, configuration: configuration)
