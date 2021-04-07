@@ -83,7 +83,8 @@ extension Constants.DeepLink {
             case .calendar:
                 return Event.url("https://touch.calendar.mail.ru").url
             case .url(let url):
-                return prefix + "?action=openURL&url=\(url)"
+                let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                return prefix + "?action=openURL&url=\(urlString)"
             }
         }
     }

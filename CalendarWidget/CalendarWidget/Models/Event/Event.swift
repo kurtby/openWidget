@@ -123,6 +123,7 @@ struct User: Decodable {
     let email: String
     
     var imageURL: String {
-        return "https://filin.mail.ru/pic?email=\(email)&width=60px&height=60px"
+        let emailString = email.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        return "https://filin.mail.ru/pic?email=\(emailString)&width=60px&height=60px"
     }
 }
