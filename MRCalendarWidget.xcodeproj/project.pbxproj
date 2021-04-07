@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A307D10525EE27DD00187A75 /* MRMailSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC42E9C825C834700052ACBF /* MRMailSDK.framework */; };
 		A307D10625EE27DD00187A75 /* MRMailSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC42E9C825C834700052ACBF /* MRMailSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A31A99E3261C66AA00C54EC5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A99E2261C66AA00C54EC5 /* Log.swift */; };
+		A31A99E4261C66AA00C54EC5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A99E2261C66AA00C54EC5 /* Log.swift */; };
 		A324AC0725E39ADD00144635 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324AC0625E39ADD00144635 /* Network.swift */; };
 		A32CF8B625F0CF1B008CFACC /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32CF8B525F0CF1B008CFACC /* URLImageView.swift */; };
 		A32CF8C525F0ED36008CFACC /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32CF8C425F0ED36008CFACC /* Intents.framework */; };
@@ -140,6 +142,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A31A99E2261C66AA00C54EC5 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A324AC0625E39ADD00144635 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A32CF8B525F0CF1B008CFACC /* URLImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		A32CF8C325F0ED36008CFACC /* CalendarWidgetIntentHandler.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CalendarWidgetIntentHandler.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,6 +254,7 @@
 				A3D2F2B825DFB3CD00843381 /* Constants.swift */,
 				A3D2F2A925DFACD800843381 /* WidgetsBundle.swift */,
 				A3FFA6CA26145B4400CEA163 /* Defaults.swift */,
+				A31A99E2261C66AA00C54EC5 /* Log.swift */,
 				A3D2F2AE25DFB00B00843381 /* CalendarWidget */,
 				A3D2F25B25DEEA7000843381 /* Network */,
 				A3D2F28E25DF9ABF00843381 /* Extensions */,
@@ -570,6 +574,7 @@
 			files = (
 				A369B90B261495D3007AEAAB /* APITokenGrant.swift in Sources */,
 				A32CF8D425F0F14B008CFACC /* CalendarWidget.intentdefinition in Sources */,
+				A31A99E4261C66AA00C54EC5 /* Log.swift in Sources */,
 				A369B93326174340007AEAAB /* CalendarWidgetTimelineProvider.swift in Sources */,
 				A3FFA6C72613619D00CEA163 /* DispatchGroupExtension.swift in Sources */,
 				A369B93026173D9C007AEAAB /* CalendarWidgetEntry.swift in Sources */,
@@ -626,6 +631,7 @@
 				A340C6B825E6BA5B00138D21 /* EventModelData.swift in Sources */,
 				A3D2F29A25DF9D3100843381 /* StringExtension.swift in Sources */,
 				A33496FD25E3BB6600668641 /* Weather.swift in Sources */,
+				A31A99E3261C66AA00C54EC5 /* Log.swift in Sources */,
 				A3D2F2A025DF9DC500843381 /* DateFormatterExtension.swift in Sources */,
 				A3D2F29725DF9CE700843381 /* CalendarExtension.swift in Sources */,
 				A3D2F29325DF9C3300843381 /* ColorExtension.swift in Sources */,
@@ -707,6 +713,7 @@
 				CODE_SIGN_ENTITLEMENTS = CalendarWidgetIntentHandler/CalendarWidgetIntentHandler.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2K7YUBPRGA;
 				INFOPLIST_FILE = CalendarWidgetIntentHandler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -729,6 +736,7 @@
 				CODE_SIGN_ENTITLEMENTS = CalendarWidgetIntentHandler/CalendarWidgetIntentHandler.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2K7YUBPRGA;
 				INFOPLIST_FILE = CalendarWidgetIntentHandler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

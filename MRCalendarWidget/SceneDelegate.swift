@@ -178,15 +178,9 @@ extension SceneDelegate {
             jsonParameters: parameters) { (result) in
                 
             switch result {
-            case .success(let data):
-                
+            case .success(_):
                 self.showAlert(with: "На приглашение успешно отвечено: \(status)")
-                
-                let rawData = String(data: data, encoding: .utf8)
-                print("RESPONSE: ", rawData)
-                
                 WidgetCenter.shared.reloadAllTimelines()
-                
             case .failure(let error):
               print("ERROR: ", error)
             }
