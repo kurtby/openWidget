@@ -87,4 +87,19 @@ extension APIEndpoint: APIRequestBuilder {
         }
     }
     
+    var endpointDescription: String {
+        switch self {
+        case .calendars:
+            return "Calendars"
+        case .events(let event):
+            return "Event \(event)"
+        case .weather:
+            return "Weather"
+        case .inbox:
+            return "Inbox"
+        case .accessToken(let refreshToken):
+            return "AccessToken with RefreshToken: \(refreshToken.parameters)"
+        }
+    }
+    
 }

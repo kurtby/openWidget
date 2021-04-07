@@ -49,6 +49,9 @@ extension CalendarWidgetDataProvider {
             let interval: Int = Constants.Timing.updateInterval
             let nextUpdateDate: Date = Calendar.current.date(byAdding: .minute, value: interval, to: now) ?? now
             
+            // Track timeline created
+            EventTracker.shared.track(.init(name: .timeline(state: .created(at: now))))
+            
             if let events = data.events , let nextEvent = events.filter({$0.fullDay == false}).sorted(by: {$0.from < $1.from}).first {
                 
                 var updateDate = nextUpdateDate
@@ -64,6 +67,7 @@ extension CalendarWidgetDataProvider {
                     updateDate = nextEvent.to
                 }
                 
+                // Debug Logs
                 self.logger.log(level: .debug, "Next Timeline Update: \(updateDate)")
                 self.logger.log(level: .debug, "Next Event Start: \(nextEvent.from)")
                 self.logger.log(level: .debug, "Next Event finish: \(nextEvent.to)")
@@ -72,14 +76,24 @@ extension CalendarWidgetDataProvider {
                     var entry = CalendarWidgetEntry(date: updateDate, configuration: configuration)
                     entry.data = data
                     entries.append(entry)
+                    
+                    // Track next update
+                    EventTracker.shared.track(.init(name: .timeline(state: .updated(at: updateDate))))
                 }
             }
             else if let configuration = self.configuration {
                 var entry = CalendarWidgetEntry(date: nextUpdateDate, configuration: configuration)
                 entry.data = data
                 entries.append(entry)
+                
+                // Debug Logs
+                self.logger.log(level: .debug, "Events not found")
+                self.logger.log(level: .debug, "Next Timeline Update: \(nextUpdateDate)")
+                
+                // Track next update if no events
+                EventTracker.shared.track(.init(name: .timeline(state: .updated(at: nextUpdateDate))))
             }
-
+            
             let timeline = Timeline(entries: entries, policy: .atEnd)            
             self.completion?(timeline)
         }

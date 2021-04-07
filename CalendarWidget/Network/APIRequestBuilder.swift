@@ -10,4 +10,5 @@ import Foundation
 protocol APIRequestBuilder {
     var urlRequest: URLRequest { get }
     var baseURL: URL { get }
+    var endpointDescription: String { get }
 }

@@ -18,19 +18,39 @@ class APIClient {
     }
     
     public func load(builder: APIRequestBuilder, complete: @escaping ResultBlock) {
+        
+        EventTracker.shared.track(.init(name: .request(builder)))
+       
         urlSession.dataTask(with: builder.urlRequest) { (data, response, error) in
+            
+            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+            
             if let error = error {
+                // Track error
+                EventTracker.shared.track(.init(name: .error(builder, error: error, code: statusCode)))
+                
                 complete(.failure(error))
                 return
             }
            
-            guard let data = data, let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                complete(.failure(NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: nil)))
-               return
+            guard let data = data, (200...299).contains(statusCode) else {
+                let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: nil)
+             
+                // Track error
+                EventTracker.shared.track(.init(name: .error(builder, error: error, code: statusCode)))
+               
+                complete(.failure(error))
+                return
             }
             
             if let errors = APIError.decode(data: data) , errors.contains(where: { $0.code == .unauthorized }) {
-                complete(.failure(NSError(domain: NSURLErrorDomain, code: NSURLErrorUserAuthenticationRequired, userInfo: nil)))
+                
+                let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorUserAuthenticationRequired, userInfo: nil)
+                
+                // Track error
+                EventTracker.shared.track(.init(name: .error(builder, error: error, code: statusCode)))
+                
+                complete(.failure(error))
             }
             else {
                complete(.success(data))
