@@ -30,25 +30,24 @@ class APITokenManager {
         }
     }
     
+    func resetRetryCount() {
+        self.retryCount = 0
+    }
+
 }
 
 extension APITokenManager {
     
-    typealias TokenBlock = (TokenResponse?, Error?) -> Void
+    typealias ResponseBlock = (Result<Data, Error>) -> Void
     
-    struct TokenResponse: Decodable {
-        let accessToken: String
-        let expiresIn: Int
-    }
-    
-    public func requestAccessToken(complete: @escaping TokenBlock) {
+    public func requestAccessToken(complete: @escaping ResponseBlock) {
         guard let token = Defaults.get(.refreshToken) as? String else {
-            complete(nil, NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: nil))
+            complete(.failure(NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: nil)))
             return
         }
         
         if retryCount == maxRetryCount {
-            complete(nil, NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: nil))
+            complete(.failure(NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse, userInfo: nil)))
             return
         }
         
@@ -59,10 +58,12 @@ extension APITokenManager {
             case .success(let data):
                 if let token = APIToken.decode(data: data) {
                     self.storage.save(token)
+                    self.resetRetryCount()
                 }
-                complete(nil, nil)
+                complete(.success(data))
             case .failure(let error):
-                complete(nil, error)
+                self.resetRetryCount()
+                complete(.failure(error))
             }
         }
         
