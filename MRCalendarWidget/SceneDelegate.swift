@@ -70,43 +70,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func handleDeepLink(_ url: URL?) {
         if let url = url {
-            print(url)
             
             let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
             let queryParams = urlComponents?.queryItemsDictionary
-            
-            if let action = queryParams?["action"] as? String {
-                switch action {
-                case "openURL":
-                    if let urlString = queryParams?["url"] as? String , let url = URL(string: urlString) {
-                        UIApplication.shared.open(url)
-                    }
-                case "event":
-                    if let type = queryParams?["type"] as? String {
-                        if type == "create" {
-                            self.showAlert(with: "CREATE EVENT")
+          
+            if let params = queryParams {
+                let deep = DeepAction(queryParams: params)
+                
+                switch deep {
+                case .openURL(let url):
+                    UIApplication.shared.open(url)
+                case .event(let action):
+                    switch action {
+                    case .create:
+                        self.showAlert(with: "CREATE EVENT")
+                    case .reload:
+                        self.showAlert(with: "Reload Pressed")
+                        WidgetCenter.shared.reloadAllTimelines()
+                    case .response(let event):
+                        if let id = event.id , let calendarID  = event.calendarID , let status = event.status {
+                            self.react(eventID: id, calendarID: calendarID, status: status)
                         }
-                        else if type == "reload" {
-                            self.showAlert(with: "Reload Pressed")
-                            WidgetCenter.shared.reloadAllTimelines()
+                    case .open(let event):
+                        if let id = event.id , let calendarID = event.calendarID {
+                            self.showAlert(with: "OPEN EVENT id: \(id), calendar: \(calendarID)")
                         }
-                        else if type == "response" {
-                            if let status = queryParams?["status"] as? String , let eventID =  queryParams?["eventID"] as? String , let calendarID = queryParams?["calendarID"] as? String {
-                                
-                                self.react(eventID: eventID, calendarID: calendarID, status: status)
-                            }
-                        }
-                        else if type == "open" {
-                            if let eventID = queryParams?["eventID"] as? String , let calendarID = queryParams?["calendarID"] as? String {
-                                
-                                self.showAlert(with: "OPEN EVENT id: \(eventID), calendar: \(calendarID)")
-                            }
-                        }
+                    case .unknown:
+                        self.showAlert(with: "Unknown action")
                     }
                 default:
-                    self.showAlert(with: "Unknow action")
+                    self.showAlert(with: "Unknown action")
                     break
                 }
+
             }
         }
     }

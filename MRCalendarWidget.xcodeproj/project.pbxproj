@@ -14,6 +14,7 @@
 		A31A99EC261D8AB600C54EC5 /* EventTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A99EB261D8AB600C54EC5 /* EventTracker.swift */; };
 		A31A99ED261D8AB600C54EC5 /* EventTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A99EB261D8AB600C54EC5 /* EventTracker.swift */; };
 		A31A99F5261DAF7800C54EC5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A99E2261C66AA00C54EC5 /* Log.swift */; };
+		A31A9A00261DD48A00C54EC5 /* DeepLinkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31A99FF261DD48A00C54EC5 /* DeepLinkAction.swift */; };
 		A324AC0725E39ADD00144635 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324AC0625E39ADD00144635 /* Network.swift */; };
 		A32CF8B625F0CF1B008CFACC /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32CF8B525F0CF1B008CFACC /* URLImageView.swift */; };
 		A32CF8C525F0ED36008CFACC /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32CF8C425F0ED36008CFACC /* Intents.framework */; };
@@ -147,6 +148,7 @@
 /* Begin PBXFileReference section */
 		A31A99E2261C66AA00C54EC5 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A31A99EB261D8AB600C54EC5 /* EventTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTracker.swift; sourceTree = "<group>"; };
+		A31A99FF261DD48A00C54EC5 /* DeepLinkAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkAction.swift; sourceTree = "<group>"; };
 		A324AC0625E39ADD00144635 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A32CF8B525F0CF1B008CFACC /* URLImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		A32CF8C325F0ED36008CFACC /* CalendarWidgetIntentHandler.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CalendarWidgetIntentHandler.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -420,6 +422,7 @@
 				A39DAE4525DE9CAC0098F51F /* MRCalendarWidget.entitlements */,
 				AC42E9AD25C82A9F0052ACBF /* AppDelegate.swift */,
 				AC42E9AF25C82A9F0052ACBF /* SceneDelegate.swift */,
+				A31A99FF261DD48A00C54EC5 /* DeepLinkAction.swift */,
 				AC42E9B125C82AA00052ACBF /* ViewController.swift */,
 				AC42E9B325C82AA00052ACBF /* Main.storyboard */,
 				AC42E9B625C82AA20052ACBF /* Assets.xcassets */,
@@ -664,6 +667,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A39D1BBE25DFE1F000C28833 /* UserDefaultsExtension.swift in Sources */,
+				A31A9A00261DD48A00C54EC5 /* DeepLinkAction.swift in Sources */,
 				A31A99F5261DAF7800C54EC5 /* Log.swift in Sources */,
 				AC42E9B225C82AA00052ACBF /* ViewController.swift in Sources */,
 				AC42E9AE25C82A9F0052ACBF /* AppDelegate.swift in Sources */,
