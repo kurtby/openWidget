@@ -325,7 +325,8 @@ struct EventTextView: View {
         HStack(alignment: .top, spacing: 12) {
             RoundedRectangle(cornerRadius: 2, style: .circular)
                 .fill(Color.Event.Time.applyColor(originalColor: Color(hex: color), colorScheme: colorScheme, reverse: true))
-                .frame(width: 4, height: 20)
+                .frame(width: 4)
+                .frame(maxHeight: .infinity)
             
             Text(isBirthday ? "\("calendar_event_text_birthday_title".localized) \(title)" : title)
                 .font(.system(size: 15, weight: .regular, design: .default))
