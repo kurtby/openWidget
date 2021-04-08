@@ -29,7 +29,7 @@ struct CalendarWidgetEntryView: View {
                         Link(destination: URL(string: Constants.DeepLink.Event.calendar.url)!) {
                             CalendarView { date in
                                 Text(date.shortDateString)
-                                    .font(.system(size: 10))
+                                    .font(Calendar.current.isDateInToday(date) ? .system(size: 10, weight: .medium, design: .default) : .system(size: 10))
                                     .foregroundColor(getDayColor(date: date))
                                     .frame(width: 20, height: 20)
                                     .background(Calendar.current.isDateInToday(date) ? Color.Calendar.viewCurrentDayBackground : Color.clear)
@@ -48,7 +48,7 @@ struct CalendarWidgetEntryView: View {
                                 .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
                         }
                     }
-                    .frame(height: 134)
+                    .frame(height: 128)
                     .if(colorScheme == .light) {
                         $0.background(RadialGradient(gradient: Gradient(colors: [Color.Calendar.gradientStart, Color.Calendar.gradientEnd]), center: .topTrailing, startRadius: 30, endRadius: 250))
                     } else: {
