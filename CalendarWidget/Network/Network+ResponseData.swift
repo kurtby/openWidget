@@ -26,7 +26,7 @@ extension Network {
         }
         
         var isNeedAuth: Bool {
-            if let err = errors.first as? URLError, err.code == URLError.Code.userAuthenticationRequired {
+            if errors.compactMap({$0 as? URLError}).contains(where: { $0.code == URLError.Code.userAuthenticationRequired}) {
                 return true
             }
             

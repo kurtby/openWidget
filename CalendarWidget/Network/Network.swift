@@ -38,6 +38,20 @@ class Network {
         self.response = ResponseData()
         self.completeBlock = complete
         self.isLoading = true
+      
+        if !self.tokenManager.isAccessTokenExist {
+            self.tokenManager.requestAccessToken { (result) in
+                self.isLoading = false
+                
+                switch result {
+                case .success(_):
+                    self.loadData(parameters, complete: self.completeBlock)
+                case .failure(let error):
+                    complete(self.response, error)
+                }
+            }
+            return
+        }
         
         let dispatchGroup = DispatchGroup()
         
@@ -105,7 +119,6 @@ class Network {
             self.logger.log(level: .debug, "Is hava invites: \(self.response.isHaveInvites)")
             self.logger.log(level: .debug, "Weather: \(self.response.weather?.temperature ?? "Empty")")
           
-            
             if self.response.isNeedAuth {
                 self.tokenManager.requestAccessToken { (result) in
                     switch result {

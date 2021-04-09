@@ -15,6 +15,14 @@ class APITokenManager {
     
     private var retryCount: Int = 0
     
+    public var isAccessTokenExist: Bool {
+        guard let token = self.storage.token, token.accessToken.count > 0 else {
+            return false
+        }
+        
+        return true
+    }
+    
     init(maxRetryCount: Int = 5) {
         self.maxRetryCount = maxRetryCount
         self.checkToken()
