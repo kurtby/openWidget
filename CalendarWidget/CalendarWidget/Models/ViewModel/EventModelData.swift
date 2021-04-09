@@ -41,7 +41,13 @@ class EventModelData {
         // Check for calendars selected, if empty, show all calendars
         let allowedCalendars = calendars.map({$0.identifier})
         
-        if !allowedCalendars.isEmpty {
+        // Get id of used calendars in events then check with exist in intent
+        // If empty do not filter by calendars
+        let calendarIDs = nextEvents.map({$0.calendar.uid})
+        
+        let filterCalendarIDs = calendarIDs.filter({allowedCalendars.contains($0)})
+        
+        if !allowedCalendars.isEmpty && !filterCalendarIDs.isEmpty  {
             nextEvents = events.filter({allowedCalendars.contains($0.calendar.uid)})
         }
       
