@@ -53,8 +53,6 @@ class EventModelData {
             nextEvents = events.filter({allowedCalendars.contains($0.calendar.uid)})
         }
         
-        print("CALendar>>", filterCalendarIDs, allowedCalendars)
-      
         // Group events by week day
         let groupedByDay = Dictionary(grouping: nextEvents, by: { $0.from.components })
       
