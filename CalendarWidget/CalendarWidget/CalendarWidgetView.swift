@@ -13,7 +13,7 @@ struct CalendarWidgetEntryView: View {
     var entry: CalendarWidgetTimelineProvider.Entry
     
     var model: EventModelData {
-        EventModelData(events: entry.data.events ?? [], calendars: entry.configuration.calendarType ?? [])
+        EventModelData(events: entry.data.events ?? [], userCalendars: entry.data.calendars ?? [] , selectedCalendars: entry.configuration.calendarType ?? [])
     }
     
     @Environment(\.colorScheme) var colorScheme

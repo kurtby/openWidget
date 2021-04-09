@@ -12,6 +12,8 @@ extension Network {
     struct ResponseData {
         var events: [Event]?
         var weather: Weather?
+        var calendars: [EventsCalendar]?
+        
         var errors: [Error] = []
         var isHaveInvites: Bool = false
         

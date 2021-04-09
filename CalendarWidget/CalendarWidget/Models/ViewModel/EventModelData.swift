@@ -15,14 +15,16 @@ class EventModelData {
     }
     
     private var events: [Event]
-    private var calendars: [CalendarType]
+    private var userCalendars: [EventsCalendar]
+    private var selectedCalendars: [CalendarType]
     
     private var headersDate: [Date] = []
     private var days: [EventCalendar] = .init()
     
-    init(events: [Event], calendars: [CalendarType]) {
+    init(events: [Event], userCalendars: [EventsCalendar], selectedCalendars: [CalendarType]) {
         self.events = events
-        self.calendars = calendars
+        self.userCalendars = userCalendars
+        self.selectedCalendars = selectedCalendars
     }
     
     public func isDateHeaderNeeded(for date: Date) -> Bool {
@@ -39,17 +41,19 @@ class EventModelData {
         var nextEvents = events
         
         // Check for calendars selected, if empty, show all calendars
-        let allowedCalendars = calendars.map({$0.identifier})
+        let allowedCalendars = selectedCalendars.map({$0.identifier})
         
         // Get id of used calendars in events then check with exist in intent
         // If empty do not filter by calendars
-        let calendarIDs = nextEvents.map({$0.calendar.uid})
+        let calendarIDs = userCalendars.map({$0.uid})
         
         let filterCalendarIDs = calendarIDs.filter({allowedCalendars.contains($0)})
         
-        if !allowedCalendars.isEmpty && !filterCalendarIDs.isEmpty  {
+        if !allowedCalendars.isEmpty && !filterCalendarIDs.isEmpty {
             nextEvents = events.filter({allowedCalendars.contains($0.calendar.uid)})
         }
+        
+        print("CALendar>>", filterCalendarIDs, allowedCalendars)
       
         // Group events by week day
         let groupedByDay = Dictionary(grouping: nextEvents, by: { $0.from.components })

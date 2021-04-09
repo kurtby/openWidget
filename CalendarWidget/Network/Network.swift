@@ -79,6 +79,19 @@ class Network {
                 dispatchGroup.leave()
             }
         }
+        
+        dispatchGroup.enter()
+        self.loadCalendars { (calendars, error) in
+            self.serialQueue.async {
+                self.response.calendars = calendars?.data.calendars
+                
+                if let error = error {
+                    self.response.errors.append(error)
+                }
+                
+                dispatchGroup.leave()
+            }
+        }
                
         dispatchGroup.notifyWait(target: .main, timeout: .now() + 15) {
             if self.isLoading {
@@ -88,8 +101,10 @@ class Network {
             self.logger.log(level: .debug, "All tasks done")
             self.logger.log(level: .debug, "Errors count: \(self.response.errors.count)")
             self.logger.log(level: .debug, "Events count: \(self.response.events?.count ?? 0)")
+            self.logger.log(level: .debug, "Calendars count: \(self.response.calendars?.count ?? 0)")
             self.logger.log(level: .debug, "Is hava invites: \(self.response.isHaveInvites)")
             self.logger.log(level: .debug, "Weather: \(self.response.weather?.temperature ?? "Empty")")
+          
             
             if self.response.isNeedAuth {
                 self.tokenManager.requestAccessToken { (result) in
@@ -104,7 +119,7 @@ class Network {
             else {
                 complete(self.response, self.response.errors.first)
             }
-        }
+        }   
         
     }
 
