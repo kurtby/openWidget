@@ -47,6 +47,7 @@ class Network {
                 case .success(_):
                     self.loadData(parameters, complete: self.completeBlock)
                 case .failure(let error):
+                    self.response.errors.append(error)
                     complete(self.response, error)
                 }
             }

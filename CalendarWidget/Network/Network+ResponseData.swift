@@ -18,7 +18,7 @@ extension Network {
         var isHaveInvites: Bool = false
         
         var isNoConnection: Bool {
-            if let err = errors.first as? URLError, err.code == URLError.Code.notConnectedToInternet {
+            if errors.compactMap({$0 as? URLError}).contains(where: { $0.code == URLError.Code.notConnectedToInternet}) {
                 return true
             }
             
