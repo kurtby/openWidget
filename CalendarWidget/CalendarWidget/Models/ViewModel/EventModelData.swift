@@ -67,9 +67,8 @@ class EventModelData {
 
         // Flat array
         let sortedEvents = self.days.flatMap({$0.events})
-        
-        // Return 6 first events (more is useless)
-        return sortedEvents.prefix(6).map({$0})
+
+        return sortedEvents.map({$0})
     }
     
 }
