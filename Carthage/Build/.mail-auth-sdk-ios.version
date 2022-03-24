@@ -1,0 +1,10 @@
+{
+  "commitish" : "1.4.3",
+  "iOS" : [
+    {
+      "name" : "MRMailSDK",
+      "hash" : "2ade7e78d3ed9888f219e71b3052b1e3005b29ede9d39e05b69c300443e5fd3c",
+      "linking" : "dynamic"
+    }
+  ]
+}

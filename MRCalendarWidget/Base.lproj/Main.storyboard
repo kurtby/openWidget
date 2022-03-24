@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MRCalendarWidget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucM-B4-3XF">
+                                <rect key="frame" x="159" y="231.5" width="96" height="30"/>
+                                <state key="normal" title="Update Token"/>
+                                <connections>
+                                    <action selector="updateTokenButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bf1-bm-XXV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXI-Jt-iu4">
+                                <rect key="frame" x="142" y="269.5" width="130" height="30"/>
+                                <state key="normal" title="Request Calendars"/>
+                                <connections>
+                                    <action selector="requestCalendarsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uFV-MD-GaE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxt-rn-qxi">
+                                <rect key="frame" x="207" y="119" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5w-4y-j9o">
+                                <rect key="frame" x="158" y="373" width="98" height="30"/>
+                                <state key="normal" title="Reload widget"/>
+                                <connections>
+                                    <action selector="reloadWidgeButtonDidPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P8G-4p-h5s"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Тут будет токен" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mes-r1-pq6">
+                                <rect key="frame" x="16" y="419" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDn-QT-Ipo">
+                                <rect key="frame" x="158" y="309.5" width="98" height="30"/>
+                                <state key="normal" title="Request Inbox"/>
+                                <connections>
+                                    <action selector="requestInboxButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TCy-7c-kQo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mes-r1-pq6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="27p-Mo-hZe"/>
+                            <constraint firstItem="Mes-r1-pq6" firstAttribute="top" secondItem="z5w-4y-j9o" secondAttribute="bottom" constant="16" id="6Fo-w2-Iot"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mes-r1-pq6" secondAttribute="trailing" constant="16" id="9gZ-Qf-0b8"/>
+                            <constraint firstItem="ucM-B4-3XF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DOb-Fd-1CZ"/>
+                            <constraint firstItem="IDn-QT-Ipo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GEp-hI-Cns"/>
+                            <constraint firstItem="IDn-QT-Ipo" firstAttribute="top" secondItem="iXI-Jt-iu4" secondAttribute="bottom" constant="10" id="H3J-Yn-7l7"/>
+                            <constraint firstItem="ucM-B4-3XF" firstAttribute="top" secondItem="Lxt-rn-qxi" secondAttribute="bottom" constant="112.5" id="R6Q-oR-TLT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lxt-rn-qxi" secondAttribute="trailing" constant="20" id="SPS-oo-Vdv"/>
+                            <constraint firstItem="z5w-4y-j9o" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ds0-Lw-svz"/>
+                            <constraint firstItem="Lxt-rn-qxi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="emG-zE-XgR"/>
+                            <constraint firstItem="iXI-Jt-iu4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="kRb-KP-2MI"/>
+                            <constraint firstItem="z5w-4y-j9o" firstAttribute="top" secondItem="iXI-Jt-iu4" secondAttribute="bottom" constant="73.5" id="lIq-8q-MeN"/>
+                            <constraint firstItem="Lxt-rn-qxi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qIZ-oR-JxC"/>
+                            <constraint firstItem="iXI-Jt-iu4" firstAttribute="top" secondItem="ucM-B4-3XF" secondAttribute="bottom" constant="8" symbolic="YES" id="vTt-2U-Hdy"/>
+                            <constraint firstItem="Lxt-rn-qxi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="zSL-Xk-9eJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="calendarLabel" destination="Lxt-rn-qxi" id="wHk-PU-HsA"/>
+                        <outlet property="tokenTextField" destination="Mes-r1-pq6" id="fSM-lP-alg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100.00000000000001" y="118.52678571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
